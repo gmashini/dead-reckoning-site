@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<!--
+  Dead Reckoning — Landing Page
+  Shows the model overview, commentary, sector cards, Monte Carlo simulation
+  results, and chain reaction analysis. Loads model-data.json and runs 20,000
+  simulations client-side via simulation.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dead Reckoning — Navigate the AI Economy</title>
+  <meta name="description" content="Dead Reckoning helps professionals make sense of the AI world, understand impacts, and navigate the best path to prosper in the new AI economy.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mark">
+          <svg width="36" height="36" viewBox="0 0 56 56">
+            <defs><radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.25"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></radialGradient></defs>
+            <rect width="56" height="56" fill="url(#glow)"/>
+            <circle cx="28" cy="28" r="24" fill="none" stroke="#818cf8" stroke-width="1.5" opacity="0.5"/>
+            <line x1="28" y1="2" x2="28" y2="8" stroke="#c7d2fe" stroke-width="2" opacity="0.8"/><line x1="28" y1="48" x2="28" y2="54" stroke="#818cf8" stroke-width="1.2" opacity="0.4"/><line x1="2" y1="28" x2="8" y2="28" stroke="#818cf8" stroke-width="1.2" opacity="0.4"/><line x1="48" y1="28" x2="54" y2="28" stroke="#818cf8" stroke-width="1.2" opacity="0.4"/>
+            <line x1="44.97" y1="11.03" x2="42.14" y2="13.86" stroke="#818cf8" stroke-width="0.8" opacity="0.25"/><line x1="11.03" y1="11.03" x2="13.86" y2="13.86" stroke="#818cf8" stroke-width="0.8" opacity="0.25"/><line x1="44.97" y1="44.97" x2="42.14" y2="42.14" stroke="#818cf8" stroke-width="0.8" opacity="0.25"/><line x1="11.03" y1="44.97" x2="13.86" y2="42.14" stroke="#818cf8" stroke-width="0.8" opacity="0.25"/>
+            <line x1="28" y1="10" x2="28" y2="22" stroke="#6366f1" stroke-width="0.7" opacity="0.3"/><line x1="28" y1="34" x2="28" y2="46" stroke="#6366f1" stroke-width="0.7" opacity="0.3"/><line x1="10" y1="28" x2="22" y2="28" stroke="#6366f1" stroke-width="0.7" opacity="0.3"/><line x1="34" y1="28" x2="46" y2="28" stroke="#6366f1" stroke-width="0.7" opacity="0.3"/>
+            <polygon points="28,7 23.5,28 28,24 32.5,28" fill="#818cf8" opacity="0.9"/><polygon points="28,49 32.5,28 28,32 23.5,28" fill="#5B8DEF" opacity="0.25"/>
+            <circle cx="28" cy="28" r="2.5" fill="#c7d2fe" opacity="0.7"/><circle cx="28" cy="28" r="1" fill="#fff" opacity="0.5"/>
+          </svg>
+        </span>
+        Dead Reckoning
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#commentary">Model</a></li>
+        <li><a href="#about">Latest Predictions</a></li>
+        <li><a href="#model">Chain Reactions</a></li>
+        <li><a href="#outlook">Risks &amp; Opportunities</a></li>
+      </ul>
+      <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <!-- Decorative compass background -->
+    <div class="hero-compass" aria-hidden="true">
+      <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer bezel ring — heavy, machined look -->
+        <circle cx="300" cy="300" r="290" stroke="#003399" stroke-width="3"/>
+        <circle cx="300" cy="300" r="280" stroke="#003399" stroke-width="1.5"/>
+        <!-- Inner precision rings -->
+        <circle cx="300" cy="300" r="240" stroke="#003399" stroke-width="0.5" stroke-dasharray="2 4"/>
+        <circle cx="300" cy="300" r="200" stroke="#003399" stroke-width="0.5" stroke-dasharray="1 6"/>
+        <circle cx="300" cy="300" r="160" stroke="#003399" stroke-width="0.5" stroke-dasharray="1 8"/>
+        <circle cx="300" cy="300" r="120" stroke="#E5E5E5" stroke-width="0.5"/>
+        <!-- Cardinal tick marks — heavy machined lines -->
+        <line x1="300" y1="12" x2="300" y2="56" stroke="#003399" stroke-width="3"/>
+        <line x1="300" y1="544" x2="300" y2="588" stroke="#003399" stroke-width="2"/>
+        <line x1="12" y1="300" x2="56" y2="300" stroke="#003399" stroke-width="2"/>
+        <line x1="544" y1="300" x2="588" y2="300" stroke="#003399" stroke-width="2"/>
+        <!-- Cardinal labels -->
+        <text x="300" y="78" text-anchor="middle" font-family="Archivo, Helvetica, sans-serif" font-size="16" font-weight="900" fill="#003399" letter-spacing="0.1em">N</text>
+        <text x="300" y="536" text-anchor="middle" font-family="Archivo, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#003399" opacity="0.5">S</text>
+        <text x="78" y="305" text-anchor="middle" font-family="Archivo, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#003399" opacity="0.5">W</text>
+        <text x="522" y="305" text-anchor="middle" font-family="Archivo, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#003399" opacity="0.5">E</text>
+        <!-- Diagonal tick marks — 45-degree positions -->
+        <line x1="498" y1="102" x2="476" y2="124" stroke="#003399" stroke-width="1.5"/>
+        <line x1="102" y1="102" x2="124" y2="124" stroke="#003399" stroke-width="1.5"/>
+        <line x1="498" y1="498" x2="476" y2="476" stroke="#003399" stroke-width="1.5"/>
+        <line x1="102" y1="498" x2="124" y2="476" stroke="#003399" stroke-width="1.5"/>
+        <!-- 30-degree minor ticks around outer ring -->
+        <g stroke="#003399" stroke-width="1">
+          <line x1="300" y1="12" x2="300" y2="28"/>
+          <line x1="370" y1="16" x2="367" y2="32"/>
+          <line x1="435" y1="38" x2="429" y2="52"/>
+          <line x1="552" y1="165" x2="538" y2="171"/>
+          <line x1="574" y1="230" x2="558" y2="235"/>
+          <line x1="584" y1="300" x2="568" y2="300"/>
+          <line x1="574" y1="370" x2="558" y2="365"/>
+          <line x1="552" y1="435" x2="538" y2="429"/>
+          <line x1="435" y1="562" x2="429" y2="548"/>
+          <line x1="370" y1="584" x2="367" y2="568"/>
+          <line x1="300" y1="588" x2="300" y2="572"/>
+          <line x1="230" y1="584" x2="233" y2="568"/>
+          <line x1="165" y1="562" x2="171" y2="548"/>
+          <line x1="48" y1="435" x2="62" y2="429"/>
+          <line x1="26" y1="370" x2="42" y2="365"/>
+          <line x1="16" y1="300" x2="32" y2="300"/>
+          <line x1="26" y1="230" x2="42" y2="235"/>
+          <line x1="48" y1="165" x2="62" y2="171"/>
+          <line x1="165" y1="38" x2="171" y2="52"/>
+          <line x1="230" y1="16" x2="233" y2="32"/>
+        </g>
+        <!-- Cross-hair lines — precision etched -->
+        <line x1="300" y1="88" x2="300" y2="200" stroke="#003399" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <line x1="300" y1="400" x2="300" y2="512" stroke="#003399" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <line x1="88" y1="300" x2="200" y2="300" stroke="#003399" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <line x1="400" y1="300" x2="512" y2="300" stroke="#003399" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <!-- Compass needle — north (Racing Blue, solid) -->
+        <polygon points="300,90 288,300 300,280 312,300" fill="#003399"/>
+        <!-- Compass needle — south (International Orange) -->
+        <polygon points="300,510 312,300 300,320 288,300" fill="#FF4500" opacity="0.35"/>
+        <!-- Center mechanism — riveted hub -->
+        <circle cx="300" cy="300" r="12" fill="#003399"/>
+        <circle cx="300" cy="300" r="8" fill="#FFFFFF"/>
+        <circle cx="300" cy="300" r="5" fill="#003399"/>
+        <circle cx="300" cy="300" r="2.5" fill="#FFFFFF"/>
+        <!-- Degree numerals -->
+        <g font-family="Archivo, Helvetica, sans-serif" font-size="9" font-weight="700" fill="#003399" opacity="0.4" text-anchor="middle">
+          <text x="345" y="90" transform="rotate(18 345 90)">30</text>
+          <text x="410" y="118" transform="rotate(36 410 118)">60</text>
+          <text x="505" y="245">120</text>
+          <text x="505" y="360">150</text>
+          <text x="410" y="488" transform="rotate(-36 410 488)">210</text>
+          <text x="345" y="516" transform="rotate(-18 345 516)">240</text>
+          <text x="255" y="516" transform="rotate(18 255 516)">300</text>
+          <text x="190" y="488" transform="rotate(36 190 488)">330</text>
+          <text x="95" y="360">210</text>
+          <text x="95" y="245">240</text>
+          <text x="190" y="118" transform="rotate(-36 190 118)">300</text>
+          <text x="255" y="90" transform="rotate(-18 255 90)">330</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-content fade-in">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>The AI Future is Here</span>
+      </div>
+      <h1>
+        Navigate AI with<br>
+        <span class="gradient-text">Dead Reckoning</span>
+      </h1>
+      <p class="hero-subtitle-short">
+        A daily AI-powered forecast of how artificial intelligence will reshape the economy.
+      </p>
+
+      <!-- ── Process Flow Diagram ── -->
+      <div class="process-flow">
+        <div class="process-step">
+          <div class="process-icon process-icon--debate">
+            <!-- LLM Debate Icon -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Left brain (Claude) -->
+              <rect x="4" y="16" width="22" height="28" rx="6" fill="rgba(167,139,250,0.15)" stroke="#a78bfa" stroke-width="1.5"/>
+              <text x="15" y="33" fill="#a78bfa" font-size="7" font-weight="700" text-anchor="middle" font-family="Inter, sans-serif">C</text>
+              <!-- Right brain (GPT) -->
+              <rect x="38" y="16" width="22" height="28" rx="6" fill="rgba(74,222,128,0.15)" stroke="#4ADE80" stroke-width="1.5"/>
+              <text x="49" y="33" fill="#4ADE80" font-size="7" font-weight="700" text-anchor="middle" font-family="Inter, sans-serif">G</text>
+              <!-- Debate arrows -->
+              <path d="M27 26 L37 26" stroke="#818cf8" stroke-width="1.2" stroke-dasharray="2 2">
+                <animate attributeName="stroke-dashoffset" values="0;-8" dur="1s" repeatCount="indefinite"/>
+              </path>
+              <path d="M37 34 L27 34" stroke="#4ADE80" stroke-width="1.2" stroke-dasharray="2 2">
+                <animate attributeName="stroke-dashoffset" values="0;-8" dur="1s" repeatCount="indefinite"/>
+              </path>
+              <!-- Speech bubbles -->
+              <path d="M8 10 Q8 6 12 6 L22 6 Q26 6 26 10 L26 14 Q26 16 24 16 L16 16 L13 19 L14 16 L12 16 Q8 16 8 12 Z" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" stroke-width="0.8"/>
+              <path d="M38 48 Q38 44 42 44 L52 44 Q56 44 56 48 L56 52 Q56 54 54 54 L48 54 L45 57 L46 54 L42 54 Q38 54 38 52 Z" fill="rgba(74,222,128,0.2)" stroke="#4ADE80" stroke-width="0.8"/>
+            </svg>
+          </div>
+          <div class="process-label">We locked the two best LLMs in a room</div>
+          <div class="process-detail">Claude & GPT working together to simulate the future </div>
+        </div>
+
+        <div class="process-arrow">
+          <svg viewBox="0 0 32 24" fill="none"><path d="M4 12h20M20 6l6 6-6 6" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon process-icon--model">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Grid of probability dots -->
+              <g opacity="0.9">
+                <circle cx="16" cy="16" r="4" fill="#5B8DEF" opacity="0.8"/><circle cx="32" cy="16" r="3" fill="#F07070" opacity="0.6"/><circle cx="48" cy="16" r="5" fill="#4ADE80" opacity="0.9"/>
+                <circle cx="16" cy="32" r="3.5" fill="#FB923C" opacity="0.7"/><circle cx="32" cy="32" r="5" fill="#9B7AE8" opacity="0.9"/><circle cx="48" cy="32" r="3" fill="#5B8DEF" opacity="0.6"/>
+                <circle cx="16" cy="48" r="4.5" fill="#4ADE80" opacity="0.8"/><circle cx="32" cy="48" r="3" fill="#F07070" opacity="0.5"/><circle cx="48" cy="48" r="4" fill="#FB923C" opacity="0.8"/>
+              </g>
+              <!-- Connecting lines -->
+              <g stroke="#818cf8" stroke-width="0.5" opacity="0.3">
+                <line x1="16" y1="16" x2="32" y2="32"/><line x1="32" y1="16" x2="48" y2="32"/><line x1="48" y1="16" x2="32" y2="32"/>
+                <line x1="16" y1="32" x2="32" y2="48"/><line x1="32" y1="32" x2="48" y2="48"/><line x1="16" y1="32" x2="32" y2="16"/>
+              </g>
+            </svg>
+          </div>
+          <div class="process-label">They created a model of the world</div>
+          <div class="process-detail">Hundreds of risks and opportunities across 13 sectors </div>
+        </div>
+
+        <div class="process-arrow">
+          <svg viewBox="0 0 32 24" fill="none"><path d="M4 12h20M20 6l6 6-6 6" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon process-icon--sim">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Monte Carlo histogram bars -->
+              <rect x="8" y="42" width="6" height="12" rx="1.5" fill="#5B8DEF" opacity="0.4"/>
+              <rect x="16" y="34" width="6" height="20" rx="1.5" fill="#5B8DEF" opacity="0.6"/>
+              <rect x="24" y="22" width="6" height="32" rx="1.5" fill="#9B7AE8" opacity="0.8"/>
+              <rect x="32" y="14" width="6" height="40" rx="1.5" fill="#818cf8" opacity="1"/>
+              <rect x="40" y="24" width="6" height="30" rx="1.5" fill="#9B7AE8" opacity="0.7"/>
+              <rect x="48" y="36" width="6" height="18" rx="1.5" fill="#5B8DEF" opacity="0.5"/>
+              <!-- Bell curve overlay -->
+              <path d="M8 42 Q16 34 24 22 Q28 16 35 14 Q42 18 48 36 Q52 44 56 46" stroke="#c7d2fe" stroke-width="1.2" fill="none" opacity="0.5"/>
+              <!-- "20K" label -->
+              <text x="32" y="10" fill="#818cf8" font-size="7" font-weight="700" text-anchor="middle" font-family="Inter, sans-serif">20K</text>
+            </svg>
+          </div>
+          <div class="process-label">Then we simulate the future</div>
+          <div class="process-detail">20K Monte Carlo trials every single day</div>
+        </div>
+
+        <div class="process-arrow">
+          <svg viewBox="0 0 32 24" fill="none"><path d="M4 12h20M20 6l6 6-6 6" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon process-icon--results">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Compass/target -->
+              <circle cx="32" cy="32" r="22" stroke="#818cf8" stroke-width="1.5" opacity="0.3"/>
+              <circle cx="32" cy="32" r="14" stroke="#818cf8" stroke-width="1" opacity="0.2"/>
+              <circle cx="32" cy="32" r="6" stroke="#4ADE80" stroke-width="1.5" opacity="0.8"/>
+              <circle cx="32" cy="32" r="2" fill="#4ADE80"/>
+              <!-- Crosshairs -->
+              <line x1="32" y1="6" x2="32" y2="18" stroke="#818cf8" stroke-width="0.8" opacity="0.3"/>
+              <line x1="32" y1="46" x2="32" y2="58" stroke="#818cf8" stroke-width="0.8" opacity="0.3"/>
+              <line x1="6" y1="32" x2="18" y2="32" stroke="#818cf8" stroke-width="0.8" opacity="0.3"/>
+              <line x1="46" y1="32" x2="58" y2="32" stroke="#818cf8" stroke-width="0.8" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="process-label">To give you insights</div>
+          <div class="process-detail">So you can maximize your chances of success</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Key Metrics (inline in hero) -->
+    <div class="hero-metrics" id="key-metrics">
+      <div class="key-metrics-header">
+        <span class="landing-label">4-Year Outlook</span>
+        <h2>What the model predicts</h2>
+      </div>
+      <div class="key-metrics-grid" id="key-metrics-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <a href="#commentary" class="hero-scroll-arrow" aria-label="Scroll down">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- ── Divider ─────────────────────────────────── -->
+  <div class="landing-divider"></div>
+
+  <!-- ── Model Commentary ─────────────────────────── -->
+  <section class="landing-section landing-section-alt" id="commentary">
+    <div class="landing-inner">
+      <div class="landing-header fade-in">
+        <span class="landing-label">Model</span>
+        <h2>What the model sees<br>right now.</h2>
+        <p id="landing-commentary-summary" class="landing-commentary-summary"></p>
+      </div>
+      <div class="landing-dials-grid fade-in" id="landing-dials-grid"></div>
+      <div class="landing-themes" id="landing-themes"></div>
+      <div class="landing-assumptions" id="landing-assumptions" style="display:none">
+        <div class="landing-assumptions-label">Model Assumptions</div>
+        <p id="landing-assumptions-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Divider ─────────────────────────────────── -->
+  <div class="landing-divider"></div>
+
+  <!-- ── Latest Predictions ──────────────────────── -->
+  <section class="landing-section landing-section-alt" id="about">
+    <div class="landing-inner">
+      <div class="landing-header fade-in">
+        <span class="landing-label">Latest Model Predictions</span>
+        
+      </div>
+
+      <!-- Top Events -->
+      <div class="fade-in">
+        <h3 class="landing-sub-heading">Events Most Likely to Happen</h3>
+        <div class="landing-top-events" id="landing-top-events"></div>
+      </div>
+
+      
+
+    </div>
+  </section>
+
+  <!-- ── Divider ─────────────────────────────────── -->
+  <div class="landing-divider"></div>
+
+  <!-- ── Chain Reactions ─────────────────────────── -->
+  <section class="landing-section landing-section-alt" id="model">
+    <div class="landing-inner">
+      <div class="landing-header fade-in">
+        <span class="landing-label">Chain Reactions</span>
+        <h2>Cascading Effects</h2>
+        <p>When one AI event triggers another, the compounding effects reshape entire sectors. Explore the domino chains our model tracks.</p>
+      </div>
+      <div class="landing-chains-controls fade-in">
+        <div class="severity-filter" id="landing-severity-filter">
+          <button class="severity-btn active" data-sev="all">All</button>
+          <button class="severity-btn" data-sev="critical" style="--active-bg:var(--severity-critical)">Critical</button>
+          <button class="severity-btn" data-sev="high" style="--active-bg:var(--severity-high)">High</button>
+          <button class="severity-btn" data-sev="medium" style="--active-bg:var(--severity-medium)">Medium</button>
+        </div>
+      </div>
+      <div class="entanglement-viz fade-in" id="entanglement-viz">
+        <div class="entanglement-legend" id="entanglement-legend"></div>
+        <div class="entanglement-svg-wrap">
+          <svg id="entanglement-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <div class="entanglement-detail" id="entanglement-detail"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Divider ─────────────────────────────────── -->
+  <div class="landing-divider"></div>
+
+  <!-- ── Risks & Opportunities ────────────────────── -->
+  <section class="landing-section" id="outlook">
+    <div class="landing-inner">
+      <div class="landing-header fade-in">
+        <span class="landing-label">Risks &amp; Opportunities</span>
+        <h2>AI Events by Sector</h2>
+        <p>Explore the specific risks and opportunities our model tracks across every major sector impacted by AI.</p>
+        <p class="landing-header-hint">Don't agree with the AI model? Make it your own. Drag the probabilities to see how your own personal simulation plays out.</p>
+      </div>
+      <div class="landing-risks-controls fade-in">
+        <div class="cat-tabs" id="landing-cat-tabs"></div>
+        <div class="view-filter" id="landing-view-filter">
+          <button class="view-btn active" data-view="both">All</button>
+          <button class="view-btn" data-view="opportunities">Opportunities</button>
+          <button class="view-btn" data-view="risks">Risks</button>
+        </div>
+      </div>
+      <div id="inline-sim-metrics" class="fade-in"></div>
+      <div id="landing-items-container" class="fade-in"></div>
+    </div>
+  </section>
+
+  <!-- ── Divider ─────────────────────────────────── -->
+  <div class="landing-divider"></div>
+
+  <!-- ── CTA ─────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="landing-inner fade-in">
+      <h2>Model is updated daily, so come back and see what tomorrow brings.</h2>
+      <p></p>
+      <a href="#about" class="btn-primary">
+        <span>Explore the Data</span> <span>&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="24" height="24" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="none" stroke="#818cf8" stroke-width="1.5" opacity="0.5"/>
+          <line x1="28" y1="2" x2="28" y2="8" stroke="#c7d2fe" stroke-width="2" opacity="0.8"/><line x1="28" y1="48" x2="28" y2="54" stroke="#818cf8" stroke-width="1.2" opacity="0.4"/><line x1="2" y1="28" x2="8" y2="28" stroke="#818cf8" stroke-width="1.2" opacity="0.4"/><line x1="48" y1="28" x2="54" y2="28" stroke="#818cf8" stroke-width="1.2" opacity="0.4"/>
+          <polygon points="28,7 23.5,28 28,24 32.5,28" fill="#818cf8" opacity="0.9"/><polygon points="28,49 32.5,28 28,32 23.5,28" fill="#5B8DEF" opacity="0.25"/>
+          <circle cx="28" cy="28" r="2.5" fill="#c7d2fe" opacity="0.7"/>
+        </svg>
+        Dead Reckoning
+      </div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Predictions</a></li>
+        <li><a href="#outlook">Risks</a></li>
+        <li><a href="#model">Chains</a></li>
+      </ul>
+      <span class="footer-copy">&copy; 2026 Dead Reckoning</span>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ─────────────────────────────────── -->
+  <script>
+    /* Scroll animations */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    /* ── Model-derived constants (set after model loads) ── */
+    let CATEGORY_COLORS = {};
+    let METRIC_COLORS = {};
+    const METRIC_COLOR_PALETTE = ['#9B7AE8','#F07070','#5B8DEF','#4ADE80','#FB923C','#EC4899','#0EA5E9','#FBBF24','#8B5CF6','#60a5fa','#34d399','#f87171','#a78bfa','#38bdf8','#facc15','#f472b6'];
+
+    function initModelConstants(MODEL) {
+      CATEGORY_COLORS = {};
+      for (const [name, data] of Object.entries(MODEL.categories)) {
+        CATEGORY_COLORS[name] = data.color;
+      }
+      METRIC_COLORS = {};
+      Object.keys(MODEL.baselines).forEach((key, i) => {
+        METRIC_COLORS[key] = METRIC_COLOR_PALETTE[i % METRIC_COLOR_PALETTE.length];
+      });
+    }
+
+    function normalizeBaselines(baselines) {
+      for (const [key, val] of Object.entries(baselines)) {
+        if (typeof val !== 'object' || val === null) {
+          const label = key
+            .replace(/([A-Z])/g, ' $1')
+            .replace(/^./, s => s.toUpperCase())
+            .trim();
+          baselines[key] = {
+            value: val,
+            unit: 'index',
+            label: label,
+            description: '',
+            higherIsBetter: !key.toLowerCase().includes('stress') && !key.toLowerCase().includes('constraint'),
+            primary: false
+          };
+        }
+      }
+      return baselines;
+    }
+
+    function getMetricUnit(baselines, key) {
+      const raw = baselines[key]?.unit || '';
+      if (!raw || raw === 'percentile' || raw === 'index') return '';
+      if (raw === '%') return '%';
+      if (raw === 'OEE %') return '%';
+      if (raw === 'x EV/Rev') return 'x';
+      return ' ' + raw;
+    }
+
+    /* ── Reusable simulation runner (fully dynamic) ── */
+    function runSim(MODEL, numTrials) {
+      const items = [];
+      for (const [cat, data] of Object.entries(MODEL.categories)) {
+        data.opportunities.forEach(o => items.push({ ...o, type: 'opp', category: cat }));
+        data.risks.forEach(r => items.push({ ...r, type: 'risk', category: cat }));
+      }
+      const chains = MODEL.chainReactions;
+      const baselines = MODEL.baselines;
+      const metricKeys = Object.keys(baselines);
+      const results = [];
+
+      const matCounts = {};
+      items.forEach(item => matCounts[item.id] = 0);
+
+      for (let t = 0; t < numTrials; t++) {
+        const trial = { chainsActivated: [] };
+        metricKeys.forEach(k => trial[k] = baselines[k].value);
+        const materialized = new Set();
+        const boosts = {};
+
+        for (const item of items) {
+          const baseProb = (item.probability[0] + item.probability[1]) / 2 / 100;
+          const boost = boosts[item.id] || 0;
+          const prob = Math.min(baseProb + boost / 100, 0.99);
+          if (Math.random() < prob) {
+            materialized.add(item.id);
+            matCounts[item.id]++;
+            const impact = item.impact.most_likely;
+            metricKeys.forEach((k, i) => { trial[k] += impact[i] || 0; });
+          }
+        }
+
+        for (const chain of chains) {
+          let activated = false;
+          for (const step of chain.steps) {
+            const baseItem = items.find(i => i.id === step.item);
+            if (!baseItem) continue;
+            const baseProb = (baseItem.probability[0] + baseItem.probability[1]) / 2 / 100;
+            const boost = activated ? step.boost / 100 : 0;
+            const prob = Math.min(baseProb + boost, 0.99);
+            if (materialized.has(step.item) || Math.random() < prob) {
+              materialized.add(step.item);
+              if (!activated) activated = true;
+            } else { break; }
+          }
+          if (activated) {
+            trial.chainsActivated.push(chain.id);
+            const ci = chain.cascadeImpact.most_likely;
+            metricKeys.forEach((k, i) => { trial[k] += (ci[i] || 0) * 0.3; });
+          }
+        }
+        results.push(trial);
+      }
+
+      function percentile(arr, p) {
+        const sorted = [...arr].sort((a, b) => a - b);
+        const idx = (p / 100) * (sorted.length - 1);
+        const lo = Math.floor(idx), hi = Math.ceil(idx);
+        return sorted[lo] + (sorted[hi] - sorted[lo]) * (idx - lo);
+      }
+      function computeStats(values) {
+        const mean = values.reduce((a, b) => a + b, 0) / values.length;
+        return {
+          mean: Math.round(mean * 100) / 100,
+          p5: Math.round(percentile(values, 5) * 100) / 100,
+          p25: Math.round(percentile(values, 25) * 100) / 100,
+          p50: Math.round(percentile(values, 50) * 100) / 100,
+          p75: Math.round(percentile(values, 75) * 100) / 100,
+          p95: Math.round(percentile(values, 95) * 100) / 100,
+        };
+      }
+      const stats = {};
+      metricKeys.forEach(k => { stats[k] = computeStats(results.map(r => r[k])); });
+
+      return { items, matCounts, stats, baselines };
+    }
+
+    async function loadPredictions() {
+      const res = await fetch('model-data.json');
+      const MODEL = await res.json();
+      normalizeBaselines(MODEL.baselines);
+
+      initModelConstants(MODEL);
+      renderLandingCommentary(MODEL);
+
+      // Set dynamic 4-year outlook heading
+      const futureDate = new Date();
+      futureDate.setFullYear(futureDate.getFullYear() + 4);
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const headingEl = document.getElementById('sim-summary-heading');
+      if (headingEl) headingEl.textContent = `Outlook for ${months[futureDate.getMonth()]} ${futureDate.getDate()}, ${futureDate.getFullYear()}`;
+
+      const { items, matCounts, stats, baselines } = runSim(MODEL, 20000);
+
+      renderKeyMetrics(stats, baselines);
+      renderWorldIn2030(MODEL);
+      renderTopEvents(items, matCounts, 20000, MODEL.chainReactions);
+      renderLandingMetrics(stats, baselines);
+      renderInlineMetrics(stats, baselines);
+      initLandingRisks(MODEL);
+      initLandingChains(MODEL);
+    }
+
+    function renderTopEvents(items, matCounts, numTrials, chainReactions) {
+      const opps = items.filter(i => i.type === 'opp').map(i => ({ ...i, pct: Math.round(matCounts[i.id] / numTrials * 100) })).sort((a, b) => b.pct - a.pct).slice(0, 5);
+      const risks = items.filter(i => i.type === 'risk').map(i => ({ ...i, pct: Math.round(matCounts[i.id] / numTrials * 100) })).sort((a, b) => b.pct - a.pct).slice(0, 5);
+
+      // Build cascade map: for each item, find downstream effects from chains
+      function getCascades(itemId) {
+        const cascades = [];
+        for (const chain of chainReactions) {
+          const stepIdx = chain.steps.findIndex(s => s.item === itemId);
+          if (stepIdx === -1) continue;
+          // Get downstream steps (after this item in the chain)
+          const downstream = chain.steps.slice(stepIdx + 1);
+          if (downstream.length > 0) {
+            cascades.push({
+              chainName: chain.name,
+              severity: chain.severity,
+              effects: downstream.map(s => ({
+                label: s.label,
+                cat: s.cat,
+                boost: s.boost,
+              }))
+            });
+          }
+        }
+        return cascades;
+      }
+
+      function renderCard(item, type) {
+        const color = CATEGORY_COLORS[item.category] || '#5B8DEF';
+        const typeColor = type === 'opp' ? 'var(--accent-green)' : 'var(--accent-red)';
+        const cascades = getCascades(item.id);
+
+        // Pick the most impactful cascade (longest chain of effects)
+        let cascadeHtml = '';
+        if (cascades.length > 0) {
+          // Sort by number of effects, take the best one
+          cascades.sort((a, b) => b.effects.length - a.effects.length);
+          const best = cascades[0];
+          const effectItems = best.effects.slice(0, 3).map(e => {
+            const ec = CATEGORY_COLORS[e.cat] || '#888';
+            const isRisk = type === 'risk';
+            const boostColor = isRisk ? 'var(--accent-red)' : 'var(--accent-green)';
+            const boostAbs = Math.abs(e.boost);
+            const boostArrow = e.boost >= 0 ? '↑' : '↓';
+            const boostText = e.boost >= 0 ? 'more likely' : 'less likely';
+            return `
+              <div class="cascade-effect">
+                <svg class="cascade-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="${ec}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span class="cascade-label">${e.label}</span>
+                <span class="cascade-boost" style="color:${boostColor}">${boostArrow} ${boostAbs}% ${boostText}</span>
+              </div>
+            `;
+          }).join('');
+
+          cascadeHtml = `
+            <div class="cascade-section">
+              <div class="cascade-header">
+                <span class="cascade-chain-name">${best.chainName}</span>
+              </div>
+              ${effectItems}
+            </div>
+          `;
+        }
+
+        return `
+          <div class="landing-event-card">
+            <div class="landing-event-top">
+              <span class="landing-event-cat" style="color:${color}">${item.category}</span>
+              <span class="landing-event-pct" style="color:${typeColor}">${item.pct}%</span>
+            </div>
+            <h4 class="landing-event-name">${item.name}</h4>
+            <div class="landing-event-bar-track">
+              <div class="landing-event-bar-fill" style="width:${item.pct}%;background:${typeColor}"></div>
+            </div>
+            <div class="landing-event-timing">${item.timing}</div>
+            ${cascadeHtml}
+          </div>
+        `;
+      }
+
+      const container = document.getElementById('landing-top-events');
+      container.innerHTML = `
+        <div class="landing-events-col">
+          <div class="landing-events-col-header">
+            <span class="landing-events-dot" style="background:var(--accent-green)"></span>
+            <h4>Opportunities</h4>
+          </div>
+          ${opps.map(o => renderCard(o, 'opp')).join('')}
+        </div>
+        <div class="landing-events-col">
+          <div class="landing-events-col-header">
+            <span class="landing-events-dot" style="background:var(--accent-red)"></span>
+            <h4>Risks</h4>
+          </div>
+          ${risks.map(r => renderCard(r, 'risk')).join('')}
+        </div>
+      `;
+    }
+
+    function renderLandingCommentary(MODEL) {
+      const c = MODEL.commentary;
+      if (!c) return;
+
+      document.getElementById('landing-commentary-summary').textContent = c.shortSummary || c.summary;
+
+      const themesContainer = document.getElementById('landing-themes');
+      themesContainer.innerHTML = c.keyThemes.map((t, i) => {
+        const isString = typeof t === 'string';
+        const title = isString ? t.split(':')[0] : t.theme;
+        const body = isString ? t : t.narrative;
+        return `
+        <div class="landing-theme fade-in" onclick="this.classList.toggle('open')">
+          <div class="landing-theme-header">
+            <h3>${title}</h3>
+            <svg class="landing-theme-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="landing-theme-body">
+            <p>${body}</p>
+          </div>
+        </div>
+      `;
+      }).join('');
+
+      if (c.modelAssumptions) {
+        document.getElementById('landing-assumptions').style.display = 'block';
+        document.getElementById('landing-assumptions-text').textContent = c.modelAssumptions;
+      }
+
+      // Re-observe new fade-in elements
+      document.querySelectorAll('.landing-theme.fade-in').forEach(el => observer.observe(el));
+    }
+
+    function renderWorldIn2030(MODEL) {
+      const c = MODEL.commentary;
+      if (!c || !c.worldIn2030) return;
+      const container = document.getElementById('world2030');
+      const body = document.getElementById('world2030-body');
+      const titleEl = document.getElementById('world2030-title');
+      if (!container || !body) return;
+      container.style.display = '';
+      // Use first sentence of worldIn2030 as the title
+      const firstSentence = c.worldIn2030.split(/(?<=\.)\s/)[0] || 'The World in 2030';
+      if (titleEl) titleEl.textContent = firstSentence;
+      // Split into paragraphs and render (skip first sentence from body since it's now the title)
+      const paragraphs = c.worldIn2030.split('\n\n').filter(p => p.trim());
+      body.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+      // Element starts hidden so IntersectionObserver won't catch it — add visible directly
+      container.classList.add('visible');
+    }
+
+    function renderKeyMetrics(stats, baselines) {
+      const grid = document.getElementById('key-metrics-grid');
+      if (!grid) return;
+      const primaryKeys = Object.keys(baselines).slice(0, 4);
+
+      // Friendly names and icons for the top metrics
+      const friendly = {
+        unemployment: { name: 'Unemployment', icon: '👥', desc: 'US unemployment rate' },
+        gdpGrowth: { name: 'GDP Growth', icon: '📈', desc: 'Annual US GDP growth' },
+        softwareMultiples: { name: 'Tech Valuations', icon: '💻', desc: 'Software company multiples' },
+        energyComputeConstraintIndex: { name: 'Energy Stress', icon: '⚡', desc: 'Compute & energy constraints' },
+      };
+
+      grid.innerHTML = primaryKeys.map(key => {
+        const s = stats[key];
+        const b = baselines[key];
+        const color = METRIC_COLORS[key];
+        const unit = getMetricUnit(baselines, key);
+        const f = friendly[key] || { name: b.label, icon: '📊', desc: '' };
+        const change = s.p50 - b.value;
+        const hib = b.higherIsBetter !== false;
+        const isGood = hib ? change >= 0 : change < 0;
+        const arrow = change >= 0 ? '↑' : '↓';
+        const sentiment = isGood ? 'good' : 'bad';
+        const changeAbs = Math.abs(change).toFixed(1);
+
+        // Bar: show where P50 lands between P5 and P95
+        const lo = s.p5, hi = s.p95;
+        const range = hi - lo || 1;
+        const pct = Math.max(0, Math.min(100, ((s.p50 - lo) / range) * 100));
+        const baselinePct = Math.max(0, Math.min(100, ((b.value - lo) / range) * 100));
+
+        return `
+          <div class="key-metric-card">
+            <div class="key-metric-top">
+              <span class="key-metric-icon">${f.icon}</span>
+              <span class="key-metric-name">${f.name}</span>
+            </div>
+            <div class="key-metric-value" style="color:${color}">${s.p50}${unit}</div>
+            <div class="key-metric-change key-metric-change--${sentiment}">
+              <span class="key-metric-arrow">${arrow}</span> ${changeAbs}${unit} from today
+            </div>
+            <div class="key-metric-range">
+              <div class="key-metric-range-track">
+                <div class="key-metric-range-baseline" style="left:${baselinePct}%"></div>
+                <div class="key-metric-range-dot" style="left:${pct}%;background:${color}"></div>
+              </div>
+              <div class="key-metric-range-labels">
+                <span>Bear ${hib ? s.p5 : s.p95}${unit}</span>
+                <span>Bull ${hib ? s.p95 : s.p5}${unit}</span>
+              </div>
+            </div>
+            <div class="key-metric-desc">${f.desc}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderLandingMetrics(stats, baselines) {
+      const metricKeys = Object.keys(baselines);
+      const primaryKeys = metricKeys.slice(0, 4);
+      const secondaryKeys = metricKeys.slice(4);
+      const grid = document.getElementById('landing-metrics-grid');
+      const dialsGrid = document.getElementById('landing-dials-grid');
+      if (!grid && !dialsGrid) return;
+
+      function buildCard(key) {
+        const s = stats[key]; const b = baselines[key];
+        const color = METRIC_COLORS[key];
+        const unit = getMetricUnit(baselines, key);
+        const label = b.label || key;
+        const change = s.p50 - b.value;
+        const absChange = Math.abs(change);
+        const noChange = absChange < 0.005;
+        const sign = change >= 0 ? '+' : '';
+        const hib = b.higherIsBetter !== false;
+        const changeColor = hib
+          ? (change >= 0 ? 'var(--positive)' : 'var(--negative)')
+          : (change > 0 ? 'var(--negative)' : 'var(--positive)');
+        return { key, label, color, unit, s, b, change, absChange, noChange, sign, changeColor };
+      }
+
+      // Primary cards — first 4, sorted by impact
+      const primary = primaryKeys.map(buildCard).sort((a, b) => b.absChange - a.absChange);
+      if (grid) grid.innerHTML = primary.map(c => {
+        const dimStyle = c.noChange ? 'opacity:0.35' : '';
+        const labelColor = c.noChange ? '#666' : c.color;
+        return `
+          <div class="landing-metric-card" style="${dimStyle}">
+            <div class="landing-metric-label" style="color:${labelColor}">${c.label}</div>
+            <div class="landing-metric-value" style="color:${labelColor}">${c.s.p50}${c.unit}</div>
+            <div class="landing-metric-change" style="color:${c.noChange ? '#666' : c.changeColor}">${c.sign}${c.change.toFixed(2)}${c.unit} from baseline</div>
+            <div class="landing-metric-baseline">Baseline: ${c.b.value}${c.unit}</div>
+          </div>
+        `;
+      }).join('');
+
+      // Secondary dials — remaining, sorted by impact (speedometer style)
+      const secondary = secondaryKeys.map(buildCard).sort((a, b) => b.absChange - a.absChange);
+      if (dialsGrid) dialsGrid.innerHTML = secondary.map(c => {
+        const dimStyle = c.noChange ? 'opacity:0.35' : '';
+        const needleColor = c.noChange ? '#444' : (c.changeColor === 'var(--positive)' ? '#4ADE80' : c.changeColor === 'var(--negative)' ? '#F07070' : '#888');
+        // Map P50 position within [P5..P95] range to 0-180°
+        const lo = c.s.p5;
+        const hi = c.s.p95;
+        const range = hi - lo || 1;
+        const pct = Math.max(0, Math.min(1, (c.s.p50 - lo) / range));
+        const needleAngle = pct * 180; // 0=left, 180=right
+
+        // SVG dimensions: viewBox 0 0 120 70, center at (60, 58)
+        const cx = 60, cy = 58, r = 48;
+        function arcPt(deg) {
+          const rad = (180 - deg) * Math.PI / 180;
+          return [cx + r * Math.cos(rad), cy - r * Math.sin(rad)];
+        }
+
+        // Tick marks (every 18° = 11 ticks across 180°)
+        let ticks = '';
+        for (let d = 0; d <= 180; d += 18) {
+          const isMajor = d % 36 === 0;
+          const rad = (180 - d) * Math.PI / 180;
+          const outerR = r + 2;
+          const innerR = isMajor ? r - 6 : r - 3;
+          const x1 = cx + outerR * Math.cos(rad), y1 = cy - outerR * Math.sin(rad);
+          const x2 = cx + innerR * Math.cos(rad), y2 = cy - innerR * Math.sin(rad);
+          ticks += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${isMajor ? '#555' : '#3a3a3a'}" stroke-width="${isMajor ? 1.2 : 0.7}"/>`;
+        }
+
+        // Background arc (full 180°)
+        const [bx1, by1] = arcPt(0);
+        const [bx2, by2] = arcPt(180);
+        const trackD = `M ${bx2},${by2} A ${r},${r} 0 0,1 ${bx1},${by1}`;
+
+        // Needle — thin triangle from center to arc edge
+        const needleLen = r - 4;
+        const nRad = (180 - needleAngle) * Math.PI / 180;
+        const tipX = cx + needleLen * Math.cos(nRad);
+        const tipY = cy - needleLen * Math.sin(nRad);
+        // Needle base — two points perpendicular to needle at center, width ~3px
+        const perpRad = nRad + Math.PI / 2;
+        const baseW = 2;
+        const b1x = cx + baseW * Math.cos(perpRad), b1y = cy - baseW * Math.sin(perpRad);
+        const b2x = cx - baseW * Math.cos(perpRad), b2y = cy + baseW * Math.sin(perpRad);
+
+        // Min/max labels
+        const minLabel = lo.toFixed(lo % 1 === 0 ? 0 : 1);
+        const maxLabel = hi.toFixed(hi % 1 === 0 ? 0 : 1);
+
+        return `
+          <div class="landing-dial-card" style="${dimStyle}">
+            <svg viewBox="0 0 120 70" class="dial-svg">
+              <!-- Tick marks -->
+              ${ticks}
+              <!-- Background track -->
+              <path d="${trackD}" fill="none" stroke="#2a2a2a" stroke-width="8" stroke-linecap="round"/>
+              <!-- Needle -->
+              <polygon points="${tipX.toFixed(1)},${tipY.toFixed(1)} ${b1x.toFixed(1)},${b1y.toFixed(1)} ${b2x.toFixed(1)},${b2y.toFixed(1)}" fill="${needleColor}" opacity="0.95"/>
+              <!-- Center hub -->
+              <circle cx="${cx}" cy="${cy}" r="4" fill="#1a1a1a" stroke="#555" stroke-width="1.2"/>
+              <circle cx="${cx}" cy="${cy}" r="1.8" fill="${needleColor}" opacity="0.8"/>
+              <!-- Range labels -->
+              <text x="${(bx2 - 2).toFixed(0)}" y="${(by2 + 9).toFixed(0)}" fill="#555" font-size="6" text-anchor="end" font-family="var(--font-mono)">${minLabel}</text>
+              <text x="${(bx1 + 2).toFixed(0)}" y="${(by1 + 9).toFixed(0)}" fill="#555" font-size="6" text-anchor="start" font-family="var(--font-mono)">${maxLabel}</text>
+            </svg>
+            <div class="dial-value" style="color:${c.noChange ? '#666' : c.changeColor}">${c.s.p50}${c.unit}</div>
+            <div class="dial-label">${c.label}</div>
+            <div class="dial-change" style="color:${c.noChange ? '#666' : c.changeColor}">${c.sign}${c.change.toFixed(2)}${c.unit}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderInlineMetrics(stats, baselines) {
+      const metricKeys = Object.keys(baselines).filter(k => baselines[k].primary);
+      const container = document.getElementById('inline-sim-metrics');
+
+      const hasModifications = Object.keys(_originalProbabilities).length > 0;
+      const resetBtn = hasModifications
+        ? `<button class="inline-metrics-reset" onclick="resetAllProbabilities()">↺ Reset to Defaults</button>`
+        : '';
+
+      container.innerHTML = `<div class="inline-metrics-strip">${metricKeys.map(key => {
+        const s = stats[key];
+        const b = baselines[key];
+        const color = METRIC_COLORS[key];
+        const unit = getMetricUnit(baselines, key);
+        const label = b.label || key;
+        const change = s.p50 - b.value;
+        const hib = b.higherIsBetter !== false;
+        const isGood = hib ? change >= 0 : change < 0;
+        const arrow = change >= 0 ? '▲' : '▼';
+        const deltaClass = isGood ? 'positive' : 'negative';
+        return `
+          <div class="inline-metric">
+            <span class="inline-metric-dot" style="background:${color}"></span>
+            <span class="inline-metric-label">${label}</span>
+            <span class="inline-metric-value">${s.p50}${unit}</span>
+            <span class="inline-metric-delta ${deltaClass}">${arrow} ${Math.abs(change).toFixed(1)}${unit}</span>
+          </div>
+        `;
+      }).join('')}</div>${resetBtn}`;
+    }
+
+
+    /* ── Landing Risks & Opportunities ── */
+    let landingCat = 'Economy';
+    let landingView = 'both';
+    let _landingModel = null;
+
+    function initLandingRisks(MODEL) {
+      _landingModel = MODEL;
+
+      // Setup view-filter listeners (once)
+      document.querySelectorAll('#landing-view-filter .view-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          landingView = btn.dataset.view;
+          document.querySelectorAll('#landing-view-filter .view-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderLandingItems();
+        });
+      });
+
+      renderLandingTabs();
+      renderLandingItems();
+    }
+
+    function renderLandingTabs() {
+      const tabs = document.getElementById('landing-cat-tabs');
+      tabs.innerHTML = Object.keys(_landingModel.categories).map(name => {
+        const color = CATEGORY_COLORS[name];
+        const isActive = name === landingCat;
+        return `<button class="cat-tab${isActive ? ' active' : ''}" data-cat="${name}" style="${isActive ? 'background:' + color : ''}">${name}</button>`;
+      }).join('');
+
+      tabs.querySelectorAll('.cat-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          landingCat = btn.dataset.cat;
+          renderLandingTabs();
+          renderLandingItems();
+        });
+      });
+    }
+
+    function renderLandingItems() {
+      const cat = _landingModel.categories[landingCat];
+      const color = CATEGORY_COLORS[landingCat];
+      const container = document.getElementById('landing-items-container');
+
+      function renderItemList(items, type, listColor) {
+        return items.map(item => {
+          const avg = (item.probability[0] + item.probability[1]) / 2;
+          const level = avg >= 70 ? 'High' : avg >= 45 ? 'Medium' : 'Lower';
+          let badgeBg, badgeColor;
+          if (type === 'risk') {
+            badgeBg = avg >= 70 ? 'rgba(240,112,112,0.12)' : avg >= 45 ? 'rgba(251,146,60,0.12)' : 'rgba(74,222,128,0.12)';
+            badgeColor = avg >= 70 ? '#F07070' : avg >= 45 ? '#FB923C' : '#4ADE80';
+          } else {
+            badgeBg = avg >= 70 ? 'rgba(74,222,128,0.12)' : avg >= 45 ? 'rgba(91,141,239,0.12)' : 'rgba(255,255,255,0.06)';
+            badgeColor = avg >= 70 ? '#4ADE80' : avg >= 45 ? '#5B8DEF' : '#888';
+          }
+
+          const lo = item.probability[0];
+          const hi = item.probability[1];
+
+          const outcomes = (item.outcomes || []).map(o => `
+            <div class="outcome-row">
+              <span class="outcome-tag ${o.type}">${o.type}</span>
+              <p>${o.text}</p>
+            </div>
+          `).join('');
+
+          const analysisHtml = item.commentary ? `
+            <div class="analysis-box">
+              <div class="analysis-label">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B8DEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Analysis
+              </div>
+              <p>${item.commentary}</p>
+            </div>
+          ` : '';
+
+          return `
+            <div class="item-card" id="lcard-${item.id}">
+              <div class="item-card-header" onclick="toggleLandingCard('${item.id}')">
+                <span class="chevron" id="lchev-${item.id}">&#9660;</span>
+                <div class="item-meta">
+                  <span class="level-badge" style="background:${badgeBg};color:${badgeColor}">${level}</span>
+                  <span class="timing-label">${item.timing}</span>
+                  ${item.outcomes ? `<span class="outcomes-count">&middot; ${item.outcomes.length} outcomes</span>` : ''}
+                </div>
+                <h4>${item.name}</h4>
+                <div class="prob-bar-wrap" data-item-id="${item.id}" data-lo="${lo}" data-hi="${hi}">
+                  <div class="prob-bar-track">
+                    <div class="prob-bar-ghost" style="left:${lo}%;width:${hi - lo}%;background:${listColor}"></div>
+                    <div class="prob-bar-fill" style="left:${lo}%;width:${hi - lo}%;background:${listColor};opacity:0.5">
+                      <span class="prob-bar-handle prob-bar-handle-lo"></span>
+                      <span class="prob-bar-handle prob-bar-handle-hi"></span>
+                    </div>
+                  </div>
+                  <div class="prob-bar-labels"><span class="prob-label-lo">${lo}%</span><span class="prob-label-hi">${hi}%</span></div>
+                </div>
+              </div>
+              <div class="item-card-details" id="ldetails-${item.id}">
+                <p class="item-detail-text">${item.detail}</p>
+                ${analysisHtml}
+                ${item.outcomes ? `
+                  <div class="outcomes-header">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    If this happens
+                  </div>
+                  ${outcomes}
+                ` : ''}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      if (landingView === 'both') {
+        container.innerHTML = `
+          <div class="items-columns">
+            <div class="items-column">
+              <div class="items-column-header">
+                <span class="col-dot" style="background:var(--accent-green)"></span>
+                <h3>Opportunities</h3>
+                <span class="count">(${cat.opportunities.length})</span>
+              </div>
+              ${renderItemList(cat.opportunities, 'opportunity', color)}
+            </div>
+            <div class="items-column">
+              <div class="items-column-header">
+                <span class="col-dot" style="background:var(--accent-red)"></span>
+                <h3>Risks</h3>
+                <span class="count">(${cat.risks.length})</span>
+              </div>
+              ${renderItemList(cat.risks, 'risk', '#F07070')}
+            </div>
+          </div>
+        `;
+      } else if (landingView === 'opportunities') {
+        container.innerHTML = `
+          <div style="max-width:700px;margin:0 auto">
+            <div class="items-column-header">
+              <span class="col-dot" style="background:var(--accent-green)"></span>
+              <h3>Opportunities</h3>
+              <span class="count">(${cat.opportunities.length})</span>
+            </div>
+            ${renderItemList(cat.opportunities, 'opportunity', color)}
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div style="max-width:700px;margin:0 auto">
+            <div class="items-column-header">
+              <span class="col-dot" style="background:var(--accent-red)"></span>
+              <h3>Risks</h3>
+              <span class="count">(${cat.risks.length})</span>
+            </div>
+            ${renderItemList(cat.risks, 'risk', '#F07070')}
+          </div>
+        `;
+      }
+
+      // Persist modified state + ghost bars across tab/filter switches
+      requestAnimationFrame(() => {
+        for (const [itemId, orig] of Object.entries(_originalProbabilities)) {
+          const wrap = container.querySelector(`.prob-bar-wrap[data-item-id="${itemId}"]`);
+          if (!wrap) continue;
+          const curLo = parseInt(wrap.dataset.lo);
+          const curHi = parseInt(wrap.dataset.hi);
+          if (orig[0] !== curLo || orig[1] !== curHi) {
+            wrap.classList.add('modified');
+            const ghost = wrap.querySelector('.prob-bar-ghost');
+            if (ghost) {
+              ghost.style.left = orig[0] + '%';
+              ghost.style.width = (orig[1] - orig[0]) + '%';
+            }
+          }
+        }
+        initProbBarDrag();
+      });
+    }
+
+    /* ── Draggable Probability Bars ── */
+    let _dragState = null;
+    let _probBarDragged = false;
+    const _originalProbabilities = {};
+    let _resimTimer = null;
+    let _probDragInited = false;
+
+    function initProbBarDrag() {
+      if (_probDragInited) return;
+      _probDragInited = true;
+
+      const container = document.getElementById('landing-items-container');
+      if (!container) return;
+
+      container.addEventListener('pointerdown', onProbBarPointerDown);
+      document.addEventListener('pointermove', onProbBarPointerMove);
+      document.addEventListener('pointerup', onProbBarPointerUp);
+    }
+
+    function onProbBarPointerDown(e) {
+      // Determine what was clicked
+      const handleLo = e.target.closest('.prob-bar-handle-lo');
+      const handleHi = e.target.closest('.prob-bar-handle-hi');
+      const fill = e.target.closest('.prob-bar-fill');
+      const track = e.target.closest('.prob-bar-track');
+      const wrap = e.target.closest('.prob-bar-wrap');
+
+      if (!wrap) return;
+      if (!handleLo && !handleHi && !fill && !track) return;
+
+      const itemId = wrap.dataset.itemId;
+      const lo = parseInt(wrap.dataset.lo);
+      const hi = parseInt(wrap.dataset.hi);
+      const trackEl = wrap.querySelector('.prob-bar-track');
+      const trackRect = trackEl.getBoundingClientRect();
+
+      // Store original probabilities if not already stored
+      if (!_originalProbabilities[itemId]) {
+        _originalProbabilities[itemId] = [lo, hi];
+      }
+
+      let mode = 'lo';
+      if (handleHi) {
+        mode = 'hi';
+      } else if (handleLo) {
+        mode = 'lo';
+      } else if (fill) {
+        mode = 'slide';
+      } else if (track) {
+        // Click on track outside fill — snap closest edge
+        const pct = Math.round(((e.clientX - trackRect.left) / trackRect.width) * 100);
+        mode = Math.abs(pct - lo) < Math.abs(pct - hi) ? 'lo' : 'hi';
+      }
+
+      _dragState = {
+        itemId,
+        mode,
+        startX: e.clientX,
+        startLo: lo,
+        startHi: hi,
+        trackRect,
+        wrap,
+        moved: false,
+      };
+
+      wrap.classList.add('dragging');
+      document.body.classList.add('prob-dragging');
+      e.preventDefault();
+      e.stopPropagation();
+      wrap.setPointerCapture(e.pointerId);
+    }
+
+    function onProbBarPointerMove(e) {
+      if (!_dragState) return;
+
+      const { mode, startX, startLo, startHi, trackRect, wrap } = _dragState;
+      const dx = e.clientX - startX;
+      const dpct = Math.round((dx / trackRect.width) * 100);
+
+      if (Math.abs(e.clientX - startX) > 3) _dragState.moved = true;
+
+      const MIN_RANGE = 4;
+      let newLo = startLo;
+      let newHi = startHi;
+
+      if (mode === 'lo') {
+        newLo = Math.max(0, Math.min(startLo + dpct, startHi - MIN_RANGE));
+      } else if (mode === 'hi') {
+        newHi = Math.min(100, Math.max(startHi + dpct, startLo + MIN_RANGE));
+      } else if (mode === 'slide') {
+        const range = startHi - startLo;
+        newLo = startLo + dpct;
+        newHi = startHi + dpct;
+        if (newLo < 0) { newLo = 0; newHi = range; }
+        if (newHi > 100) { newHi = 100; newLo = 100 - range; }
+      }
+
+      newLo = Math.round(newLo);
+      newHi = Math.round(newHi);
+
+      // Update visuals in real time
+      const fillEl = wrap.querySelector('.prob-bar-fill');
+      const labelLo = wrap.querySelector('.prob-label-lo');
+      const labelHi = wrap.querySelector('.prob-label-hi');
+      const levelBadge = wrap.closest('.item-card')?.querySelector('.level-badge');
+
+      fillEl.style.left = newLo + '%';
+      fillEl.style.width = (newHi - newLo) + '%';
+      labelLo.textContent = newLo + '%';
+      labelHi.textContent = newHi + '%';
+
+      // Update level badge based on avg probability (matches renderItemList thresholds)
+      if (levelBadge) {
+        const avg = (newLo + newHi) / 2;
+        levelBadge.textContent = avg >= 70 ? 'High' : avg >= 45 ? 'Medium' : 'Lower';
+      }
+
+      wrap.dataset.lo = newLo;
+      wrap.dataset.hi = newHi;
+    }
+
+    function onProbBarPointerUp(e) {
+      if (!_dragState) return;
+
+      const { itemId, wrap, moved } = _dragState;
+      const newLo = parseInt(wrap.dataset.lo);
+      const newHi = parseInt(wrap.dataset.hi);
+
+      wrap.classList.remove('dragging');
+      document.body.classList.remove('prob-dragging');
+
+      if (moved) {
+        _probBarDragged = true;
+
+        // Update model probability
+        updateModelProbability(itemId, newLo, newHi);
+
+        // Toggle modified class and update ghost bar
+        const orig = _originalProbabilities[itemId];
+        if (orig && (orig[0] !== newLo || orig[1] !== newHi)) {
+          wrap.classList.add('modified');
+          const ghost = wrap.querySelector('.prob-bar-ghost');
+          if (ghost) {
+            ghost.style.left = orig[0] + '%';
+            ghost.style.width = (orig[1] - orig[0]) + '%';
+          }
+        } else {
+          wrap.classList.remove('modified');
+        }
+
+        // Schedule re-simulation
+        scheduleResimulation();
+      }
+
+      _dragState = null;
+    }
+
+    function updateModelProbability(itemId, lo, hi) {
+      if (!_landingModel) return;
+      for (const [cat, data] of Object.entries(_landingModel.categories)) {
+        for (const item of data.opportunities) {
+          if (item.id === itemId) { item.probability = [lo, hi]; return; }
+        }
+        for (const item of data.risks) {
+          if (item.id === itemId) { item.probability = [lo, hi]; return; }
+        }
+      }
+    }
+
+    function scheduleResimulation() {
+      if (_resimTimer) clearTimeout(_resimTimer);
+      _resimTimer = setTimeout(runResimulation, 300);
+    }
+
+    function showSimLoading(on) {
+      ['landing-metrics-grid', 'landing-top-events', 'inline-sim-metrics'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const section = el.closest('.fade-in') || el;
+          section.classList.toggle('sim-loading', on);
+        }
+      });
+    }
+
+    function runResimulation() {
+      showSimLoading(true);
+      setTimeout(() => {
+        const { items, matCounts, stats, baselines } = runSim(_landingModel, 5000);
+        renderTopEvents(items, matCounts, 5000, _landingModel.chainReactions);
+        renderLandingMetrics(stats, baselines);
+        renderInlineMetrics(stats, baselines);
+        showSimLoading(false);
+      }, 16);
+    }
+
+    function resetAllProbabilities() {
+      // Restore all modified probabilities to originals
+      for (const [itemId, orig] of Object.entries(_originalProbabilities)) {
+        updateModelProbability(itemId, orig[0], orig[1]);
+      }
+      // Clear tracking
+      for (const key of Object.keys(_originalProbabilities)) {
+        delete _originalProbabilities[key];
+      }
+      // Re-render items (restores bar positions from model data)
+      renderLandingItems();
+      // Re-run simulation with original values
+      runResimulation();
+    }
+
+    function toggleLandingCard(id) {
+      if (_probBarDragged) { _probBarDragged = false; return; }
+      const details = document.getElementById('ldetails-' + id);
+      const chev = document.getElementById('lchev-' + id);
+      if (details) details.classList.toggle('open');
+      if (chev) chev.classList.toggle('open');
+    }
+
+    /* ── Landing Chain Reactions ── */
+    const SEVERITY_COLORS = { critical: '#F07070', high: '#FB923C', medium: '#FBBF24' };
+    let landingSev = 'all';
+    let _chainsModel = null;
+
+    /* ── SVG Helpers ── */
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    function svgEl(tag, attrs) {
+      const el = document.createElementNS(SVG_NS, tag);
+      if (attrs) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      return el;
+    }
+
+    /* ── Entanglement Graph: Data Processing ── */
+    let _entanglementGraph = null;
+    let _entanglementLayout = null;
+    let _activeChainId = null;
+
+    function buildEntanglementGraph(MODEL) {
+      const chains = MODEL.chainReactions;
+      const nodesMap = {};
+
+      chains.forEach(chain => {
+        chain.steps.forEach((step, stepIdx) => {
+          if (!nodesMap[step.item]) {
+            nodesMap[step.item] = {
+              id: step.item,
+              label: step.label,
+              cat: step.cat,
+              chains: [],
+              stepPositions: {},
+              isRisk: step.item.includes('-risk-')
+            };
+          }
+          nodesMap[step.item].chains.push(chain.id);
+          nodesMap[step.item].stepPositions[chain.id] = stepIdx;
+        });
+      });
+
+      const nodes = Object.values(nodesMap);
+      nodes.forEach(n => {
+        n.isShared = n.chains.length >= 2;
+        n.shareCount = n.chains.length;
+      });
+
+      const edges = [];
+      chains.forEach(chain => {
+        for (let i = 0; i < chain.steps.length - 1; i++) {
+          edges.push({
+            source: chain.steps[i].item,
+            target: chain.steps[i + 1].item,
+            chainId: chain.id,
+            severity: chain.severity,
+            boost: chain.steps[i + 1].boost
+          });
+        }
+      });
+
+      const maxSteps = Math.max(...chains.map(c => c.steps.length));
+      return { nodes, nodesMap, edges, chains, maxSteps };
+    }
+
+    /* ── Entanglement Graph: Layout Algorithm ── */
+    function layoutEntanglementGraph(graphData) {
+      const { nodes, nodesMap, edges, chains, maxSteps } = graphData;
+
+      const COL_WIDTH = 220;
+      const ROW_HEIGHT = 56;
+      const PADDING = { top: 48, right: 60, bottom: 40, left: 60 };
+      const NODE_R = 7;
+      const SHARED_R = 11;
+
+      // Assign columns: each node goes to its earliest step position
+      const columns = Array.from({ length: maxSteps }, () => []);
+      const nodePos = {};
+      const placed = new Set();
+      const sevOrder = { critical: 0, high: 1, medium: 2 };
+      const sorted = [...chains].sort((a, b) => (sevOrder[a.severity] ?? 3) - (sevOrder[b.severity] ?? 3));
+
+      sorted.forEach(chain => {
+        chain.steps.forEach((step, stepIdx) => {
+          if (!placed.has(step.item)) {
+            columns[stepIdx].push(step.item);
+            nodePos[step.item] = { col: stepIdx };
+            placed.add(step.item);
+          }
+        });
+      });
+
+      // Barycenter row ordering to reduce crossings
+      for (let col = 0; col < maxSteps; col++) {
+        if (col === 0) {
+          columns[col].forEach((id, i) => { nodePos[id].row = i; });
+        } else {
+          const bary = columns[col].map(id => {
+            const incoming = edges.filter(e => e.target === id);
+            if (incoming.length === 0) return { id, bc: 999 };
+            const avg = incoming.reduce((s, e) => s + (nodePos[e.source]?.row || 0), 0) / incoming.length;
+            return { id, bc: avg };
+          });
+          bary.sort((a, b) => a.bc - b.bc);
+          bary.forEach((item, i) => { nodePos[item.id].row = i; });
+        }
+      }
+
+      // Second pass: refine with outgoing edges too
+      for (let col = maxSteps - 2; col >= 0; col--) {
+        const bary = columns[col].map(id => {
+          const outgoing = edges.filter(e => e.source === id);
+          const incoming = edges.filter(e => e.target === id);
+          const all = [...incoming.map(e => nodePos[e.source]?.row || 0), ...outgoing.map(e => nodePos[e.target]?.row || 0)];
+          if (all.length === 0) return { id, bc: nodePos[id].row };
+          return { id, bc: all.reduce((s, v) => s + v, 0) / all.length };
+        });
+        bary.sort((a, b) => a.bc - b.bc);
+        bary.forEach((item, i) => { nodePos[item.id].row = i; });
+      }
+
+      // Pixel positions
+      const maxRows = Math.max(...columns.map(c => c.length), 1);
+      Object.keys(nodePos).forEach(id => {
+        const p = nodePos[id];
+        const node = nodesMap[id];
+        p.x = PADDING.left + p.col * COL_WIDTH + COL_WIDTH / 2;
+        p.y = PADDING.top + p.row * ROW_HEIGHT + ROW_HEIGHT / 2;
+        p.r = node.isShared ? SHARED_R : NODE_R;
+      });
+
+      const svgWidth = PADDING.left + maxSteps * COL_WIDTH + PADDING.right;
+      const svgHeight = PADDING.top + maxRows * ROW_HEIGHT + PADDING.bottom;
+
+      return { nodePos, svgWidth, svgHeight, columns, maxSteps, COL_WIDTH, ROW_HEIGHT, PADDING, maxRows };
+    }
+
+    /* ── Entanglement Graph: SVG Rendering ── */
+    function renderEntanglementSVG(graphData, layout) {
+      const svg = document.getElementById('entanglement-svg');
+      const { nodePos, svgWidth, svgHeight, maxSteps, COL_WIDTH, PADDING } = layout;
+      const { nodes, nodesMap, edges, chains } = graphData;
+
+      svg.setAttribute('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
+      svg.style.width = svgWidth + 'px';
+      svg.style.height = svgHeight + 'px';
+      svg.innerHTML = '';
+
+      // Defs: arrow markers per severity
+      const defs = svgEl('defs');
+      Object.entries(SEVERITY_COLORS).forEach(([sev, color]) => {
+        const marker = svgEl('marker', {
+          id: 'arrow-' + sev, markerWidth: '6', markerHeight: '5',
+          refX: '6', refY: '2.5', orient: 'auto'
+        });
+        marker.appendChild(svgEl('polygon', { points: '0 0, 6 2.5, 0 5', fill: color, opacity: '0.7' }));
+        defs.appendChild(marker);
+      });
+      svg.appendChild(defs);
+
+      // Layer 1: Column grid
+      const gridG = svgEl('g', { class: 'ent-grid' });
+      for (let col = 0; col < maxSteps; col++) {
+        const x = PADDING.left + col * COL_WIDTH + COL_WIDTH / 2;
+        gridG.appendChild(svgEl('line', {
+          x1: x, y1: PADDING.top - 16, x2: x, y2: svgHeight - PADDING.bottom + 8,
+          stroke: '#D4D4D4', 'stroke-width': '1', 'stroke-dasharray': '4 4'
+        }));
+        const label = svgEl('text', {
+          x: x, y: PADDING.top - 24, 'text-anchor': 'middle',
+          'font-family': 'Archivo, sans-serif', 'font-size': '9px',
+          'font-weight': '800', fill: '#999', 'letter-spacing': '0.12em'
+        });
+        label.textContent = 'STEP ' + (col + 1);
+        gridG.appendChild(label);
+      }
+      svg.appendChild(gridG);
+
+      // Layer 2: Chain path edges
+      const edgesG = svgEl('g', { class: 'ent-edges' });
+      chains.forEach(chain => {
+        const sevColor = SEVERITY_COLORS[chain.severity];
+        let d = '';
+        chain.steps.forEach((step, i) => {
+          const p = nodePos[step.item];
+          if (i === 0) {
+            d += `M ${p.x} ${p.y}`;
+          } else {
+            const prev = nodePos[chain.steps[i - 1].item];
+            const dx = p.x - prev.x;
+            const cp = Math.min(Math.abs(dx) * 0.4, 80);
+            d += ` C ${prev.x + cp} ${prev.y}, ${p.x - cp} ${p.y}, ${p.x} ${p.y}`;
+          }
+        });
+        const path = svgEl('path', {
+          d, fill: 'none', stroke: sevColor, 'stroke-width': '2',
+          'stroke-opacity': '0.35', 'data-chain': chain.id,
+          class: 'ent-path', 'marker-end': `url(#arrow-${chain.severity})`
+        });
+        edgesG.appendChild(path);
+      });
+      svg.appendChild(edgesG);
+
+      // Layer 3: Nodes
+      const nodesG = svgEl('g', { class: 'ent-nodes' });
+      nodes.forEach(node => {
+        const p = nodePos[node.id];
+        if (!p) return;
+        const catColor = CATEGORY_COLORS[node.cat] || '#888';
+        const g = svgEl('g', {
+          class: 'ent-node' + (node.isShared ? ' shared' : ''),
+          'data-item': node.id, transform: `translate(${p.x},${p.y})`
+        });
+
+        // Shared: outer dashed ring
+        if (node.isShared) {
+          g.appendChild(svgEl('circle', {
+            cx: 0, cy: 0, r: p.r + 5, fill: 'none',
+            stroke: catColor, 'stroke-width': '1.5',
+            'stroke-dasharray': '3 2', opacity: '0.5'
+          }));
+        }
+
+        // Main circle
+        g.appendChild(svgEl('circle', {
+          cx: 0, cy: 0, r: p.r, fill: catColor, stroke: '#fff', 'stroke-width': '2'
+        }));
+
+        // Share count badge
+        if (node.isShared) {
+          const badge = svgEl('text', {
+            x: 0, y: 3.5, 'text-anchor': 'middle',
+            'font-family': 'Archivo, sans-serif', 'font-size': '9px',
+            'font-weight': '900', fill: '#fff', 'pointer-events': 'none'
+          });
+          badge.textContent = node.shareCount;
+          g.appendChild(badge);
+        }
+
+        // Label
+        const labelText = node.label.length > 30 ? node.label.substring(0, 27) + '...' : node.label;
+        const lbl = svgEl('text', {
+          x: p.r + 8, y: 4,
+          'font-family': 'Archivo, sans-serif', 'font-size': '10px',
+          'font-weight': '600', fill: '#222', 'pointer-events': 'none'
+        });
+        lbl.textContent = labelText;
+        g.appendChild(lbl);
+
+        // Tooltip
+        const title = svgEl('title');
+        title.textContent = `${node.label}\nCategory: ${node.cat}\nIn ${node.shareCount} chain(s): ${node.chains.map(cid => {
+          const c = chains.find(ch => ch.id === cid);
+          return c ? c.name : cid;
+        }).join(', ')}`;
+        g.appendChild(title);
+
+        nodesG.appendChild(g);
+      });
+      svg.appendChild(nodesG);
+    }
+
+    /* ── Entanglement Legend ── */
+    function renderEntanglementLegend(graphData) {
+      const legend = document.getElementById('entanglement-legend');
+      const sevOrder = { critical: 0, high: 1, medium: 2 };
+      const sorted = [...graphData.chains].sort((a, b) => (sevOrder[a.severity] ?? 3) - (sevOrder[b.severity] ?? 3));
+
+      legend.innerHTML = sorted.map(chain => {
+        const color = SEVERITY_COLORS[chain.severity];
+        return `<button class="ent-legend-btn" data-chain="${chain.id}" style="border-left-color:${color}">
+          <span class="ent-legend-sev" style="color:${color}">${chain.severity.charAt(0).toUpperCase()}</span>
+          <span class="ent-legend-name">${chain.name}</span>
+        </button>`;
+      }).join('');
+
+      legend.querySelectorAll('.ent-legend-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const chainId = btn.dataset.chain;
+          if (_activeChainId === chainId) {
+            _activeChainId = null;
+            resetEntanglementHighlight();
+            document.getElementById('entanglement-detail').innerHTML = '';
+            legend.querySelectorAll('.ent-legend-btn').forEach(b => b.classList.remove('active'));
+          } else {
+            _activeChainId = chainId;
+            highlightEntanglementChain(chainId);
+            showEntanglementDetail(chainId);
+            legend.querySelectorAll('.ent-legend-btn').forEach(b => b.classList.toggle('active', b.dataset.chain === chainId));
+          }
+        });
+      });
+    }
+
+    /* ── Entanglement Interactions ── */
+    function initEntanglementInteractions(graphData) {
+      const svg = document.getElementById('entanglement-svg');
+
+      svg.querySelectorAll('.ent-path').forEach(path => {
+        path.addEventListener('mouseenter', () => {
+          if (!_activeChainId) highlightEntanglementChain(path.dataset.chain);
+        });
+        path.addEventListener('mouseleave', () => {
+          if (!_activeChainId) resetEntanglementHighlight();
+        });
+        path.addEventListener('click', () => {
+          const cid = path.dataset.chain;
+          _activeChainId = _activeChainId === cid ? null : cid;
+          if (_activeChainId) {
+            highlightEntanglementChain(cid);
+            showEntanglementDetail(cid);
+            document.querySelectorAll('.ent-legend-btn').forEach(b => b.classList.toggle('active', b.dataset.chain === cid));
+          } else {
+            resetEntanglementHighlight();
+            document.getElementById('entanglement-detail').innerHTML = '';
+            document.querySelectorAll('.ent-legend-btn').forEach(b => b.classList.remove('active'));
+          }
+        });
+      });
+
+      svg.querySelectorAll('.ent-node').forEach(group => {
+        group.addEventListener('mouseenter', () => {
+          if (!_activeChainId) highlightEntanglementNode(group.dataset.item);
+        });
+        group.addEventListener('mouseleave', () => {
+          if (!_activeChainId) resetEntanglementHighlight();
+        });
+        group.addEventListener('click', () => {
+          const itemId = group.dataset.item;
+          const node = _entanglementGraph.nodesMap[itemId];
+          if (node && node.chains.length === 1) {
+            const cid = node.chains[0];
+            _activeChainId = _activeChainId === cid ? null : cid;
+            if (_activeChainId) {
+              highlightEntanglementChain(cid);
+              showEntanglementDetail(cid);
+            } else {
+              resetEntanglementHighlight();
+              document.getElementById('entanglement-detail').innerHTML = '';
+            }
+          } else if (node) {
+            highlightEntanglementNode(itemId);
+            showNodeEntanglementDetail(itemId);
+          }
+        });
+      });
+    }
+
+    function highlightEntanglementChain(chainId) {
+      const svg = document.getElementById('entanglement-svg');
+      const chain = _entanglementGraph.chains.find(c => c.id === chainId);
+      if (!chain) return;
+      const items = new Set(chain.steps.map(s => s.item));
+
+      svg.querySelectorAll('.ent-path').forEach(p => {
+        const match = p.dataset.chain === chainId;
+        p.setAttribute('stroke-opacity', match ? '1' : '0.06');
+        p.setAttribute('stroke-width', match ? '3' : '1.5');
+      });
+      svg.querySelectorAll('.ent-node').forEach(g => {
+        g.style.opacity = items.has(g.dataset.item) ? '1' : '0.12';
+      });
+
+      // Add boost badges on chain nodes
+      clearBoostBadges(svg);
+      const nodesG = svg.querySelector('.ent-nodes');
+      chain.steps.forEach((step, i) => {
+        if (i === 0) return; // first step has no boost
+        const p = _entanglementLayout.nodePos[step.item];
+        if (!p) return;
+        const isRisk = step.item.includes('-risk-');
+        const color = isRisk ? '#F07070' : '#4ADE80';
+        const bgColor = isRisk ? '#F0707022' : '#4ADE8022';
+        const arrow = step.boost >= 0 ? '\u2191' : '\u2193';
+        const boostAbs = Math.abs(step.boost);
+
+        const g = svgEl('g', {
+          class: 'ent-boost-badge',
+          transform: `translate(${p.x},${p.y})`
+        });
+        // Background pill
+        const pillW = boostAbs >= 10 ? 46 : 40;
+        g.appendChild(svgEl('rect', {
+          x: -(pillW / 2), y: -(p.r + 20),
+          width: pillW, height: 16, rx: '2',
+          fill: '#fff', stroke: color, 'stroke-width': '1.5'
+        }));
+        // Text
+        const txt = svgEl('text', {
+          x: 0, y: -(p.r + 9),
+          'text-anchor': 'middle',
+          'font-family': 'Archivo, sans-serif',
+          'font-size': '9px', 'font-weight': '800',
+          fill: color, 'pointer-events': 'none'
+        });
+        txt.textContent = `${arrow} ${boostAbs}%`;
+        g.appendChild(txt);
+
+        nodesG.appendChild(g);
+      });
+    }
+
+    function clearBoostBadges(svg) {
+      svg.querySelectorAll('.ent-boost-badge').forEach(el => el.remove());
+    }
+
+    function highlightEntanglementNode(itemId) {
+      const svg = document.getElementById('entanglement-svg');
+      const node = _entanglementGraph.nodesMap[itemId];
+      if (!node) return;
+      const chainIds = new Set(node.chains);
+      const allItems = new Set();
+      _entanglementGraph.chains.forEach(c => {
+        if (chainIds.has(c.id)) c.steps.forEach(s => allItems.add(s.item));
+      });
+
+      svg.querySelectorAll('.ent-path').forEach(p => {
+        const match = chainIds.has(p.dataset.chain);
+        p.setAttribute('stroke-opacity', match ? '0.8' : '0.06');
+        p.setAttribute('stroke-width', match ? '2.5' : '1.5');
+      });
+      svg.querySelectorAll('.ent-node').forEach(g => {
+        g.style.opacity = allItems.has(g.dataset.item) ? '1' : '0.12';
+      });
+    }
+
+    function resetEntanglementHighlight() {
+      const svg = document.getElementById('entanglement-svg');
+      svg.querySelectorAll('.ent-path').forEach(p => {
+        p.setAttribute('stroke-opacity', '0.35');
+        p.setAttribute('stroke-width', '2');
+      });
+      svg.querySelectorAll('.ent-node').forEach(g => {
+        g.style.opacity = '1';
+      });
+      clearBoostBadges(svg);
+    }
+
+    /* ── Entanglement Detail Panels ── */
+    function showEntanglementDetail(chainId) {
+      const panel = document.getElementById('entanglement-detail');
+      const chain = _entanglementGraph.chains.find(c => c.id === chainId);
+      if (!chain) return;
+      const sevColor = SEVERITY_COLORS[chain.severity];
+      const catSet = [...new Set(chain.steps.map(s => s.cat))];
+      const pills = catSet.map(c => {
+        const cc = CATEGORY_COLORS[c] || '#888';
+        return `<span class="cat-pill" style="color:${cc};border-color:${cc}">${c}</span>`;
+      }).join('');
+
+      const steps = chain.steps.map((step, i) => {
+        const stepIsRisk = step.item.includes('-risk-');
+        const stepColor = stepIsRisk ? 'var(--negative)' : 'var(--positive)';
+        const node = _entanglementGraph.nodesMap[step.item];
+        const sharedBadge = node && node.isShared
+          ? `<span class="ent-shared-badge">Shared with ${node.shareCount - 1} other chain(s)</span>`
+          : '';
+        const boostAbs = Math.abs(step.boost);
+        const boostArrow = step.boost >= 0 ? '\u2191' : '\u2193';
+        const boostText = step.boost >= 0 ? 'more likely' : 'less likely';
+        return `
+          <div class="chain-step">
+            <div class="step-num" style="background:${stepColor}">${i + 1}</div>
+            <div class="step-content">
+              <div class="step-label">${step.label}</div>
+              ${i > 0 ? `<span class="step-boost" style="color:${stepColor}">${boostArrow} ${boostAbs}% ${boostText}</span>` : ''}
+              <span class="step-cat">${step.cat}</span>
+              ${sharedBadge}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      panel.innerHTML = `
+        <div class="ent-detail-card">
+          <div class="chain-meta">
+            <span class="severity-badge" style="background:${sevColor}22;color:${sevColor}">${chain.severity.toUpperCase()}</span>
+            ${pills}
+          </div>
+          <h4>${chain.name}</h4>
+          <p class="desc">${chain.description}</p>
+          <div class="ent-detail-steps">${steps}</div>
+        </div>
+      `;
+    }
+
+    function showNodeEntanglementDetail(itemId) {
+      const panel = document.getElementById('entanglement-detail');
+      const node = _entanglementGraph.nodesMap[itemId];
+      if (!node) return;
+      const catColor = CATEGORY_COLORS[node.cat] || '#888';
+      const chainList = node.chains.map(cid => {
+        const c = _entanglementGraph.chains.find(ch => ch.id === cid);
+        if (!c) return '';
+        const sevColor = SEVERITY_COLORS[c.severity];
+        return `<div class="ent-node-chain-item">
+          <span class="severity-badge" style="background:${sevColor}22;color:${sevColor}">${c.severity.toUpperCase()}</span>
+          <span>${c.name}</span>
+        </div>`;
+      }).join('');
+
+      panel.innerHTML = `
+        <div class="ent-detail-card">
+          <div class="chain-meta">
+            <span class="cat-pill" style="color:${catColor};border-color:${catColor}">${node.cat}</span>
+            <span class="ent-shared-badge">Shared across ${node.shareCount} chains</span>
+          </div>
+          <h4>${node.label}</h4>
+          <p class="desc">This event is an entanglement point — it appears in multiple chain reactions, amplifying cascading effects across sectors.</p>
+          <div class="ent-node-chains">${chainList}</div>
+        </div>
+      `;
+    }
+
+    /* ── Severity Filter for Entanglement ── */
+    function filterEntanglementBySeverity(sev) {
+      const svg = document.getElementById('entanglement-svg');
+      const visibleItems = new Set();
+
+      _entanglementGraph.chains.forEach(chain => {
+        if (sev === 'all' || chain.severity === sev) {
+          chain.steps.forEach(s => visibleItems.add(s.item));
+        }
+      });
+
+      svg.querySelectorAll('.ent-path').forEach(p => {
+        const chain = _entanglementGraph.chains.find(c => c.id === p.dataset.chain);
+        if (sev === 'all') {
+          p.setAttribute('stroke-opacity', '0.35');
+          p.style.display = '';
+        } else if (chain && chain.severity === sev) {
+          p.setAttribute('stroke-opacity', '0.5');
+          p.style.display = '';
+        } else {
+          p.setAttribute('stroke-opacity', '0.04');
+        }
+      });
+
+      svg.querySelectorAll('.ent-node').forEach(g => {
+        g.style.opacity = (sev === 'all' || visibleItems.has(g.dataset.item)) ? '1' : '0.08';
+      });
+    }
+
+    /* ── Main Init ── */
+    function initLandingChains(MODEL) {
+      _chainsModel = MODEL;
+
+      _entanglementGraph = buildEntanglementGraph(MODEL);
+      _entanglementLayout = layoutEntanglementGraph(_entanglementGraph);
+
+      renderEntanglementLegend(_entanglementGraph);
+      renderEntanglementSVG(_entanglementGraph, _entanglementLayout);
+      initEntanglementInteractions(_entanglementGraph);
+
+      // Severity filter
+      document.querySelectorAll('#landing-severity-filter .severity-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          landingSev = btn.dataset.sev;
+          _activeChainId = null;
+          document.querySelectorAll('#landing-severity-filter .severity-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = '';
+            b.style.color = '';
+          });
+          btn.classList.add('active');
+          if (landingSev !== 'all') {
+            btn.style.background = SEVERITY_COLORS[landingSev];
+            btn.style.color = '#fff';
+          }
+          filterEntanglementBySeverity(landingSev);
+          document.querySelectorAll('.ent-legend-btn').forEach(b => b.classList.remove('active'));
+          document.getElementById('entanglement-detail').innerHTML = '';
+        });
+      });
+    }
+
+    loadPredictions();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dead Reckoning AI Simulation Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+      background: #FFFFFF;
+      color: #111111;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: #FFFFFF;
+      border-bottom: 2px solid #003399;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 13px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #111111;
+      text-decoration: none;
+    }
+    .nav-logo {
+      color: #003399; font-size: 16px; line-height: 1;
+    }
+    .nav-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #888888;
+    }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      max-width: 1200px; margin: 0 auto;
+      padding: 120px 24px 80px;
+      width: 100%;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-bottom: 64px;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #888888;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900; letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: #111111;
+      margin-bottom: 20px;
+    }
+    .hero-title span { color: #003399; }
+    .hero-desc {
+      font-size: 15px; color: #555555;
+      max-width: 520px; line-height: 1.6;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 2px solid #E5E5E5;
+      margin-bottom: 40px;
+    }
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #888888;
+      margin-bottom: 28px;
+    }
+
+    /* ── PROJECT GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── PROJECT CARD ── */
+    .project-card {
+      display: block;
+      text-decoration: none;
+      border: 2px solid #E5E5E5;
+      padding: 32px;
+      background: #FFFFFF;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--card-accent);
+      transition: width 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--card-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .project-card:hover::before {
+      width: 6px;
+    }
+
+    .card-march  { --card-accent: #003399; }
+    .card-dead   { --card-accent: #FF4500; }
+
+    .card-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .card-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--card-accent);
+      border: 1.5px solid var(--card-accent);
+      padding: 3px 8px;
+    }
+    .card-arrow {
+      font-size: 18px; color: #CCCCCC;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .project-card:hover .card-arrow {
+      color: var(--card-accent);
+      transform: translate(2px, -2px);
+    }
+
+    .card-title {
+      font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+      color: #111111; margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .card-subtitle {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #888888;
+      margin-bottom: 16px;
+    }
+    .card-desc {
+      font-size: 13px; color: #555555; line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .card-meta {
+      display: flex; gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #E5E5E5;
+    }
+    .meta-item {
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .meta-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #AAAAAA;
+    }
+    .meta-value {
+      font-size: 12px; font-weight: 600; color: #111111;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 2px solid #E5E5E5;
+      padding: 20px 24px;
+      display: flex; justify-content: center;
+    }
+    .footer-inner {
+      max-width: 1200px; width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text {
+      font-size: 11px; color: #AAAAAA;
+      letter-spacing: 0.06em;
+    }
+    .footer-dot {
+      width: 6px; height: 6px;
+      background: #003399;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <span class="nav-logo">&#9632;</span>
+      Dead Reckoning: AI Simulation Projects
+    </a>
+    <span class="nav-tag">Projects</span>
+  </div>
+</nav>
+
+<main>
+  <section class="hero">
+    <h1 class="hero-title">Select a <span>project.</span></h1>
+    <p class="hero-desc">
+      Porjects are meant as educational tools to help understand the potential of AI. 
+    </p>
+    <div class="meta-item">
+      <span class="meta-label">Source code code available on Github</span>
+      <span class="meta-value">https://github.com/gmashini</span>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+  <p class="section-label">&#9632; &nbsp; Active Projects</p>
+
+  <div class="projects-grid">
+
+    <!-- March Madness -->
+    <a class="project-card card-march" href="./march-madness/">
+      <div class="card-header">
+        <span class="card-tag">Analytics</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <h2 class="card-title">March Madness 2026</h2>
+      <p class="card-subtitle">ML Bracket Predictor</p>
+      <p class="card-desc">
+        Machine-learning-powered NCAA tournament bracket predictor.
+        Simulates matchups, surfaces win probabilities, and ranks
+        teams across all four regions.
+      </p>
+      <div class="card-meta">
+        <div class="meta-item">
+          <span class="meta-label">Type</span>
+          <span class="meta-value">Machine Learning and Analytics</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Year</span>
+          <span class="meta-value">2026</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">URL</span>
+          <span class="meta-value">/march-madness</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Dead Reckoning -->
+    <a class="project-card card-dead" href="./dead-reckoning/">
+      <div class="card-header">
+        <span class="card-tag">Research</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <h2 class="card-title">Dead Reckoning Economic Index</h2>
+      <p class="card-subtitle">Simulation the future of the economy</p>
+      <p class="card-desc">
+        Simulation and sector analysis generated through agentic debate between ChatGPT and Claude.
+      </p>
+      <div class="card-meta">
+        <div class="meta-item">
+          <span class="meta-label">Type</span>
+          <span class="meta-value">Simulation</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">20k runs</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">URL</span>
+          <span class="meta-value">/dead-reckoning</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-text"><span class="footer-dot"></span>GEORGE MASHINI — 2026</span>
+    <span class="footer-text">2 ACTIVE PROJECTS</span>
+  </div>
+</footer>
+
+</body>
+</html>
