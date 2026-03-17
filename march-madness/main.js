@@ -51,13 +51,12 @@ function renderBracketTree() {
   const ROUNDS_R = ["R64", "R32", "S16", "E8"];   // DOM order reversed by bk-cols-rtl → visual E8 near center, R64 far right
 
   function teamHtml(name, seed, isWinner) {
-    const td = DATA.teams[name] || {};
-    const champPct = td.monte_carlo?.Champion || 0;
-    const color = isWinner && champPct >= 0.05 ? (REGION_COLORS[td.region] || "") : "";
     const cls = isWinner ? "bk-team bk-winner" : "bk-team bk-loser";
+    const pickCls = isWinner ? "bk-pick-icon bk-picked" : "bk-pick-icon bk-unpicked";
     return `<div class="${cls}" onclick="openTeamModal('${esc(name)}')">
       <span class="bk-seed">${seed}</span>
-      <span class="bk-name"${color ? ` style="color:${color}"` : ""}>${esc(name)}</span>
+      <span class="bk-name">${esc(name)}</span>
+      <span class="${pickCls}">${isWinner ? "✓" : ""}</span>
     </div>`;
   }
 
@@ -66,6 +65,7 @@ function renderBracketTree() {
       ${teamHtml(g.t1, g.s1, g.t1 === g.winner)}
       <div class="bk-divider"></div>
       ${teamHtml(g.t2, g.s2, g.t2 === g.winner)}
+      <div class="bk-info-icon">i</div>
     </div>`;
   }
 
@@ -79,11 +79,12 @@ function renderBracketTree() {
   function f4Html(g, side) {
     return `<div class="bk-f4-col bk-f4-${side}">
       <div class="bk-f4-inner">
-        <div class="bk-f4-label">FINAL FOUR</div>
-        <div class="bk-game bk-f4-game">
+        <div class="bk-f4-label">Final Four</div>
+        <div class="bk-game">
           ${teamHtml(g.t1, g.s1, g.t1 === g.winner)}
           <div class="bk-divider"></div>
           ${teamHtml(g.t2, g.s2, g.t2 === g.winner)}
+          <div class="bk-info-icon">i</div>
         </div>
       </div>
     </div>`;
@@ -91,16 +92,52 @@ function renderBracketTree() {
 
   function ncgHtml(g) {
     const td = DATA.teams[g.winner] || {};
-    const color = REGION_COLORS[td.region] || "#ff9900";
+    const color = REGION_COLORS[td.region] || "#003399";
+    const logoLetter = g.winner ? g.winner[0].toUpperCase() : "?";
+    const t1Win = g.t1 === g.winner;
+    const t2Win = g.t2 === g.winner;
+
     return `<div class="bk-ncg-col">
       <div class="bk-ncg-inner">
-        <div class="bk-ncg-label">NATIONAL CHAMPIONSHIP</div>
-        <div class="bk-game bk-ncg-game">
-          ${teamHtml(g.t1, g.s1, g.t1 === g.winner)}
-          <div class="bk-divider"></div>
-          ${teamHtml(g.t2, g.s2, g.t2 === g.winner)}
+
+        <div class="bk-champ-box">
+          <div class="bk-champ-header">
+            <div class="bk-champ-title">Championship Game</div>
+            <div class="bk-champ-date">Mon 4/6, 8:30PM ET</div>
+          </div>
+
+          <div class="bk-champ-matchup">
+            <div class="bk-champ-team bk-champ-left" onclick="openTeamModal('${esc(g.t1)}')">
+              <span class="bk-champ-pick-icon ${t1Win ? 'bk-picked' : 'bk-unpicked'}">${t1Win ? '✓' : ''}</span>
+              <span class="bk-champ-team-seed">${g.s1}</span>
+              <span class="bk-champ-team-name">${esc(g.t1)}</span>
+            </div>
+            <div class="bk-champ-team bk-champ-right" onclick="openTeamModal('${esc(g.t2)}')">
+              <span class="bk-champ-team-name">${esc(g.t2)}</span>
+              <span class="bk-champ-team-seed">${g.s2}</span>
+              <span class="bk-champ-pick-icon ${t2Win ? 'bk-picked' : 'bk-unpicked'}">${t2Win ? '✓' : ''}</span>
+            </div>
+          </div>
+
+          <div class="bk-tiebreaker">
+            <div class="bk-tb-label">Tiebreaker: Total Combined Final Score</div>
+            <input type="number" class="bk-tb-input" value="115" id="tiebreaker-input">
+          </div>
         </div>
-        <div class="bk-champion-badge" style="color:${color}">&#9733; ${esc(g.winner)}</div>
+
+        <div class="bk-bracket-buttons">
+          <button class="bk-btn-clear">Clear Picks</button>
+          <button class="bk-btn-save" disabled>Save Picks</button>
+        </div>
+
+        <div class="bk-champion-section">
+          <div class="bk-champion-label">Champion</div>
+          <div class="bk-champion-team" onclick="openTeamModal('${esc(g.winner)}')">
+            <div class="bk-champion-logo" style="background:${color}">${logoLetter}</div>
+            <div class="bk-champion-name">${g.w_seed} ${esc(g.winner)}</div>
+          </div>
+        </div>
+
       </div>
     </div>`;
   }

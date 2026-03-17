@@ -62,12 +62,18 @@
   <div class="section-inner section-inner-wide">
     <div class="section-header">
       <h2 class="section-title">2026 PREDICTED BRACKET</h2>
-      <p class="section-subtitle">Most likely outcome per game — losers crossed out — click any team for details</p>
+      <p class="section-subtitle">Most likely outcome per game — click any team for details</p>
     </div>
     <div class="bk-round-labels">
-      <span>R64</span><span>R32</span><span>SWEET 16</span><span>ELITE 8</span>
-      <span>FINAL FOUR</span><span>CHAMP</span><span>FINAL FOUR</span>
-      <span>ELITE 8</span><span>SWEET 16</span><span>R32</span><span>R64</span>
+      <div class="bk-rl-item"><span class="bk-rl-name">ROUND 1</span><span class="bk-rl-date">Mar 19 · Mar 20</span></div>
+      <div class="bk-rl-item"><span class="bk-rl-name">ROUND 2</span><span class="bk-rl-date">Mar 21 · Mar 22</span></div>
+      <div class="bk-rl-item"><span class="bk-rl-name">SWEET 16</span><span class="bk-rl-date">Mar 26 · Mar 27</span></div>
+      <div class="bk-rl-item"><span class="bk-rl-name">ELITE 8</span><span class="bk-rl-date">Mar 28 · Mar 29</span></div>
+      <div class="bk-rl-item bk-rl-center"><span class="bk-rl-presented"></div>
+      <div class="bk-rl-item"><span class="bk-rl-name">ELITE 8</span><span class="bk-rl-date">Mar 28 · Mar 29</span></div>
+      <div class="bk-rl-item"><span class="bk-rl-name">SWEET 16</span><span class="bk-rl-date">Mar 26 · Mar 27</span></div>
+      <div class="bk-rl-item"><span class="bk-rl-name">ROUND 2</span><span class="bk-rl-date">Mar 21 · Mar 22</span></div>
+      <div class="bk-rl-item"><span class="bk-rl-name">ROUND 1</span><span class="bk-rl-date">Mar 19 · Mar 20</span></div>
     </div>
     <div id="bracket-tree-container">
       <!-- Populated by JS -->
@@ -144,45 +150,228 @@
       <p class="section-subtitle">From raw data to bracket predictions — a walkthrough for a business audience</p>
     </div>
 
-    <!-- PIPELINE OVERVIEW -->
-    <div class="how-pipeline">
-      <div class="pipeline-step">
-        <div class="pipeline-num">01</div>
-        <div class="pipeline-content">
-          <div class="pipeline-title">DATA COLLECTION</div>
-          <div class="pipeline-body">Historical results &amp; team stats from 3 sources</div>
+   
+    <!-- PREDICTION ENGINE -->
+    <div class="how-block">
+      <div class="how-block-header">
+        <span class="how-block-num">01</span>
+        <h3 class="how-block-title">THE PREDICTION ENGINE: THREE SIGNALS</h3>
+      </div>
+      <p class="pe-intro">Every matchup probability is built from three independent signals blended into a single number. Each captures a different dimension of tournament reality — statistical dominance, historical seed behavior, and direct head-to-head history.</p>
+
+      <!-- ── WHAT THE DATA LOOKS LIKE ── -->
+      <div class="pe-data-section">
+        <div class="pe-section-label">01 · What the Input Data Looks Like</div>
+        <p class="pe-desc">For every matchup, the model receives current-season stats for both teams. Rather than feeding raw values directly, it computes the <strong>difference</strong> between each team's stats — this is called a "delta feature" and forces the model to reason about relative strength, not individual team identity.</p>
+        <div class="pe-data-table-wrapper">
+          <table class="pe-data-table">
+            <thead>
+              <tr>
+                <th>TEAM</th>
+                <th>SEED</th>
+                <th>WIN %</th>
+                <th>PPG</th>
+                <th>OPP PPG</th>
+                <th>PT DIFF</th>
+                <th>SRS</th>
+                <th>SOS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pe-row-a">
+                <td>Duke</td>
+                <td>1</td>
+                <td>.882</td>
+                <td>84.3</td>
+                <td>63.1</td>
+                <td>+21.2</td>
+                <td>24.1</td>
+                <td>13.8</td>
+              </tr>
+              <tr class="pe-row-b">
+                <td>TCU</td>
+                <td>9</td>
+                <td>.647</td>
+                <td>73.8</td>
+                <td>67.4</td>
+                <td>+6.4</td>
+                <td>8.9</td>
+                <td>9.4</td>
+              </tr>
+              <tr class="pe-row-delta">
+                <td>DELTA (A − B) → MODEL INPUT</td>
+                <td class="pe-val-neg">−8</td>
+                <td class="pe-val-pos">+.235</td>
+                <td class="pe-val-pos">+10.5</td>
+                <td class="pe-val-neg">−4.3</td>
+                <td class="pe-val-pos">+14.8</td>
+                <td class="pe-val-pos">+15.2</td>
+                <td class="pe-val-pos">+4.4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="pe-table-note">↑ The orange DELTA row is the only row the model sees. Green = advantage for Team A, Red = disadvantage. Note: a lower Opp PPG is an advantage (defense), so the −4.3 actually favors Duke — the model learns this from historical outcomes.</p>
+      </div>
+
+      <!-- ── THREE SIGNALS ── -->
+      <div class="pe-section-label">02 · The Three Prediction Signals</div>
+      <div class="pe-signals-grid">
+
+        <!-- Signal 1: ML Model -->
+        <div class="pe-signal">
+          <div class="pe-signal-hdr">
+            <span class="pe-signal-badge pe-badge-ml">ML</span>
+            <span class="pe-signal-title">Gradient Boosted Model</span>
+            <span class="pe-signal-wt">70% weight</span>
+          </div>
+          <div class="pe-signal-body">
+            <div class="pe-ml-diagram">
+              <div class="pe-ml-inputs">
+                <div class="pe-ml-feat">ΔSeed = −8</div>
+                <div class="pe-ml-feat">ΔWin% = +.235</div>
+                <div class="pe-ml-feat">ΔPPG = +10.5</div>
+                <div class="pe-ml-feat">ΔSRS = +15.2</div>
+              </div>
+              <div class="pe-ml-arrow">→</div>
+              <div class="pe-ml-model">
+                <div class="pe-ml-model-label">GBT</div>
+                <div class="pe-ml-model-sub">25 years<br>of data</div>
+              </div>
+              <div class="pe-ml-arrow">→</div>
+              <div class="pe-ml-output">
+                <div class="pe-ml-prob">86%</div>
+                <div class="pe-ml-output-label">P(A wins)</div>
+              </div>
+            </div>
+            <p class="pe-signal-desc">Gradient boosted trees trained on 1,600+ tournament games from 2000–2025. The model learns which statistical gaps matter most in March — seed difference alone explains ~37% of variance, but points-per-game differential and strength of schedule also carry significant weight. Gets 70% of the blend because it's trained directly on tournament outcomes, not just regular-season strength.</p>
+          </div>
+        </div>
+
+        <!-- Signal 2: Historic Seed Rates -->
+        <div class="pe-signal">
+          <div class="pe-signal-hdr">
+            <span class="pe-signal-badge pe-badge-hist">HX</span>
+            <span class="pe-signal-title">Historic Seed Match Rates</span>
+            <span class="pe-signal-wt">30% weight</span>
+          </div>
+          <div class="pe-signal-body">
+            <div class="pe-seed-bars">
+              <div class="pe-seed-row-item">
+                <span class="pe-seed-lbl">1 vs 16</span>
+                <div class="pe-seed-track"><div class="pe-seed-fill" style="width:99%"></div></div>
+                <span class="pe-seed-pct-lbl">99%</span>
+              </div>
+              <div class="pe-seed-row-item">
+                <span class="pe-seed-lbl">2 vs 15</span>
+                <div class="pe-seed-track"><div class="pe-seed-fill" style="width:94%"></div></div>
+                <span class="pe-seed-pct-lbl">94%</span>
+              </div>
+              <div class="pe-seed-row-item">
+                <span class="pe-seed-lbl">3 vs 14</span>
+                <div class="pe-seed-track"><div class="pe-seed-fill" style="width:85%"></div></div>
+                <span class="pe-seed-pct-lbl">85%</span>
+              </div>
+              <div class="pe-seed-row-item pe-seed-highlight">
+                <span class="pe-seed-lbl">5 vs 12</span>
+                <div class="pe-seed-track"><div class="pe-seed-fill pe-seed-fill-upset" style="width:65%"></div></div>
+                <span class="pe-seed-pct-lbl">65%</span>
+              </div>
+              <div class="pe-seed-row-item">
+                <span class="pe-seed-lbl">7 vs 10</span>
+                <div class="pe-seed-track"><div class="pe-seed-fill pe-seed-fill-mid" style="width:60%"></div></div>
+                <span class="pe-seed-pct-lbl">60%</span>
+              </div>
+              <div class="pe-seed-row-item">
+                <span class="pe-seed-lbl">8 vs 9</span>
+                <div class="pe-seed-track"><div class="pe-seed-fill pe-seed-fill-mid" style="width:51%"></div></div>
+                <span class="pe-seed-pct-lbl">51%</span>
+              </div>
+            </div>
+            <p class="pe-seed-note">← 12-seeds beat 5-seeds 35% of the time historically — a fact the model learns but this signal explicitly reinforces</p>
+            <p class="pe-signal-desc">Historical win rates for each seed matchup since 1985. These rates are remarkably stable across eras. Weighted <em>more heavily in early rounds</em> (R64/R32) where seeding is most predictive — by the Elite Eight, any remaining team has proven themselves regardless of original seed, so the ML model carries more weight in later rounds.</p>
+          </div>
+        </div>
+
+        <!-- Signal 3: Head-to-Head -->
+        <div class="pe-signal">
+          <div class="pe-signal-hdr">
+            <span class="pe-signal-badge pe-badge-h2h">H2H</span>
+            <span class="pe-signal-title">Head-to-Head Record</span>
+            <span class="pe-signal-wt">±5% cap</span>
+          </div>
+          <div class="pe-signal-body">
+            <div class="pe-h2h-diag">
+              <div class="pe-h2h-lookup">
+                <div class="pe-h2h-team-box">
+                  <div class="pe-h2h-team-name">Team A</div>
+                </div>
+                <div class="pe-h2h-vs-badge">
+                  <div class="pe-h2h-vs-record">8 – 3</div>
+                  <div class="pe-h2h-vs-label">all-time<br>since 2010</div>
+                </div>
+                <div class="pe-h2h-team-box">
+                  <div class="pe-h2h-team-name">Team B</div>
+                </div>
+              </div>
+              <div class="pe-h2h-calc">
+                <span class="pe-h2h-winrate">8 ÷ 11 = 72.7%</span>
+                <span class="pe-h2h-arrow-r">→</span>
+                <span class="pe-h2h-adj-pos">+3.6% adj</span>
+                <span class="pe-h2h-cap">(max ±5%)</span>
+              </div>
+              <div class="pe-h2h-zero">
+                <span class="pe-h2h-zero-lbl">No history?</span>
+                <span class="pe-h2h-zero-val">0% adj</span>
+                <span class="pe-h2h-zero-note">~40% of R64 matchups have never been played before</span>
+              </div>
+            </div>
+            <p class="pe-signal-desc">When teams have played each other, their head-to-head record nudges the final probability by up to ±5%. Capped intentionally — college rosters turn over completely every 4 years, and old matchups between different player generations are weak predictors. Acts as a small momentum signal, not a dominant one.</p>
+          </div>
         </div>
       </div>
-      <div class="pipeline-connector">→</div>
-      <div class="pipeline-step">
-        <div class="pipeline-num">02</div>
-        <div class="pipeline-content">
-          <div class="pipeline-title">FEATURE ENGINEERING</div>
-          <div class="pipeline-body">Transform raw stats into ML-ready signals</div>
+
+      <!-- ── BLEND FORMULA ── -->
+      <div class="pe-blend-box">
+        <div class="pe-section-label">03 · How the Three Signals Are Blended into One Number</div>
+        <div class="pe-formula">
+          <div class="pe-formula-term">
+            <div class="pe-formula-coef">0.70</div>
+            <div class="pe-formula-times">×</div>
+            <div class="pe-formula-var">ML<br>Model</div>
+            <div class="pe-formula-eg">( e.g. 88% )</div>
+          </div>
+          <div class="pe-formula-op">+</div>
+          <div class="pe-formula-term">
+            <div class="pe-formula-coef">0.30</div>
+            <div class="pe-formula-times">×</div>
+            <div class="pe-formula-var">Seed<br>History</div>
+            <div class="pe-formula-eg">( e.g. 99% )</div>
+          </div>
+          <div class="pe-formula-op">+</div>
+          <div class="pe-formula-term pe-formula-h2h">
+            <div class="pe-formula-coef">±5%</div>
+            <div class="pe-formula-times">max</div>
+            <div class="pe-formula-var">H2H<br>Adj</div>
+            <div class="pe-formula-eg">( e.g. 0% )</div>
+          </div>
+          <div class="pe-formula-op">=</div>
+          <div class="pe-formula-result">
+            <div class="pe-formula-result-val">91.3%</div>
+            <div class="pe-formula-result-label">Final<br>P(win)</div>
+          </div>
         </div>
+        <p class="pe-formula-note">
+          <strong>Real example — Duke (1) vs. Siena (16):</strong> ML model outputs 88% based on statistical gap. Historic 1-vs-16 seed rate is 99%. No H2H history between these programs. Blended: (0.70 × 0.88) + (0.30 × 0.99) + 0 = 0.616 + 0.297 = <strong>91.3%</strong>. The seed history pulls the prediction higher than the ML model alone, anchoring it to 40 years of tournament data. This is by design — the model occasionally underestimates dominant seeds, and the seed history acts as a calibration floor.
+        </p>
       </div>
-      <div class="pipeline-connector">→</div>
-      <div class="pipeline-step">
-        <div class="pipeline-num">03</div>
-        <div class="pipeline-content">
-          <div class="pipeline-title">MODEL TRAINING</div>
-          <div class="pipeline-body">Gradient boosted trees trained on 25 years of games</div>
-        </div>
-      </div>
-      <div class="pipeline-connector">→</div>
-      <div class="pipeline-step">
-        <div class="pipeline-num">04</div>
-        <div class="pipeline-content">
-          <div class="pipeline-title">SIMULATION</div>
-          <div class="pipeline-body">20,000 Monte Carlo bracket runs per prediction</div>
-        </div>
-      </div>
+
     </div>
 
     <!-- DATA SOURCES -->
     <div class="how-block">
       <div class="how-block-header">
-        <span class="how-block-num">01</span>
+        <span class="how-block-num">02</span>
         <h3 class="how-block-title">WHERE THE DATA COMES FROM</h3>
       </div>
       <div class="how-sources-grid">
@@ -220,133 +409,10 @@
       </div>
     </div>
 
-    <!-- ML TECHNIQUES -->
-    <div class="how-block">
-      <div class="how-block-header">
-        <span class="how-block-num">02</span>
-        <h3 class="how-block-title">MACHINE LEARNING METHODOLOGY</h3>
-      </div>
-      <div class="how-ml-grid">
-        <div class="ml-card ml-card-primary">
-          <div class="ml-card-label">CORE MODEL</div>
-          <div class="ml-card-name">Gradient Boosted Trees</div>
-          <div class="ml-card-desc">An ensemble of decision trees built sequentially — each tree corrects the errors of the previous one. Well-suited for structured tabular data with mixed feature types. Chosen over neural networks because the dataset is relatively small (~1,600 games) and interpretability matters for validation.</div>
-          <div class="ml-card-meta">
-            <span>XGBoost / LightGBM</span>
-            <span>Binary classification</span>
-            <span>Win probability output</span>
-          </div>
-          <div class="ml-card-links">
-            <span class="ml-card-links-label">LEARN MORE</span>
-            <a href="https://xgboost.readthedocs.io/en/stable/tutorials/model.html" target="_blank" rel="noopener">XGBoost: Introduction to Boosted Trees ↗</a>
-            <a href="https://www.youtube.com/watch?v=3CC4N4z3GJc" target="_blank" rel="noopener">StatQuest: Gradient Boosting (YouTube) ↗</a>
-            <a href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting" target="_blank" rel="noopener">Scikit-learn: Gradient Tree Boosting ↗</a>
-          </div>
-        </div>
-        <div class="ml-card">
-          <div class="ml-card-label">FEATURE ENGINEERING</div>
-          <div class="ml-card-name">Difference Features</div>
-          <div class="ml-card-desc">Rather than feeding raw stats for each team individually, the model receives deltas between teams: Team A's SRS minus Team B's SRS, seed difference, win% gap. This focuses the model on relative strength and prevents it from learning team-specific quirks that won't generalize.</div>
-          <div class="ml-card-meta">
-            <span>ΔSRS</span>
-            <span>ΔWin%</span>
-            <span>ΔPPG</span>
-            <span>ΔSeed</span>
-          </div>
-          <div class="ml-card-links">
-            <span class="ml-card-links-label">LEARN MORE</span>
-            <a href="https://www.kaggle.com/learn/feature-engineering" target="_blank" rel="noopener">Kaggle: Feature Engineering Course ↗</a>
-            <a href="https://developers.google.com/machine-learning/crash-course/feature-engineering/overview" target="_blank" rel="noopener">Google ML Crash Course: Feature Engineering ↗</a>
-            <a href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank" rel="noopener">Scikit-learn: Preprocessing &amp; Feature Extraction ↗</a>
-          </div>
-        </div>
-        <div class="ml-card">
-          <div class="ml-card-label">VALIDATION</div>
-          <div class="ml-card-name">Temporal Cross-Validation</div>
-          <div class="ml-card-desc">The model is validated on held-out tournament years — training on 2000–2019 and testing on 2020–2024. Standard k-fold cross-validation would leak future information across years; temporal splits mirror real-world deployment conditions and prevent lookahead bias.</div>
-          <div class="ml-card-meta">
-            <span>Train: 2000–2019</span>
-            <span>Test: 2020–2024</span>
-            <span>No lookahead bias</span>
-          </div>
-          <div class="ml-card-links">
-            <span class="ml-card-links-label">LEARN MORE</span>
-            <a href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-of-time-series-data" target="_blank" rel="noopener">Scikit-learn: Time Series Cross-Validation ↗</a>
-            <a href="https://otexts.com/fpp3/tscv.html" target="_blank" rel="noopener">Forecasting: Principles &amp; Practice — Time Series CV ↗</a>
-          </div>
-        </div>
-        <div class="ml-card">
-          <div class="ml-card-label">SIMULATION</div>
-          <div class="ml-card-name">Monte Carlo Method</div>
-          <div class="ml-card-desc">The model outputs a win probability for any head-to-head matchup. To calculate championship probability, we simulate the entire bracket 20,000 times — each game drawn probabilistically — and count how often each team wins. This propagates uncertainty through all six rounds.</div>
-          <div class="ml-card-meta">
-            <span>20,000 simulations</span>
-            <span>Per-round advancement %</span>
-            <span>Propagated uncertainty</span>
-          </div>
-          <div class="ml-card-links">
-            <span class="ml-card-links-label">LEARN MORE</span>
-            <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank" rel="noopener">Wikipedia: Monte Carlo Method ↗</a>
-            <a href="https://www.palisade.com/monte-carlo-simulation/" target="_blank" rel="noopener">Palisade: What is Monte Carlo Simulation? ↗</a>
-            <a href="https://www.kaggle.com/code/rtatman/picking-a-random-forest-model-monte-carlo" target="_blank" rel="noopener">Kaggle: Monte Carlo Simulation in Practice ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HOW PREDICTIONS WORK -->
-    <div class="how-block">
-      <div class="how-block-header">
-        <span class="how-block-num">03</span>
-        <h3 class="how-block-title">HOW A SINGLE PREDICTION IS MADE</h3>
-      </div>
-      <div class="how-predict-flow">
-        <div class="predict-step">
-          <div class="predict-step-label">INPUT</div>
-          <div class="predict-step-content">
-            <div class="predict-step-title">Team Stats</div>
-            <div class="predict-step-items">
-              <span>Win %</span><span>PPG</span><span>Opp PPG</span><span>SRS</span><span>SOS</span><span>Seed</span>
-            </div>
-          </div>
-        </div>
-        <div class="predict-arrow">→</div>
-        <div class="predict-step">
-          <div class="predict-step-label">TRANSFORM</div>
-          <div class="predict-step-content">
-            <div class="predict-step-title">Feature Differencing</div>
-            <div class="predict-step-items">
-              <span>A.SRS − B.SRS</span><span>A.Win% − B.Win%</span><span>A.PPG − B.PPG</span><span>Seed diff</span>
-            </div>
-          </div>
-        </div>
-        <div class="predict-arrow">→</div>
-        <div class="predict-step">
-          <div class="predict-step-label">MODEL</div>
-          <div class="predict-step-content">
-            <div class="predict-step-title">GBT Classifier</div>
-            <div class="predict-step-items">
-              <span>Outputs P(A wins)</span>
-            </div>
-          </div>
-        </div>
-        <div class="predict-arrow">→</div>
-        <div class="predict-step">
-          <div class="predict-step-label">SIMULATE</div>
-          <div class="predict-step-content">
-            <div class="predict-step-title">20,000 Bracket Runs</div>
-            <div class="predict-step-items">
-              <span>Each game drawn stochastically</span><span>Round advancement tracked</span><span>Championship % = wins ÷ 20,000</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- AI VS HUMAN -->
     <div class="how-block how-block-last">
       <div class="how-block-header">
-        <span class="how-block-num">04</span>
+        <span class="how-block-num">03</span>
         <h3 class="how-block-title">AI + HUMAN COLLABORATION</h3>
       </div>
       <p class="collab-intro">This project was built using Claude (Anthropic) as a coding collaborator. Here's an honest breakdown of what was machine-generated versus where human judgment shaped the final product.</p>
