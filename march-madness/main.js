@@ -8,6 +8,8 @@ let DATA = null;
 let TEAMS_ARR = [];  // [{name, ...team_data}, ...]
 let SORT_STATE = { odds: { key: "model_champion_prob", dir: -1 }, stats: { key: "win_pct", dir: -1 } };
 let ACTIVE_ROUND = "Champion";
+let BRACKET_VIEW = "compare";
+let ACTIVE_BRACKET_MODEL = "claude";
 
 const REGION_COLORS = { East: "#003399", West: "#8B1A1A", South: "#1a6b1a", Midwest: "#7a3a00" };
 
@@ -42,13 +44,13 @@ function renderAll() {
 
 // ── BRACKET TREE ─────────────────────────────────────────────
 function renderBracketTree() {
-  const pb = DATA.predicted_bracket;
+  const claude = DATA.models?.claude?.predicted_bracket;
+  const chatGpt = DATA.models?.chat_gpt?.predicted_bracket;
   const container = id("bracket-tree-container");
-  if (!pb || !container) return;
+  if (!claude || !container) return;
 
-  const regions = pb.regions;
-  const ROUNDS_L = ["R64", "R32", "S16", "E8"];   // left half: left → right
-  const ROUNDS_R = ["R64", "R32", "S16", "E8"];   // DOM order reversed by bk-cols-rtl → visual E8 near center, R64 far right
+  const ROUNDS_L = ["R64", "R32", "S16", "E8"];
+  const ROUNDS_R = ["R64", "R32", "S16", "E8"];
 
   function teamHtml(name, seed, isWinner) {
     const cls = isWinner ? "bk-team bk-winner" : "bk-team bk-loser";
@@ -99,7 +101,6 @@ function renderBracketTree() {
 
     return `<div class="bk-ncg-col">
       <div class="bk-ncg-inner">
-
         <div class="bk-champ-box">
           <div class="bk-champ-header">
             <div class="bk-champ-title">Championship Game</div>
@@ -142,7 +143,42 @@ function renderBracketTree() {
     </div>`;
   }
 
-  container.innerHTML = `<div class="bk-scroll"><div class="bk-full">
+  function summaryRows(modelName, summary = []) {
+    const rows = summary.slice(0, 2).map(row => `
+      <div class="bk-meta-row">
+        <span>${esc(row.model || modelName)}</span>
+        <span>Acc ${fmtPct(row.mean_accuracy || 0)}</span>
+        <span>LL ${(row.mean_log_loss || 0).toFixed(3)}</span>
+      </div>
+    `).join("");
+    return rows || `<div class="bk-meta-row"><span>${esc(modelName)}</span><span>Season backtest unavailable</span></div>`;
+  }
+
+  function bracketShell(pb, opts) {
+    const regions = pb.regions;
+    return `<article class="bk-model-card">
+      <div class="bk-model-head">
+        <div>
+          <div class="bk-model-kicker">${esc(opts.kicker)}</div>
+          <h3 class="bk-model-title">${esc(opts.title)}</h3>
+          <p class="bk-model-copy">${esc(opts.copy)}</p>
+        </div>
+        <div class="bk-model-meta">
+          ${summaryRows(opts.metaName, opts.summary)}
+        </div>
+      </div>
+      <div class="bk-round-labels">
+        <div class="bk-rl-item"><span class="bk-rl-name">ROUND 1</span><span class="bk-rl-date">Mar 19 · Mar 20</span></div>
+        <div class="bk-rl-item"><span class="bk-rl-name">ROUND 2</span><span class="bk-rl-date">Mar 21 · Mar 22</span></div>
+        <div class="bk-rl-item"><span class="bk-rl-name">SWEET 16</span><span class="bk-rl-date">Mar 26 · Mar 27</span></div>
+        <div class="bk-rl-item"><span class="bk-rl-name">ELITE 8</span><span class="bk-rl-date">Mar 28 · Mar 29</span></div>
+        <div class="bk-rl-item bk-rl-center"><span class="bk-rl-presented"></span></div>
+        <div class="bk-rl-item"><span class="bk-rl-name">ELITE 8</span><span class="bk-rl-date">Mar 28 · Mar 29</span></div>
+        <div class="bk-rl-item"><span class="bk-rl-name">SWEET 16</span><span class="bk-rl-date">Mar 26 · Mar 27</span></div>
+        <div class="bk-rl-item"><span class="bk-rl-name">ROUND 2</span><span class="bk-rl-date">Mar 21 · Mar 22</span></div>
+        <div class="bk-rl-item"><span class="bk-rl-name">ROUND 1</span><span class="bk-rl-date">Mar 19 · Mar 20</span></div>
+      </div>
+      <div class="bk-scroll"><div class="bk-full">
     <div class="bk-half bk-half-left">
       <div class="bk-region-row">
         <div class="bk-region-lbl" style="border-color:${REGION_COLORS.East}">EAST</div>
@@ -168,7 +204,52 @@ function renderBracketTree() {
         <div class="bk-region-cols bk-cols-rtl">${regionCols(regions.Midwest, ROUNDS_R)}</div>
       </div>
     </div>
-  </div></div>`;
+  </div></div></article>`;
+  }
+
+  const models = {
+    claude: {
+      pb: claude,
+      kicker: "Claude Model",
+      title: DATA.models?.claude?.label || "Claude",
+      copy: DATA.models?.claude?.description || "Built using Claude Code with the original XGBoost, seed-history, and head-to-head blend.",
+      metaName: "claude",
+      summary: [{
+        model: "claude",
+        mean_accuracy: DATA.models?.claude?.metrics?.accuracy || DATA.model_info?.accuracy || 0,
+        mean_log_loss: DATA.models?.claude?.metrics?.log_loss || DATA.model_info?.log_loss || 0,
+      }],
+    },
+    chat_gpt: chatGpt ? {
+      pb: chatGpt,
+      kicker: "ChatGPT Model",
+      title: DATA.models?.chat_gpt?.label || "ChatGPT",
+      copy: DATA.models?.chat_gpt?.description || "Built using Codex with a richer feature set from detailed box scores and rating signals.",
+      metaName: "chatgpt",
+      summary: DATA.models?.chat_gpt?.backtest_summary || [],
+    } : null,
+  };
+
+  if (!models[ACTIVE_BRACKET_MODEL]) ACTIVE_BRACKET_MODEL = "claude";
+
+  if (BRACKET_VIEW === "compare") {
+    container.innerHTML = `<div class="bk-compare-shell">
+      <div class="bk-model-switcher">
+        <button class="bk-model-switch ${ACTIVE_BRACKET_MODEL === "claude" ? "bk-model-switch-active" : ""}" data-bracket-model="claude">CLAUDE</button>
+        ${models.chat_gpt ? `<button class="bk-model-switch ${ACTIVE_BRACKET_MODEL === "chat_gpt" ? "bk-model-switch-active" : ""}" data-bracket-model="chat_gpt">CHATGPT</button>` : ""}
+      </div>
+      ${bracketShell(models[ACTIVE_BRACKET_MODEL].pb, models[ACTIVE_BRACKET_MODEL])}
+    </div>`;
+  } else {
+    container.innerHTML = `<div class="bk-compare-grid">
+      ${bracketShell(models.claude.pb, models.claude)}
+      ${models.chat_gpt ? bracketShell(models.chat_gpt.pb, models.chat_gpt) : ""}
+    </div>`;
+  }
+
+  document.querySelectorAll(".bk-view-btn").forEach(btn => {
+    btn.classList.toggle("bk-view-btn-active", btn.dataset.view === BRACKET_VIEW);
+  });
 }
 
 // ── HERO ─────────────────────────────────────────────────────
@@ -182,6 +263,25 @@ function renderHero() {
   setVal("stat-accuracy", mi.accuracy ? `${(mi.accuracy * 100).toFixed(1)}%` : "—");
   setVal("stat-games", mi.training_samples ? mi.training_samples.toLocaleString() : "—");
   setVal("stat-teams", TEAMS_ARR.length.toString());
+
+  const champions = id("hero-champions");
+  if (champions) {
+    const production = DATA.models?.claude?.predicted_bracket?.ncg?.winner || "—";
+    const productionSeed = DATA.models?.claude?.predicted_bracket?.ncg?.w_seed;
+    const comparison = DATA.models?.chat_gpt?.predicted_bracket?.ncg?.winner || "—";
+    const comparisonSeed = DATA.models?.chat_gpt?.predicted_bracket?.ncg?.w_seed;
+
+    champions.innerHTML = `
+      <div class="hero-champion-card" onclick="openTeamModal('${esc(production)}')">
+        <div class="hero-champion-label">Claude Champion</div>
+        <div class="hero-champion-name">${productionSeed ? `${productionSeed} ` : ""}${esc(production)}</div>
+      </div>
+      <div class="hero-champion-card" onclick="openTeamModal('${esc(comparison)}')">
+        <div class="hero-champion-label">ChatGPT Champion</div>
+        <div class="hero-champion-name">${comparisonSeed ? `${comparisonSeed} ` : ""}${esc(comparison)}</div>
+      </div>
+    `;
+  }
 }
 
 // ── TOP CONTENDERS ───────────────────────────────────────────
@@ -435,26 +535,42 @@ function closeModal() {
 function bindEvents() {
   // Table sort headers
   document.querySelectorAll("#odds-table thead th[data-sort]").forEach(th => {
-    th.addEventListener("click", () => renderOddsTable(th.dataset.sort));
+    th.onclick = () => renderOddsTable(th.dataset.sort);
   });
 
   // Table search/filter
-  id("odds-search")?.addEventListener("input", () => renderOddsTable());
-  id("odds-region")?.addEventListener("change", () => renderOddsTable());
+  if (id("odds-search")) id("odds-search").oninput = () => renderOddsTable();
+  if (id("odds-region")) id("odds-region").onchange = () => renderOddsTable();
 
   // Monte Carlo round selector
   document.querySelectorAll(".round-btn").forEach(btn => {
-    btn.addEventListener("click", () => renderMonteCarlo(btn.dataset.round));
+    btn.onclick = () => renderMonteCarlo(btn.dataset.round);
+  });
+
+  document.querySelectorAll(".bk-view-btn").forEach(btn => {
+    btn.onclick = () => {
+      BRACKET_VIEW = btn.dataset.view || "compare";
+      renderBracketTree();
+      bindEvents();
+    };
+  });
+
+  document.querySelectorAll(".bk-model-switch").forEach(btn => {
+    btn.onclick = () => {
+      ACTIVE_BRACKET_MODEL = btn.dataset.bracketModel || "claude";
+      renderBracketTree();
+      bindEvents();
+    };
   });
 
   // Modal close
-  id("modal-close")?.addEventListener("click", closeModal);
-  id("modal-overlay")?.addEventListener("click", e => {
+  if (id("modal-close")) id("modal-close").onclick = closeModal;
+  if (id("modal-overlay")) id("modal-overlay").onclick = e => {
     if (e.target === id("modal-overlay")) closeModal();
-  });
-  document.addEventListener("keydown", e => {
+  };
+  document.onkeydown = e => {
     if (e.key === "Escape") closeModal();
-  });
+  };
 }
 
 // ── HELPERS ──────────────────────────────────────────────────

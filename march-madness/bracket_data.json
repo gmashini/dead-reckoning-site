@@ -1,6 +1,6 @@
 {
   "year": 2026,
-  "updated": "2026-03-16T17:17:35.292606+00:00",
+  "updated": "2026-03-18T19:45:11.161523+00:00",
   "model_info": {
     "accuracy": 0.6928,
     "log_loss": 0.5667,
@@ -595,16 +595,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8782,
-        "S16": 0.7251,
-        "E8": 0.5781,
-        "F4": 0.3951,
-        "NCG": 0.2694,
-        "Champion": 0.1721
+        "R32": 0.879,
+        "S16": 0.7262,
+        "E8": 0.5749,
+        "F4": 0.3895,
+        "NCG": 0.265,
+        "Champion": 0.171
       },
-      "model_champion_prob": 0.1721,
+      "model_champion_prob": 0.171,
       "odds_champion_prob": 0.0656,
-      "model_edge": 0.1065,
+      "model_edge": 0.1054,
       "r64_factors": {
         "opponent": "Pra. View/Lehigh",
         "model_prob": 0.9891,
@@ -635,16 +635,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8829,
-        "S16": 0.7328,
-        "E8": 0.5627,
-        "F4": 0.3599,
-        "NCG": 0.2356,
-        "Champion": 0.1336
+        "R32": 0.8827,
+        "S16": 0.7333,
+        "E8": 0.5644,
+        "F4": 0.357,
+        "NCG": 0.2299,
+        "Champion": 0.1263
       },
-      "model_champion_prob": 0.1336,
+      "model_champion_prob": 0.1263,
       "odds_champion_prob": 0.0231,
-      "model_edge": 0.1105,
+      "model_edge": 0.1032,
       "r64_factors": {
         "opponent": "Long Island",
         "model_prob": 0.9856,
@@ -675,16 +675,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.88,
-        "S16": 0.7112,
-        "E8": 0.5511,
-        "F4": 0.3577,
-        "NCG": 0.2151,
-        "Champion": 0.1236
+        "R32": 0.8801,
+        "S16": 0.7098,
+        "E8": 0.5521,
+        "F4": 0.3612,
+        "NCG": 0.2195,
+        "Champion": 0.1226
       },
-      "model_champion_prob": 0.1236,
+      "model_champion_prob": 0.1226,
       "odds_champion_prob": 0.0874,
-      "model_edge": 0.0362,
+      "model_edge": 0.0352,
       "r64_factors": {
         "opponent": "Siena",
         "model_prob": 0.9819,
@@ -715,16 +715,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8794,
-        "S16": 0.667,
-        "E8": 0.5372,
-        "F4": 0.3291,
-        "NCG": 0.1845,
-        "Champion": 0.1048
+        "R32": 0.8808,
+        "S16": 0.6732,
+        "E8": 0.5475,
+        "F4": 0.3315,
+        "NCG": 0.187,
+        "Champion": 0.1132
       },
-      "model_champion_prob": 0.1048,
+      "model_champion_prob": 0.1132,
       "odds_champion_prob": 0.0437,
-      "model_edge": 0.0611,
+      "model_edge": 0.0695,
       "r64_factors": {
         "opponent": "UMBC/Howard",
         "model_prob": 0.9851,
@@ -755,16 +755,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8604,
-        "S16": 0.5931,
-        "E8": 0.4279,
-        "F4": 0.2464,
-        "NCG": 0.1306,
-        "Champion": 0.0785
+        "R32": 0.8652,
+        "S16": 0.6028,
+        "E8": 0.4336,
+        "F4": 0.2504,
+        "NCG": 0.1346,
+        "Champion": 0.0812
       },
-      "model_champion_prob": 0.0785,
+      "model_champion_prob": 0.0812,
       "odds_champion_prob": 0.0328,
-      "model_edge": 0.0457,
+      "model_edge": 0.0484,
       "r64_factors": {
         "opponent": "Tennessee State",
         "model_prob": 0.9473,
@@ -795,22 +795,62 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8484,
-        "S16": 0.5544,
-        "E8": 0.3604,
-        "F4": 0.1782,
+        "R32": 0.8477,
+        "S16": 0.553,
+        "E8": 0.3547,
+        "F4": 0.1776,
         "NCG": 0.0898,
-        "Champion": 0.0445
+        "Champion": 0.0449
       },
-      "model_champion_prob": 0.0445,
+      "model_champion_prob": 0.0449,
       "odds_champion_prob": 0.0358,
-      "model_edge": 0.0087,
+      "model_edge": 0.0091,
       "r64_factors": {
         "opponent": "Queens",
         "model_prob": 0.925,
         "hist_seed_rate": 0.9295,
         "h2h_adj": 0.0,
         "blended_prob": 0.8494
+      }
+    },
+    "Connecticut": {
+      "seed": 2,
+      "region": "East",
+      "stats": {
+        "wins": 29,
+        "losses": 5,
+        "win_pct": 0.8529,
+        "ppg": 77.5,
+        "opp_ppg": 65.1,
+        "fg_pct": 0.482,
+        "fg3_pct": 0.352,
+        "ft_pct": 0.716,
+        "trb": 36.6,
+        "ast": 18.4,
+        "tov": 11.2,
+        "adj_off": 116.5,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 60
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.8815,
+        "S16": 0.5998,
+        "E8": 0.3662,
+        "F4": 0.1792,
+        "NCG": 0.0939,
+        "Champion": 0.0428
+      },
+      "model_champion_prob": 0.0428,
+      "odds_champion_prob": null,
+      "model_edge": null,
+      "r64_factors": {
+        "opponent": "Furman",
+        "model_prob": 0.945,
+        "hist_seed_rate": 0.9295,
+        "h2h_adj": 0.05,
+        "blended_prob": 0.9019
       }
     },
     "Illinois": {
@@ -835,16 +875,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8147,
-        "S16": 0.4982,
-        "E8": 0.2829,
-        "F4": 0.1519,
-        "NCG": 0.0783,
-        "Champion": 0.0418
+        "R32": 0.8142,
+        "S16": 0.4995,
+        "E8": 0.2892,
+        "F4": 0.1636,
+        "NCG": 0.0843,
+        "Champion": 0.0427
       },
-      "model_champion_prob": 0.0418,
+      "model_champion_prob": 0.0427,
       "odds_champion_prob": 0.0246,
-      "model_edge": 0.0172,
+      "model_edge": 0.0181,
       "r64_factors": {
         "opponent": "Penn",
         "model_prob": 0.9153,
@@ -875,62 +915,22 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8557,
-        "S16": 0.5815,
-        "E8": 0.3408,
-        "F4": 0.1429,
-        "NCG": 0.0756,
-        "Champion": 0.0404
+        "R32": 0.8569,
+        "S16": 0.5825,
+        "E8": 0.3352,
+        "F4": 0.1388,
+        "NCG": 0.075,
+        "Champion": 0.0408
       },
-      "model_champion_prob": 0.0404,
+      "model_champion_prob": 0.0408,
       "odds_champion_prob": 0.0562,
-      "model_edge": -0.0158,
+      "model_edge": -0.0154,
       "r64_factors": {
         "opponent": "Idaho",
         "model_prob": 0.9446,
         "hist_seed_rate": 0.9295,
         "h2h_adj": 0.0,
         "blended_prob": 0.8607
-      }
-    },
-    "Connecticut": {
-      "seed": 2,
-      "region": "East",
-      "stats": {
-        "wins": 29,
-        "losses": 5,
-        "win_pct": 0.8529,
-        "ppg": 77.5,
-        "opp_ppg": 65.1,
-        "fg_pct": 0.482,
-        "fg3_pct": 0.352,
-        "ft_pct": 0.716,
-        "trb": 36.6,
-        "ast": 18.4,
-        "tov": 11.2,
-        "adj_off": 116.5,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 60
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.8814,
-        "S16": 0.5878,
-        "E8": 0.3572,
-        "F4": 0.1767,
-        "NCG": 0.0906,
-        "Champion": 0.0396
-      },
-      "model_champion_prob": 0.0396,
-      "odds_champion_prob": null,
-      "model_edge": null,
-      "r64_factors": {
-        "opponent": "Furman",
-        "model_prob": 0.945,
-        "hist_seed_rate": 0.9295,
-        "h2h_adj": 0.05,
-        "blended_prob": 0.9019
       }
     },
     "Gonzaga": {
@@ -955,16 +955,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.832,
-        "S16": 0.5633,
-        "E8": 0.2946,
-        "F4": 0.1573,
-        "NCG": 0.0808,
-        "Champion": 0.0367
+        "R32": 0.8285,
+        "S16": 0.573,
+        "E8": 0.3029,
+        "F4": 0.1646,
+        "NCG": 0.0835,
+        "Champion": 0.0369
       },
-      "model_champion_prob": 0.0367,
+      "model_champion_prob": 0.0369,
       "odds_champion_prob": 0.0109,
-      "model_edge": 0.0258,
+      "model_edge": 0.026,
       "r64_factors": {
         "opponent": "Kennesaw State",
         "model_prob": 0.949,
@@ -995,16 +995,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.8218,
-        "S16": 0.4757,
-        "E8": 0.2641,
-        "F4": 0.1306,
-        "NCG": 0.0602,
-        "Champion": 0.0261
+        "R32": 0.8226,
+        "S16": 0.4755,
+        "E8": 0.2617,
+        "F4": 0.1272,
+        "NCG": 0.0584,
+        "Champion": 0.0235
       },
-      "model_champion_prob": 0.0261,
+      "model_champion_prob": 0.0235,
       "odds_champion_prob": 0.0437,
-      "model_edge": -0.0176,
+      "model_edge": -0.0202,
       "r64_factors": {
         "opponent": "North Dakota State",
         "model_prob": 0.929,
@@ -1035,14 +1035,14 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.7859,
-        "S16": 0.4551,
-        "E8": 0.2096,
-        "F4": 0.103,
-        "NCG": 0.0461,
-        "Champion": 0.0186
+        "R32": 0.7847,
+        "S16": 0.4535,
+        "E8": 0.2072,
+        "F4": 0.1056,
+        "NCG": 0.0442,
+        "Champion": 0.0189
       },
-      "model_champion_prob": 0.0186,
+      "model_champion_prob": 0.0189,
       "odds_champion_prob": null,
       "model_edge": null,
       "r64_factors": {
@@ -1075,16 +1075,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.7601,
-        "S16": 0.4299,
-        "E8": 0.1689,
-        "F4": 0.0898,
-        "NCG": 0.0417,
-        "Champion": 0.0149
+        "R32": 0.7647,
+        "S16": 0.429,
+        "E8": 0.164,
+        "F4": 0.0858,
+        "NCG": 0.0396,
+        "Champion": 0.0135
       },
-      "model_champion_prob": 0.0149,
+      "model_champion_prob": 0.0135,
       "odds_champion_prob": 0.007,
-      "model_edge": 0.0079,
+      "model_edge": 0.0065,
       "r64_factors": {
         "opponent": "Hawaii",
         "model_prob": 0.8527,
@@ -1115,16 +1115,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.6561,
-        "S16": 0.4101,
-        "E8": 0.1322,
-        "F4": 0.0699,
-        "NCG": 0.0285,
-        "Champion": 0.0109
+        "R32": 0.6603,
+        "S16": 0.4118,
+        "E8": 0.1336,
+        "F4": 0.0711,
+        "NCG": 0.0308,
+        "Champion": 0.0114
       },
-      "model_champion_prob": 0.0109,
+      "model_champion_prob": 0.0114,
       "odds_champion_prob": 0.0065,
-      "model_edge": 0.0044,
+      "model_edge": 0.0049,
       "r64_factors": {
         "opponent": "McNeese State",
         "model_prob": 0.7445,
@@ -1155,16 +1155,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.6856,
-        "S16": 0.4104,
-        "E8": 0.1377,
-        "F4": 0.0719,
-        "NCG": 0.0269,
-        "Champion": 0.0095
+        "R32": 0.6844,
+        "S16": 0.4102,
+        "E8": 0.1358,
+        "F4": 0.0704,
+        "NCG": 0.0278,
+        "Champion": 0.0113
       },
-      "model_champion_prob": 0.0095,
+      "model_champion_prob": 0.0113,
       "odds_champion_prob": 0.0492,
-      "model_edge": -0.0397,
+      "model_edge": -0.0379,
       "r64_factors": {
         "opponent": "Hofstra",
         "model_prob": 0.6714,
@@ -1195,62 +1195,22 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.7706,
-        "S16": 0.4207,
-        "E8": 0.148,
-        "F4": 0.0745,
-        "NCG": 0.0292,
-        "Champion": 0.0093
+        "R32": 0.7677,
+        "S16": 0.4244,
+        "E8": 0.1487,
+        "F4": 0.0761,
+        "NCG": 0.0298,
+        "Champion": 0.0101
       },
-      "model_champion_prob": 0.0093,
+      "model_champion_prob": 0.0101,
       "odds_champion_prob": 0.0109,
-      "model_edge": -0.0016,
+      "model_edge": -0.0008,
       "r64_factors": {
         "opponent": "Cal Baptist",
         "model_prob": 0.8711,
         "hist_seed_rate": 0.7885,
         "h2h_adj": 0.0,
         "blended_prob": 0.7839
-      }
-    },
-    "Nebraska": {
-      "seed": 4,
-      "region": "South",
-      "stats": {
-        "wins": 26,
-        "losses": 6,
-        "win_pct": 0.8125,
-        "ppg": 77.3,
-        "opp_ppg": 66.2,
-        "fg_pct": 0.465,
-        "fg3_pct": 0.353,
-        "ft_pct": 0.75,
-        "trb": 34.9,
-        "ast": 18.0,
-        "tov": 9.8,
-        "adj_off": 114.0,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 195
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.7159,
-        "S16": 0.3764,
-        "E8": 0.1171,
-        "F4": 0.0607,
-        "NCG": 0.0217,
-        "Champion": 0.0078
-      },
-      "model_champion_prob": 0.0078,
-      "odds_champion_prob": null,
-      "model_edge": null,
-      "r64_factors": {
-        "opponent": "Troy",
-        "model_prob": 0.74,
-        "hist_seed_rate": 0.7885,
-        "h2h_adj": 0.0,
-        "blended_prob": 0.7087
       }
     },
     "St. John's": {
@@ -1275,22 +1235,62 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.6117,
-        "S16": 0.3412,
-        "E8": 0.1121,
-        "F4": 0.058,
-        "NCG": 0.023,
-        "Champion": 0.0071
+        "R32": 0.6204,
+        "S16": 0.3423,
+        "E8": 0.1109,
+        "F4": 0.057,
+        "NCG": 0.0217,
+        "Champion": 0.0075
       },
-      "model_champion_prob": 0.0071,
+      "model_champion_prob": 0.0075,
       "odds_champion_prob": 0.0492,
-      "model_edge": -0.0421,
+      "model_edge": -0.0417,
       "r64_factors": {
         "opponent": "Northern Iowa",
         "model_prob": 0.6404,
         "hist_seed_rate": 0.6474,
         "h2h_adj": 0.0,
         "blended_prob": 0.6168
+      }
+    },
+    "Nebraska": {
+      "seed": 4,
+      "region": "South",
+      "stats": {
+        "wins": 26,
+        "losses": 6,
+        "win_pct": 0.8125,
+        "ppg": 77.3,
+        "opp_ppg": 66.2,
+        "fg_pct": 0.465,
+        "fg3_pct": 0.353,
+        "ft_pct": 0.75,
+        "trb": 34.9,
+        "ast": 18.0,
+        "tov": 9.8,
+        "adj_off": 114.0,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 195
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.718,
+        "S16": 0.3765,
+        "E8": 0.1193,
+        "F4": 0.0589,
+        "NCG": 0.0214,
+        "Champion": 0.0075
+      },
+      "model_champion_prob": 0.0075,
+      "odds_champion_prob": null,
+      "model_edge": null,
+      "r64_factors": {
+        "opponent": "Troy",
+        "model_prob": 0.74,
+        "hist_seed_rate": 0.7885,
+        "h2h_adj": 0.0,
+        "blended_prob": 0.7087
       }
     },
     "Louisville": {
@@ -1315,16 +1315,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.6288,
-        "S16": 0.2984,
-        "E8": 0.1424,
-        "F4": 0.053,
-        "NCG": 0.0188,
-        "Champion": 0.006
+        "R32": 0.6279,
+        "S16": 0.2986,
+        "E8": 0.1386,
+        "F4": 0.0534,
+        "NCG": 0.0197,
+        "Champion": 0.0066
       },
-      "model_champion_prob": 0.006,
+      "model_champion_prob": 0.0066,
       "odds_champion_prob": 0.0171,
-      "model_edge": -0.0111,
+      "model_edge": -0.0105,
       "r64_factors": {
         "opponent": "South Florida",
         "model_prob": 0.6369,
@@ -1355,16 +1355,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.5494,
-        "S16": 0.2813,
-        "E8": 0.0837,
-        "F4": 0.0448,
-        "NCG": 0.0163,
-        "Champion": 0.0052
+        "R32": 0.5479,
+        "S16": 0.2823,
+        "E8": 0.0816,
+        "F4": 0.044,
+        "NCG": 0.0156,
+        "Champion": 0.0063
       },
-      "model_champion_prob": 0.0052,
+      "model_champion_prob": 0.0063,
       "odds_champion_prob": 0.0246,
-      "model_edge": -0.0194,
+      "model_edge": -0.0183,
       "r64_factors": {
         "opponent": "Akron",
         "model_prob": 0.4658,
@@ -1395,16 +1395,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.5196,
-        "S16": 0.154,
-        "E8": 0.0854,
-        "F4": 0.0447,
-        "NCG": 0.0147,
-        "Champion": 0.0051
+        "R32": 0.5059,
+        "S16": 0.1504,
+        "E8": 0.0839,
+        "F4": 0.0422,
+        "NCG": 0.0163,
+        "Champion": 0.0056
       },
-      "model_champion_prob": 0.0051,
+      "model_champion_prob": 0.0056,
       "odds_champion_prob": 0.0086,
-      "model_edge": -0.0035,
+      "model_edge": -0.003,
       "r64_factors": {
         "opponent": "TCU",
         "model_prob": 0.5511,
@@ -1435,16 +1435,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.5675,
-        "S16": 0.2983,
-        "E8": 0.0895,
-        "F4": 0.0445,
-        "NCG": 0.0161,
-        "Champion": 0.005
+        "R32": 0.5622,
+        "S16": 0.2989,
+        "E8": 0.0918,
+        "F4": 0.045,
+        "NCG": 0.0155,
+        "Champion": 0.0049
       },
-      "model_champion_prob": 0.005,
+      "model_champion_prob": 0.0049,
       "odds_champion_prob": 0.0262,
-      "model_edge": -0.0212,
+      "model_edge": -0.0213,
       "r64_factors": {
         "opponent": "High Point",
         "model_prob": 0.5091,
@@ -1475,182 +1475,22 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.4763,
-        "S16": 0.1464,
-        "E8": 0.0833,
-        "F4": 0.0419,
-        "NCG": 0.0143,
-        "Champion": 0.005
+        "R32": 0.4765,
+        "S16": 0.1453,
+        "E8": 0.0793,
+        "F4": 0.0396,
+        "NCG": 0.014,
+        "Champion": 0.0043
       },
-      "model_champion_prob": 0.005,
+      "model_champion_prob": 0.0043,
       "odds_champion_prob": 0.0077,
-      "model_edge": -0.0027,
+      "model_edge": -0.0034,
       "r64_factors": {
         "opponent": "Saint Louis",
         "model_prob": 0.4566,
         "hist_seed_rate": 0.4808,
         "h2h_adj": 0.0,
         "blended_prob": 0.4704
-      }
-    },
-    "Clemson": {
-      "seed": 8,
-      "region": "South",
-      "stats": {
-        "wins": 24,
-        "losses": 10,
-        "win_pct": 0.7059,
-        "ppg": 74.1,
-        "opp_ppg": 66.7,
-        "fg_pct": 0.453,
-        "fg3_pct": 0.341,
-        "ft_pct": 0.726,
-        "trb": 34.3,
-        "ast": 12.8,
-        "tov": 9.4,
-        "adj_off": 112.4,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 52
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.5089,
-        "S16": 0.1502,
-        "E8": 0.082,
-        "F4": 0.0379,
-        "NCG": 0.015,
-        "Champion": 0.005
-      },
-      "model_champion_prob": 0.005,
-      "odds_champion_prob": 0.0096,
-      "model_edge": -0.0046,
-      "r64_factors": {
-        "opponent": "Iowa",
-        "model_prob": 0.5377,
-        "hist_seed_rate": 0.4808,
-        "h2h_adj": 0.0,
-        "blended_prob": 0.5169
-      }
-    },
-    "North Carolina": {
-      "seed": 6,
-      "region": "South",
-      "stats": {
-        "wins": 24,
-        "losses": 8,
-        "win_pct": 0.75,
-        "ppg": 79.8,
-        "opp_ppg": 71.3,
-        "fg_pct": 0.473,
-        "fg3_pct": 0.345,
-        "ft_pct": 0.684,
-        "trb": 38.0,
-        "ast": 16.0,
-        "tov": 9.7,
-        "adj_off": 116.0,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 208
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.5665,
-        "S16": 0.2709,
-        "E8": 0.1244,
-        "F4": 0.0454,
-        "NCG": 0.0155,
-        "Champion": 0.0046
-      },
-      "model_champion_prob": 0.0046,
-      "odds_champion_prob": null,
-      "model_edge": null,
-      "r64_factors": {
-        "opponent": "VCU",
-        "model_prob": 0.5486,
-        "hist_seed_rate": 0.609,
-        "h2h_adj": 0.0,
-        "blended_prob": 0.5547
-      }
-    },
-    "BYU": {
-      "seed": 6,
-      "region": "West",
-      "stats": {
-        "wins": 0,
-        "losses": 0,
-        "win_pct": 0.7,
-        "ppg": 73.2,
-        "opp_ppg": 68.6,
-        "fg_pct": 0.46299999999999997,
-        "fg3_pct": 0.355,
-        "ft_pct": 0.72,
-        "trb": 36.0,
-        "ast": 14.5,
-        "tov": 12.5,
-        "adj_off": 101.0,
-        "adj_def": 101.0,
-        "net_rank": 24,
-        "sos_rank": 120
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.5611,
-        "S16": 0.2311,
-        "E8": 0.1129,
-        "F4": 0.0366,
-        "NCG": 0.0132,
-        "Champion": 0.0045
-      },
-      "model_champion_prob": 0.0045,
-      "odds_champion_prob": 0.0109,
-      "model_edge": -0.0064,
-      "r64_factors": {
-        "opponent": "Texas/NC State",
-        "model_prob": 0.5563,
-        "hist_seed_rate": 0.609,
-        "h2h_adj": 0.0,
-        "blended_prob": 0.5591
-      }
-    },
-    "Saint Mary's": {
-      "seed": 7,
-      "region": "South",
-      "stats": {
-        "wins": 27,
-        "losses": 5,
-        "win_pct": 0.8438,
-        "ppg": 78.2,
-        "opp_ppg": 64.6,
-        "fg_pct": 0.461,
-        "fg3_pct": 0.389,
-        "ft_pct": 0.805,
-        "trb": 40.3,
-        "ast": 15.5,
-        "tov": 10.8,
-        "adj_off": 117.6,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 261
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.597,
-        "S16": 0.2167,
-        "E8": 0.0892,
-        "F4": 0.0284,
-        "NCG": 0.0099,
-        "Champion": 0.004
-      },
-      "model_champion_prob": 0.004,
-      "odds_champion_prob": 0.0096,
-      "model_edge": -0.0056,
-      "r64_factors": {
-        "opponent": "Texas A&M",
-        "model_prob": 0.6318,
-        "hist_seed_rate": 0.6129,
-        "h2h_adj": 0.0,
-        "blended_prob": 0.6034
       }
     },
     "Tennessee": {
@@ -1675,22 +1515,182 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.5484,
-        "S16": 0.2827,
-        "E8": 0.1138,
-        "F4": 0.0387,
-        "NCG": 0.014,
-        "Champion": 0.0037
+        "R32": 0.5491,
+        "S16": 0.2839,
+        "E8": 0.1133,
+        "F4": 0.0372,
+        "NCG": 0.0129,
+        "Champion": 0.0041
       },
-      "model_champion_prob": 0.0037,
+      "model_champion_prob": 0.0041,
       "odds_champion_prob": 0.0492,
-      "model_edge": -0.0455,
+      "model_edge": -0.0451,
       "r64_factors": {
         "opponent": "Miami (OH)/SMU",
         "model_prob": 0.5067,
         "hist_seed_rate": 0.609,
         "h2h_adj": 0.0,
         "blended_prob": 0.5306
+      }
+    },
+    "BYU": {
+      "seed": 6,
+      "region": "West",
+      "stats": {
+        "wins": 0,
+        "losses": 0,
+        "win_pct": 0.7,
+        "ppg": 73.2,
+        "opp_ppg": 68.6,
+        "fg_pct": 0.46299999999999997,
+        "fg3_pct": 0.355,
+        "ft_pct": 0.72,
+        "trb": 36.0,
+        "ast": 14.5,
+        "tov": 12.5,
+        "adj_off": 101.0,
+        "adj_def": 101.0,
+        "net_rank": 24,
+        "sos_rank": 120
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.5705,
+        "S16": 0.2327,
+        "E8": 0.114,
+        "F4": 0.0408,
+        "NCG": 0.0143,
+        "Champion": 0.004
+      },
+      "model_champion_prob": 0.004,
+      "odds_champion_prob": 0.0109,
+      "model_edge": -0.0069,
+      "r64_factors": {
+        "opponent": "Texas/NC State",
+        "model_prob": 0.5563,
+        "hist_seed_rate": 0.609,
+        "h2h_adj": 0.0,
+        "blended_prob": 0.5591
+      }
+    },
+    "North Carolina": {
+      "seed": 6,
+      "region": "South",
+      "stats": {
+        "wins": 24,
+        "losses": 8,
+        "win_pct": 0.75,
+        "ppg": 79.8,
+        "opp_ppg": 71.3,
+        "fg_pct": 0.473,
+        "fg3_pct": 0.345,
+        "ft_pct": 0.684,
+        "trb": 38.0,
+        "ast": 16.0,
+        "tov": 9.7,
+        "adj_off": 116.0,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 208
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.5677,
+        "S16": 0.2701,
+        "E8": 0.1253,
+        "F4": 0.0427,
+        "NCG": 0.0146,
+        "Champion": 0.0039
+      },
+      "model_champion_prob": 0.0039,
+      "odds_champion_prob": null,
+      "model_edge": null,
+      "r64_factors": {
+        "opponent": "VCU",
+        "model_prob": 0.5486,
+        "hist_seed_rate": 0.609,
+        "h2h_adj": 0.0,
+        "blended_prob": 0.5547
+      }
+    },
+    "Clemson": {
+      "seed": 8,
+      "region": "South",
+      "stats": {
+        "wins": 24,
+        "losses": 10,
+        "win_pct": 0.7059,
+        "ppg": 74.1,
+        "opp_ppg": 66.7,
+        "fg_pct": 0.453,
+        "fg3_pct": 0.341,
+        "ft_pct": 0.726,
+        "trb": 34.3,
+        "ast": 12.8,
+        "tov": 9.4,
+        "adj_off": 112.4,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 52
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.5171,
+        "S16": 0.1469,
+        "E8": 0.0779,
+        "F4": 0.0355,
+        "NCG": 0.0137,
+        "Champion": 0.0038
+      },
+      "model_champion_prob": 0.0038,
+      "odds_champion_prob": 0.0096,
+      "model_edge": -0.0058,
+      "r64_factors": {
+        "opponent": "Iowa",
+        "model_prob": 0.5377,
+        "hist_seed_rate": 0.4808,
+        "h2h_adj": 0.0,
+        "blended_prob": 0.5169
+      }
+    },
+    "Saint Mary's": {
+      "seed": 7,
+      "region": "South",
+      "stats": {
+        "wins": 27,
+        "losses": 5,
+        "win_pct": 0.8438,
+        "ppg": 78.2,
+        "opp_ppg": 64.6,
+        "fg_pct": 0.461,
+        "fg3_pct": 0.389,
+        "ft_pct": 0.805,
+        "trb": 40.3,
+        "ast": 15.5,
+        "tov": 10.8,
+        "adj_off": 117.6,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 261
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.5958,
+        "S16": 0.2147,
+        "E8": 0.087,
+        "F4": 0.0267,
+        "NCG": 0.0089,
+        "Champion": 0.0029
+      },
+      "model_champion_prob": 0.0029,
+      "odds_champion_prob": 0.0096,
+      "model_edge": -0.0067,
+      "r64_factors": {
+        "opponent": "Texas A&M",
+        "model_prob": 0.6318,
+        "hist_seed_rate": 0.6129,
+        "h2h_adj": 0.0,
+        "blended_prob": 0.6034
       }
     },
     "Villanova": {
@@ -1715,14 +1715,14 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.516,
-        "S16": 0.1285,
-        "E8": 0.0614,
-        "F4": 0.0288,
-        "NCG": 0.01,
-        "Champion": 0.0034
+        "R32": 0.5187,
+        "S16": 0.1262,
+        "E8": 0.0624,
+        "F4": 0.0294,
+        "NCG": 0.0099,
+        "Champion": 0.0027
       },
-      "model_champion_prob": 0.0034,
+      "model_champion_prob": 0.0027,
       "odds_champion_prob": null,
       "model_edge": null,
       "r64_factors": {
@@ -1731,6 +1731,46 @@
         "hist_seed_rate": 0.4808,
         "h2h_adj": 0.0,
         "blended_prob": 0.5293
+      }
+    },
+    "South Florida": {
+      "seed": 11,
+      "region": "East",
+      "stats": {
+        "wins": 24,
+        "losses": 8,
+        "win_pct": 0.75,
+        "ppg": 88.3,
+        "opp_ppg": 76.2,
+        "fg_pct": 0.441,
+        "fg3_pct": 0.333,
+        "ft_pct": 0.743,
+        "trb": 42.8,
+        "ast": 17.3,
+        "tov": 11.2,
+        "adj_off": 118.1,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 279
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.3721,
+        "S16": 0.1976,
+        "E8": 0.0864,
+        "F4": 0.0287,
+        "NCG": 0.0095,
+        "Champion": 0.0026
+      },
+      "model_champion_prob": 0.0026,
+      "odds_champion_prob": 0.0656,
+      "model_edge": -0.063,
+      "r64_factors": {
+        "opponent": "Louisville",
+        "model_prob": 0.3631,
+        "hist_seed_rate": 0.391,
+        "h2h_adj": -0.0375,
+        "blended_prob": 0.3639
       }
     },
     "Saint Louis": {
@@ -1755,16 +1795,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.5237,
-        "S16": 0.1674,
-        "E8": 0.0913,
-        "F4": 0.0348,
-        "NCG": 0.0111,
-        "Champion": 0.0033
+        "R32": 0.5234,
+        "S16": 0.1631,
+        "E8": 0.0911,
+        "F4": 0.0333,
+        "NCG": 0.0099,
+        "Champion": 0.0026
       },
-      "model_champion_prob": 0.0033,
+      "model_champion_prob": 0.0026,
       "odds_champion_prob": 0.0096,
-      "model_edge": -0.0063,
+      "model_edge": -0.007,
       "r64_factors": {
         "opponent": "Georgia",
         "model_prob": 0.5434,
@@ -1795,14 +1835,14 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.4516,
-        "S16": 0.2242,
-        "E8": 0.0906,
-        "F4": 0.0316,
-        "NCG": 0.0097,
-        "Champion": 0.0033
+        "R32": 0.4509,
+        "S16": 0.2274,
+        "E8": 0.0896,
+        "F4": 0.0289,
+        "NCG": 0.0084,
+        "Champion": 0.0026
       },
-      "model_champion_prob": 0.0033,
+      "model_champion_prob": 0.0026,
       "odds_champion_prob": null,
       "model_edge": null,
       "r64_factors": {
@@ -1811,86 +1851,6 @@
         "hist_seed_rate": 0.391,
         "h2h_adj": -0.0,
         "blended_prob": 0.4694
-      }
-    },
-    "Kentucky": {
-      "seed": 7,
-      "region": "Midwest",
-      "stats": {
-        "wins": 21,
-        "losses": 13,
-        "win_pct": 0.6176,
-        "ppg": 80.8,
-        "opp_ppg": 73.8,
-        "fg_pct": 0.464,
-        "fg3_pct": 0.341,
-        "ft_pct": 0.728,
-        "trb": 37.5,
-        "ast": 16.0,
-        "tov": 10.5,
-        "adj_off": 115.7,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 138
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.6241,
-        "S16": 0.2201,
-        "E8": 0.0856,
-        "F4": 0.0265,
-        "NCG": 0.0078,
-        "Champion": 0.0029
-      },
-      "model_champion_prob": 0.0029,
-      "odds_champion_prob": 0.0303,
-      "model_edge": -0.0274,
-      "r64_factors": {
-        "opponent": "Santa Clara",
-        "model_prob": 0.7003,
-        "hist_seed_rate": 0.6129,
-        "h2h_adj": 0.0,
-        "blended_prob": 0.6427
-      }
-    },
-    "South Florida": {
-      "seed": 11,
-      "region": "East",
-      "stats": {
-        "wins": 24,
-        "losses": 8,
-        "win_pct": 0.75,
-        "ppg": 88.3,
-        "opp_ppg": 76.2,
-        "fg_pct": 0.441,
-        "fg3_pct": 0.333,
-        "ft_pct": 0.743,
-        "trb": 42.8,
-        "ast": 17.3,
-        "tov": 11.2,
-        "adj_off": 118.1,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 279
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.3713,
-        "S16": 0.1958,
-        "E8": 0.0843,
-        "F4": 0.0296,
-        "NCG": 0.0107,
-        "Champion": 0.0026
-      },
-      "model_champion_prob": 0.0026,
-      "odds_champion_prob": 0.0656,
-      "model_edge": -0.063,
-      "r64_factors": {
-        "opponent": "Louisville",
-        "model_prob": 0.3631,
-        "hist_seed_rate": 0.391,
-        "h2h_adj": -0.0375,
-        "blended_prob": 0.3639
       }
     },
     "Miami (FL)": {
@@ -1915,14 +1875,14 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.5988,
-        "S16": 0.2293,
-        "E8": 0.0832,
-        "F4": 0.0269,
-        "NCG": 0.0091,
-        "Champion": 0.0026
+        "R32": 0.5906,
+        "S16": 0.2248,
+        "E8": 0.0809,
+        "F4": 0.0252,
+        "NCG": 0.0089,
+        "Champion": 0.002
       },
-      "model_champion_prob": 0.0026,
+      "model_champion_prob": 0.002,
       "odds_champion_prob": null,
       "model_edge": null,
       "r64_factors": {
@@ -1955,142 +1915,22 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.6062,
-        "S16": 0.2305,
-        "E8": 0.09,
-        "F4": 0.0298,
-        "NCG": 0.0088,
-        "Champion": 0.0019
+        "R32": 0.6028,
+        "S16": 0.2193,
+        "E8": 0.0856,
+        "F4": 0.0266,
+        "NCG": 0.0075,
+        "Champion": 0.0018
       },
-      "model_champion_prob": 0.0019,
+      "model_champion_prob": 0.0018,
       "odds_champion_prob": 0.0086,
-      "model_edge": -0.0067,
+      "model_edge": -0.0068,
       "r64_factors": {
         "opponent": "Central Florida",
         "model_prob": 0.6504,
         "hist_seed_rate": 0.6129,
         "h2h_adj": 0.0,
         "blended_prob": 0.6141
-      }
-    },
-    "Texas/NC State": {
-      "seed": 11,
-      "region": "West",
-      "stats": {
-        "wins": 19,
-        "losses": 13,
-        "win_pct": 0.5938,
-        "ppg": 73.9,
-        "opp_ppg": 71.0,
-        "fg_pct": 0.469,
-        "fg3_pct": 0.33,
-        "ft_pct": 0.759,
-        "trb": 35.7,
-        "ast": 13.1,
-        "tov": 12.7,
-        "adj_off": 107.7,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 310
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.439,
-        "S16": 0.1712,
-        "E8": 0.0751,
-        "F4": 0.0242,
-        "NCG": 0.0069,
-        "Champion": 0.0016
-      },
-      "model_champion_prob": 0.0016,
-      "odds_champion_prob": null,
-      "model_edge": null,
-      "r64_factors": {
-        "opponent": "BYU",
-        "model_prob": 0.4437,
-        "hist_seed_rate": 0.391,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.4409
-      }
-    },
-    "TCU": {
-      "seed": 9,
-      "region": "East",
-      "stats": {
-        "wins": 22,
-        "losses": 11,
-        "win_pct": 0.6667,
-        "ppg": 78.3,
-        "opp_ppg": 72.1,
-        "fg_pct": 0.448,
-        "fg3_pct": 0.331,
-        "ft_pct": 0.708,
-        "trb": 36.2,
-        "ast": 15.6,
-        "tov": 10.9,
-        "adj_off": 111.1,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 300
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.4804,
-        "S16": 0.1104,
-        "E8": 0.0523,
-        "F4": 0.0189,
-        "NCG": 0.0048,
-        "Champion": 0.0013
-      },
-      "model_champion_prob": 0.0013,
-      "odds_champion_prob": 0.0055,
-      "model_edge": -0.0042,
-      "r64_factors": {
-        "opponent": "Ohio State",
-        "model_prob": 0.4489,
-        "hist_seed_rate": 0.5192,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.4754
-      }
-    },
-    "VCU": {
-      "seed": 11,
-      "region": "South",
-      "stats": {
-        "wins": 22,
-        "losses": 11,
-        "win_pct": 0.6667,
-        "ppg": 78.3,
-        "opp_ppg": 72.1,
-        "fg_pct": 0.448,
-        "fg3_pct": 0.331,
-        "ft_pct": 0.708,
-        "trb": 36.2,
-        "ast": 15.6,
-        "tov": 10.9,
-        "adj_off": 111.1,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 300
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.4335,
-        "S16": 0.197,
-        "E8": 0.0811,
-        "F4": 0.0232,
-        "NCG": 0.0063,
-        "Champion": 0.0013
-      },
-      "model_champion_prob": 0.0013,
-      "odds_champion_prob": 0.0049,
-      "model_edge": -0.0036,
-      "r64_factors": {
-        "opponent": "North Carolina",
-        "model_prob": 0.4514,
-        "hist_seed_rate": 0.391,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.4453
       }
     },
     "Iowa": {
@@ -2115,14 +1955,14 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.4911,
-        "S16": 0.1032,
-        "E8": 0.0495,
-        "F4": 0.0179,
-        "NCG": 0.0058,
-        "Champion": 0.0012
+        "R32": 0.4829,
+        "S16": 0.1037,
+        "E8": 0.049,
+        "F4": 0.0193,
+        "NCG": 0.0056,
+        "Champion": 0.0018
       },
-      "model_champion_prob": 0.0012,
+      "model_champion_prob": 0.0018,
       "odds_champion_prob": null,
       "model_edge": null,
       "r64_factors": {
@@ -2131,6 +1971,126 @@
         "hist_seed_rate": 0.5192,
         "h2h_adj": -0.0,
         "blended_prob": 0.4831
+      }
+    },
+    "VCU": {
+      "seed": 11,
+      "region": "South",
+      "stats": {
+        "wins": 22,
+        "losses": 11,
+        "win_pct": 0.6667,
+        "ppg": 78.3,
+        "opp_ppg": 72.1,
+        "fg_pct": 0.448,
+        "fg3_pct": 0.331,
+        "ft_pct": 0.708,
+        "trb": 36.2,
+        "ast": 15.6,
+        "tov": 10.9,
+        "adj_off": 111.1,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 300
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.4323,
+        "S16": 0.1988,
+        "E8": 0.0827,
+        "F4": 0.0247,
+        "NCG": 0.0059,
+        "Champion": 0.0016
+      },
+      "model_champion_prob": 0.0016,
+      "odds_champion_prob": 0.0049,
+      "model_edge": -0.0033,
+      "r64_factors": {
+        "opponent": "North Carolina",
+        "model_prob": 0.4514,
+        "hist_seed_rate": 0.391,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.4453
+      }
+    },
+    "Texas/NC State": {
+      "seed": 11,
+      "region": "West",
+      "stats": {
+        "wins": 19,
+        "losses": 13,
+        "win_pct": 0.5938,
+        "ppg": 73.9,
+        "opp_ppg": 71.0,
+        "fg_pct": 0.469,
+        "fg3_pct": 0.33,
+        "ft_pct": 0.759,
+        "trb": 35.7,
+        "ast": 13.1,
+        "tov": 12.7,
+        "adj_off": 107.7,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 310
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.4295,
+        "S16": 0.1603,
+        "E8": 0.0702,
+        "F4": 0.0213,
+        "NCG": 0.0059,
+        "Champion": 0.0014
+      },
+      "model_champion_prob": 0.0014,
+      "odds_champion_prob": null,
+      "model_edge": null,
+      "r64_factors": {
+        "opponent": "BYU",
+        "model_prob": 0.4437,
+        "hist_seed_rate": 0.391,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.4409
+      }
+    },
+    "Kentucky": {
+      "seed": 7,
+      "region": "Midwest",
+      "stats": {
+        "wins": 21,
+        "losses": 13,
+        "win_pct": 0.6176,
+        "ppg": 80.8,
+        "opp_ppg": 73.8,
+        "fg_pct": 0.464,
+        "fg3_pct": 0.341,
+        "ft_pct": 0.728,
+        "trb": 37.5,
+        "ast": 16.0,
+        "tov": 10.5,
+        "adj_off": 115.7,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 138
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.6279,
+        "S16": 0.2117,
+        "E8": 0.0858,
+        "F4": 0.0256,
+        "NCG": 0.0066,
+        "Champion": 0.0014
+      },
+      "model_champion_prob": 0.0014,
+      "odds_champion_prob": 0.0303,
+      "model_edge": -0.0289,
+      "r64_factors": {
+        "opponent": "Santa Clara",
+        "model_prob": 0.7003,
+        "hist_seed_rate": 0.6129,
+        "h2h_adj": 0.0,
+        "blended_prob": 0.6427
       }
     },
     "Utah State": {
@@ -2155,11 +2115,11 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.484,
-        "S16": 0.1107,
-        "E8": 0.0527,
-        "F4": 0.0187,
-        "NCG": 0.0053,
+        "R32": 0.4813,
+        "S16": 0.114,
+        "E8": 0.0529,
+        "F4": 0.0178,
+        "NCG": 0.0056,
         "Champion": 0.001
       },
       "model_champion_prob": 0.001,
@@ -2171,86 +2131,6 @@
         "hist_seed_rate": 0.5192,
         "h2h_adj": -0.0,
         "blended_prob": 0.4707
-      }
-    },
-    "Texas A&M": {
-      "seed": 10,
-      "region": "South",
-      "stats": {
-        "wins": 21,
-        "losses": 11,
-        "win_pct": 0.6562,
-        "ppg": 87.7,
-        "opp_ppg": 79.6,
-        "fg_pct": 0.458,
-        "fg3_pct": 0.362,
-        "ft_pct": 0.737,
-        "trb": 37.7,
-        "ast": 18.1,
-        "tov": 10.8,
-        "adj_off": 118.2,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 307
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.4029,
-        "S16": 0.1487,
-        "E8": 0.0609,
-        "F4": 0.0152,
-        "NCG": 0.0045,
-        "Champion": 0.001
-      },
-      "model_champion_prob": 0.001,
-      "odds_champion_prob": 0.0207,
-      "model_edge": -0.0197,
-      "r64_factors": {
-        "opponent": "Saint Mary's",
-        "model_prob": 0.3682,
-        "hist_seed_rate": 0.3871,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.3966
-      }
-    },
-    "Missouri": {
-      "seed": 10,
-      "region": "West",
-      "stats": {
-        "wins": 20,
-        "losses": 12,
-        "win_pct": 0.625,
-        "ppg": 79.7,
-        "opp_ppg": 75.3,
-        "fg_pct": 0.49,
-        "fg3_pct": 0.35,
-        "ft_pct": 0.686,
-        "trb": 35.6,
-        "ast": 14.1,
-        "tov": 12.4,
-        "adj_off": 115.6,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 184
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.4012,
-        "S16": 0.1673,
-        "E8": 0.0569,
-        "F4": 0.0144,
-        "NCG": 0.0043,
-        "Champion": 0.0009
-      },
-      "model_champion_prob": 0.0009,
-      "odds_champion_prob": 0.0127,
-      "model_edge": -0.0118,
-      "r64_factors": {
-        "opponent": "Miami (FL)",
-        "model_prob": 0.3802,
-        "hist_seed_rate": 0.3871,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.4035
       }
     },
     "High Point": {
@@ -2275,16 +2155,16 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.4325,
-        "S16": 0.2112,
-        "E8": 0.0488,
-        "F4": 0.0158,
-        "NCG": 0.0046,
-        "Champion": 0.0009
+        "R32": 0.4378,
+        "S16": 0.2145,
+        "E8": 0.0503,
+        "F4": 0.0171,
+        "NCG": 0.0047,
+        "Champion": 0.001
       },
-      "model_champion_prob": 0.0009,
+      "model_champion_prob": 0.001,
       "odds_champion_prob": 0.0026,
-      "model_edge": -0.0017,
+      "model_edge": -0.0016,
       "r64_factors": {
         "opponent": "Wisconsin",
         "model_prob": 0.4909,
@@ -2293,44 +2173,84 @@
         "blended_prob": 0.4585
       }
     },
-    "Akron": {
-      "seed": 12,
-      "region": "Midwest",
+    "TCU": {
+      "seed": 9,
+      "region": "East",
       "stats": {
-        "wins": 29,
-        "losses": 5,
-        "win_pct": 0.8529,
-        "ppg": 88.4,
-        "opp_ppg": 73.5,
-        "fg_pct": 0.503,
-        "fg3_pct": 0.379,
-        "ft_pct": 0.754,
-        "trb": 38.1,
-        "ast": 18.4,
+        "wins": 22,
+        "losses": 11,
+        "win_pct": 0.6667,
+        "ppg": 78.3,
+        "opp_ppg": 72.1,
+        "fg_pct": 0.448,
+        "fg3_pct": 0.331,
+        "ft_pct": 0.708,
+        "trb": 36.2,
+        "ast": 15.6,
         "tov": 10.9,
-        "adj_off": 123.1,
+        "adj_off": 111.1,
         "adj_def": 0.0,
         "net_rank": 0,
-        "sos_rank": 3
+        "sos_rank": 300
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.4506,
-        "S16": 0.2251,
-        "E8": 0.0486,
-        "F4": 0.014,
-        "NCG": 0.0035,
+        "R32": 0.4941,
+        "S16": 0.1135,
+        "E8": 0.0548,
+        "F4": 0.0216,
+        "NCG": 0.0056,
         "Champion": 0.0009
       },
       "model_champion_prob": 0.0009,
-      "odds_champion_prob": 0.0033,
-      "model_edge": -0.0024,
+      "odds_champion_prob": 0.0055,
+      "model_edge": -0.0046,
       "r64_factors": {
-        "opponent": "Texas Tech",
-        "model_prob": 0.5342,
-        "hist_seed_rate": 0.3526,
+        "opponent": "Ohio State",
+        "model_prob": 0.4489,
+        "hist_seed_rate": 0.5192,
         "h2h_adj": -0.0,
-        "blended_prob": 0.4834
+        "blended_prob": 0.4754
+      }
+    },
+    "Missouri": {
+      "seed": 10,
+      "region": "West",
+      "stats": {
+        "wins": 20,
+        "losses": 12,
+        "win_pct": 0.625,
+        "ppg": 79.7,
+        "opp_ppg": 75.3,
+        "fg_pct": 0.49,
+        "fg3_pct": 0.35,
+        "ft_pct": 0.686,
+        "trb": 35.6,
+        "ast": 14.1,
+        "tov": 12.4,
+        "adj_off": 115.6,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 184
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.4094,
+        "S16": 0.1737,
+        "E8": 0.0607,
+        "F4": 0.0138,
+        "NCG": 0.0037,
+        "Champion": 0.0008
+      },
+      "model_champion_prob": 0.0008,
+      "odds_champion_prob": 0.0127,
+      "model_edge": -0.0119,
+      "r64_factors": {
+        "opponent": "Miami (FL)",
+        "model_prob": 0.3802,
+        "hist_seed_rate": 0.3871,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.4035
       }
     },
     "Santa Clara": {
@@ -2355,22 +2275,102 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.3759,
-        "S16": 0.1414,
-        "E8": 0.0556,
-        "F4": 0.0115,
-        "NCG": 0.0024,
-        "Champion": 0.0004
+        "R32": 0.3721,
+        "S16": 0.1409,
+        "E8": 0.0544,
+        "F4": 0.0133,
+        "NCG": 0.0034,
+        "Champion": 0.0008
       },
-      "model_champion_prob": 0.0004,
+      "model_champion_prob": 0.0008,
       "odds_champion_prob": 0.0096,
-      "model_edge": -0.0092,
+      "model_edge": -0.0088,
       "r64_factors": {
         "opponent": "Kentucky",
         "model_prob": 0.2997,
         "hist_seed_rate": 0.3871,
         "h2h_adj": -0.0,
         "blended_prob": 0.3573
+      }
+    },
+    "Texas A&M": {
+      "seed": 10,
+      "region": "South",
+      "stats": {
+        "wins": 21,
+        "losses": 11,
+        "win_pct": 0.6562,
+        "ppg": 87.7,
+        "opp_ppg": 79.6,
+        "fg_pct": 0.458,
+        "fg3_pct": 0.362,
+        "ft_pct": 0.737,
+        "trb": 37.7,
+        "ast": 18.1,
+        "tov": 10.8,
+        "adj_off": 118.2,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 307
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.4042,
+        "S16": 0.1489,
+        "E8": 0.0624,
+        "F4": 0.0164,
+        "NCG": 0.0046,
+        "Champion": 0.0008
+      },
+      "model_champion_prob": 0.0008,
+      "odds_champion_prob": 0.0207,
+      "model_edge": -0.0199,
+      "r64_factors": {
+        "opponent": "Saint Mary's",
+        "model_prob": 0.3682,
+        "hist_seed_rate": 0.3871,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.3966
+      }
+    },
+    "Akron": {
+      "seed": 12,
+      "region": "Midwest",
+      "stats": {
+        "wins": 29,
+        "losses": 5,
+        "win_pct": 0.8529,
+        "ppg": 88.4,
+        "opp_ppg": 73.5,
+        "fg_pct": 0.503,
+        "fg3_pct": 0.379,
+        "ft_pct": 0.754,
+        "trb": 38.1,
+        "ast": 18.4,
+        "tov": 10.9,
+        "adj_off": 123.1,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 3
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.4521,
+        "S16": 0.2259,
+        "E8": 0.0483,
+        "F4": 0.0143,
+        "NCG": 0.003,
+        "Champion": 0.0006
+      },
+      "model_champion_prob": 0.0006,
+      "odds_champion_prob": 0.0033,
+      "model_edge": -0.0027,
+      "r64_factors": {
+        "opponent": "Texas Tech",
+        "model_prob": 0.5342,
+        "hist_seed_rate": 0.3526,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.4834
       }
     },
     "Central Florida": {
@@ -2395,11 +2395,11 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.3937,
-        "S16": 0.139,
-        "E8": 0.0459,
-        "F4": 0.0104,
-        "NCG": 0.0023,
+        "R32": 0.3972,
+        "S16": 0.1378,
+        "E8": 0.0456,
+        "F4": 0.0108,
+        "NCG": 0.0025,
         "Champion": 0.0003
       },
       "model_champion_prob": 0.0003,
@@ -2411,46 +2411,6 @@
         "hist_seed_rate": 0.3871,
         "h2h_adj": -0.0,
         "blended_prob": 0.3859
-      }
-    },
-    "Northern Iowa": {
-      "seed": 12,
-      "region": "East",
-      "stats": {
-        "wins": 23,
-        "losses": 12,
-        "win_pct": 0.6571,
-        "ppg": 69.9,
-        "opp_ppg": 61.3,
-        "fg_pct": 0.477,
-        "fg3_pct": 0.355,
-        "ft_pct": 0.699,
-        "trb": 31.9,
-        "ast": 15.0,
-        "tov": 9.3,
-        "adj_off": 109.1,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 219
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.3883,
-        "S16": 0.1817,
-        "E8": 0.0384,
-        "F4": 0.0116,
-        "NCG": 0.003,
-        "Champion": 0.0003
-      },
-      "model_champion_prob": 0.0003,
-      "odds_champion_prob": null,
-      "model_edge": null,
-      "r64_factors": {
-        "opponent": "St. John's",
-        "model_prob": 0.3596,
-        "hist_seed_rate": 0.3526,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.3832
       }
     },
     "McNeese State": {
@@ -2475,11 +2435,11 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.3439,
-        "S16": 0.1441,
-        "E8": 0.0272,
-        "F4": 0.0073,
-        "NCG": 0.0011,
+        "R32": 0.3397,
+        "S16": 0.1399,
+        "E8": 0.0283,
+        "F4": 0.0072,
+        "NCG": 0.0014,
         "Champion": 0.0003
       },
       "model_champion_prob": 0.0003,
@@ -2491,6 +2451,126 @@
         "hist_seed_rate": 0.3526,
         "h2h_adj": -0.0,
         "blended_prob": 0.3235
+      }
+    },
+    "Northern Iowa": {
+      "seed": 12,
+      "region": "East",
+      "stats": {
+        "wins": 23,
+        "losses": 12,
+        "win_pct": 0.6571,
+        "ppg": 69.9,
+        "opp_ppg": 61.3,
+        "fg_pct": 0.477,
+        "fg3_pct": 0.355,
+        "ft_pct": 0.699,
+        "trb": 31.9,
+        "ast": 15.0,
+        "tov": 9.3,
+        "adj_off": 109.1,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 219
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.3796,
+        "S16": 0.1761,
+        "E8": 0.036,
+        "F4": 0.0103,
+        "NCG": 0.0022,
+        "Champion": 0.0002
+      },
+      "model_champion_prob": 0.0002,
+      "odds_champion_prob": null,
+      "model_edge": null,
+      "r64_factors": {
+        "opponent": "St. John's",
+        "model_prob": 0.3596,
+        "hist_seed_rate": 0.3526,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.3832
+      }
+    },
+    "Cal Baptist": {
+      "seed": 13,
+      "region": "East",
+      "stats": {
+        "wins": 24,
+        "losses": 8,
+        "win_pct": 0.75,
+        "ppg": 73.3,
+        "opp_ppg": 67.8,
+        "fg_pct": 0.433,
+        "fg3_pct": 0.337,
+        "ft_pct": 0.716,
+        "trb": 40.1,
+        "ast": 10.4,
+        "tov": 12.3,
+        "adj_off": 107.4,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 41
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.2324,
+        "S16": 0.0572,
+        "E8": 0.0097,
+        "F4": 0.0021,
+        "NCG": 0.0006,
+        "Champion": 0.0001
+      },
+      "model_champion_prob": 0.0001,
+      "odds_champion_prob": null,
+      "model_edge": null,
+      "r64_factors": {
+        "opponent": "Kansas",
+        "model_prob": 0.1289,
+        "hist_seed_rate": 0.2115,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.2161
+      }
+    },
+    "North Dakota State": {
+      "seed": 14,
+      "region": "East",
+      "stats": {
+        "wins": 27,
+        "losses": 7,
+        "win_pct": 0.7941,
+        "ppg": 80.7,
+        "opp_ppg": 69.6,
+        "fg_pct": 0.468,
+        "fg3_pct": 0.365,
+        "ft_pct": 0.725,
+        "trb": 36.4,
+        "ast": 15.5,
+        "tov": 10.8,
+        "adj_off": 116.1,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 212
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.1774,
+        "S16": 0.0283,
+        "E8": 0.0049,
+        "F4": 0.0009,
+        "NCG": 0.0001,
+        "Champion": 0.0001
+      },
+      "model_champion_prob": 0.0001,
+      "odds_champion_prob": 0.0008,
+      "model_edge": -0.0007,
+      "r64_factors": {
+        "opponent": "Michigan State",
+        "model_prob": 0.071,
+        "hist_seed_rate": 0.1474,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.1671
       }
     },
     "Furman": {
@@ -2515,11 +2595,11 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1186,
-        "S16": 0.0427,
-        "E8": 0.0104,
-        "F4": 0.0013,
-        "NCG": 0.0001,
+        "R32": 0.1184,
+        "S16": 0.0431,
+        "E8": 0.011,
+        "F4": 0.0016,
+        "NCG": 0.0003,
         "Champion": 0.0001
       },
       "model_champion_prob": 0.0001,
@@ -2555,10 +2635,10 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.168,
-        "S16": 0.0343,
-        "E8": 0.0078,
-        "F4": 0.001,
+        "R32": 0.1715,
+        "S16": 0.034,
+        "E8": 0.0063,
+        "F4": 0.0009,
         "NCG": 0.0001,
         "Champion": 0.0001
       },
@@ -2573,44 +2653,84 @@
         "blended_prob": 0.1557
       }
     },
-    "Long Island": {
-      "seed": 16,
-      "region": "West",
+    "Hofstra": {
+      "seed": 13,
+      "region": "Midwest",
       "stats": {
-        "wins": 16,
-        "losses": 16,
-        "win_pct": 0.5,
-        "ppg": 69.9,
-        "opp_ppg": 68.2,
-        "fg_pct": 0.434,
-        "fg3_pct": 0.311,
-        "ft_pct": 0.721,
-        "trb": 32.9,
-        "ast": 11.3,
-        "tov": 12.8,
-        "adj_off": 105.0,
+        "wins": 24,
+        "losses": 10,
+        "win_pct": 0.7059,
+        "ppg": 75.6,
+        "opp_ppg": 66.1,
+        "fg_pct": 0.442,
+        "fg3_pct": 0.368,
+        "ft_pct": 0.746,
+        "trb": 39.3,
+        "ast": 12.8,
+        "tov": 10.6,
+        "adj_off": 114.4,
         "adj_def": 0.0,
         "net_rank": 0,
-        "sos_rank": 250
+        "sos_rank": 112
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1172,
-        "S16": 0.028,
-        "E8": 0.0051,
-        "F4": 0.0008,
-        "NCG": 0.0001,
+        "R32": 0.3156,
+        "S16": 0.0817,
+        "E8": 0.0134,
+        "F4": 0.0028,
+        "NCG": 0.0004,
         "Champion": 0.0001
       },
       "model_champion_prob": 0.0001,
       "odds_champion_prob": null,
       "model_edge": null,
       "r64_factors": {
-        "opponent": "Arizona",
-        "model_prob": 0.0144,
-        "hist_seed_rate": 0.0128,
+        "opponent": "Alabama",
+        "model_prob": 0.3286,
+        "hist_seed_rate": 0.2115,
         "h2h_adj": -0.0,
-        "blended_prob": 0.1016
+        "blended_prob": 0.3307
+      }
+    },
+    "Troy": {
+      "seed": 13,
+      "region": "South",
+      "stats": {
+        "wins": 22,
+        "losses": 11,
+        "win_pct": 0.6667,
+        "ppg": 80.3,
+        "opp_ppg": 73.1,
+        "fg_pct": 0.449,
+        "fg3_pct": 0.335,
+        "ft_pct": 0.738,
+        "trb": 38.3,
+        "ast": 16.0,
+        "tov": 11.9,
+        "adj_off": 113.5,
+        "adj_def": 0.0,
+        "net_rank": 0,
+        "sos_rank": 316
+      },
+      "monte_carlo": {
+        "R64": 1.0,
+        "R32": 0.2819,
+        "S16": 0.0719,
+        "E8": 0.0131,
+        "F4": 0.0025,
+        "NCG": 0.0004,
+        "Champion": 0.0001
+      },
+      "model_champion_prob": 0.0001,
+      "odds_champion_prob": 0.002,
+      "model_edge": -0.0019,
+      "r64_factors": {
+        "opponent": "Nebraska",
+        "model_prob": 0.26,
+        "hist_seed_rate": 0.2115,
+        "h2h_adj": -0.0,
+        "blended_prob": 0.2913
       }
     },
     "Idaho": {
@@ -2635,10 +2755,10 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1444,
-        "S16": 0.0531,
-        "E8": 0.0142,
-        "F4": 0.0017,
+        "R32": 0.1431,
+        "S16": 0.0539,
+        "E8": 0.0137,
+        "F4": 0.0021,
         "NCG": 0.0003,
         "Champion": 0.0001
       },
@@ -2651,86 +2771,6 @@
         "hist_seed_rate": 0.0705,
         "h2h_adj": -0.0,
         "blended_prob": 0.1393
-      }
-    },
-    "Cal Baptist": {
-      "seed": 13,
-      "region": "East",
-      "stats": {
-        "wins": 24,
-        "losses": 8,
-        "win_pct": 0.75,
-        "ppg": 73.3,
-        "opp_ppg": 67.8,
-        "fg_pct": 0.433,
-        "fg3_pct": 0.337,
-        "ft_pct": 0.716,
-        "trb": 40.1,
-        "ast": 10.4,
-        "tov": 12.3,
-        "adj_off": 107.4,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 41
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.2294,
-        "S16": 0.0565,
-        "E8": 0.0095,
-        "F4": 0.0017,
-        "NCG": 0.0,
-        "Champion": 0.0
-      },
-      "model_champion_prob": 0.0,
-      "odds_champion_prob": null,
-      "model_edge": null,
-      "r64_factors": {
-        "opponent": "Kansas",
-        "model_prob": 0.1289,
-        "hist_seed_rate": 0.2115,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.2161
-      }
-    },
-    "North Dakota State": {
-      "seed": 14,
-      "region": "East",
-      "stats": {
-        "wins": 27,
-        "losses": 7,
-        "win_pct": 0.7941,
-        "ppg": 80.7,
-        "opp_ppg": 69.6,
-        "fg_pct": 0.468,
-        "fg3_pct": 0.365,
-        "ft_pct": 0.725,
-        "trb": 36.4,
-        "ast": 15.5,
-        "tov": 10.8,
-        "adj_off": 116.1,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 212
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.1782,
-        "S16": 0.0301,
-        "E8": 0.0056,
-        "F4": 0.0008,
-        "NCG": 0.0001,
-        "Champion": 0.0
-      },
-      "model_champion_prob": 0.0,
-      "odds_champion_prob": 0.0008,
-      "model_edge": -0.0008,
-      "r64_factors": {
-        "opponent": "Michigan State",
-        "model_prob": 0.071,
-        "hist_seed_rate": 0.1474,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.1671
       }
     },
     "Siena": {
@@ -2755,11 +2795,11 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.12,
-        "S16": 0.0244,
-        "E8": 0.0032,
-        "F4": 0.0007,
-        "NCG": 0.0003,
+        "R32": 0.1198,
+        "S16": 0.0262,
+        "E8": 0.0038,
+        "F4": 0.001,
+        "NCG": 0.0001,
         "Champion": 0.0
       },
       "model_champion_prob": 0.0,
@@ -2795,10 +2835,10 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.2399,
-        "S16": 0.0607,
-        "E8": 0.0109,
-        "F4": 0.0019,
+        "R32": 0.2353,
+        "S16": 0.0576,
+        "E8": 0.0095,
+        "F4": 0.0015,
         "NCG": 0.0003,
         "Champion": 0.0
       },
@@ -2835,11 +2875,11 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1516,
-        "S16": 0.049,
-        "E8": 0.0091,
+        "R32": 0.1524,
+        "S16": 0.0486,
+        "E8": 0.0103,
         "F4": 0.0013,
-        "NCG": 0.0002,
+        "NCG": 0.0001,
         "Champion": 0.0
       },
       "model_champion_prob": 0.0,
@@ -2853,44 +2893,44 @@
         "blended_prob": 0.1506
       }
     },
-    "Hofstra": {
-      "seed": 13,
-      "region": "Midwest",
+    "Long Island": {
+      "seed": 16,
+      "region": "West",
       "stats": {
-        "wins": 24,
-        "losses": 10,
-        "win_pct": 0.7059,
-        "ppg": 75.6,
-        "opp_ppg": 66.1,
-        "fg_pct": 0.442,
-        "fg3_pct": 0.368,
-        "ft_pct": 0.746,
-        "trb": 39.3,
-        "ast": 12.8,
-        "tov": 10.6,
-        "adj_off": 114.4,
+        "wins": 16,
+        "losses": 16,
+        "win_pct": 0.5,
+        "ppg": 69.9,
+        "opp_ppg": 68.2,
+        "fg_pct": 0.434,
+        "fg3_pct": 0.311,
+        "ft_pct": 0.721,
+        "trb": 32.9,
+        "ast": 11.3,
+        "tov": 12.8,
+        "adj_off": 105.0,
         "adj_def": 0.0,
         "net_rank": 0,
-        "sos_rank": 112
+        "sos_rank": 250
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.3144,
-        "S16": 0.0832,
-        "E8": 0.0148,
-        "F4": 0.0024,
-        "NCG": 0.0004,
+        "R32": 0.1173,
+        "S16": 0.0265,
+        "E8": 0.0047,
+        "F4": 0.0008,
+        "NCG": 0.0003,
         "Champion": 0.0
       },
       "model_champion_prob": 0.0,
       "odds_champion_prob": null,
       "model_edge": null,
       "r64_factors": {
-        "opponent": "Alabama",
-        "model_prob": 0.3286,
-        "hist_seed_rate": 0.2115,
+        "opponent": "Arizona",
+        "model_prob": 0.0144,
+        "hist_seed_rate": 0.0128,
         "h2h_adj": -0.0,
-        "blended_prob": 0.3307
+        "blended_prob": 0.1016
       }
     },
     "Wright State": {
@@ -2915,10 +2955,10 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.2142,
-        "S16": 0.038,
-        "E8": 0.0067,
-        "F4": 0.0013,
+        "R32": 0.2152,
+        "S16": 0.0352,
+        "E8": 0.0076,
+        "F4": 0.0016,
         "NCG": 0.0001,
         "Champion": 0.0
       },
@@ -2955,10 +2995,10 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1396,
-        "S16": 0.0454,
-        "E8": 0.0101,
-        "F4": 0.0018,
+        "R32": 0.1348,
+        "S16": 0.0445,
+        "E8": 0.0087,
+        "F4": 0.0013,
         "NCG": 0.0001,
         "Champion": 0.0
       },
@@ -2995,9 +3035,9 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1206,
-        "S16": 0.0191,
-        "E8": 0.0034,
+        "R32": 0.1192,
+        "S16": 0.0185,
+        "E8": 0.003,
         "F4": 0.0003,
         "NCG": 0.0001,
         "Champion": 0.0
@@ -3011,46 +3051,6 @@
         "hist_seed_rate": 0.0128,
         "h2h_adj": -0.0,
         "blended_prob": 0.1018
-      }
-    },
-    "Troy": {
-      "seed": 13,
-      "region": "South",
-      "stats": {
-        "wins": 22,
-        "losses": 11,
-        "win_pct": 0.6667,
-        "ppg": 80.3,
-        "opp_ppg": 73.1,
-        "fg_pct": 0.449,
-        "fg3_pct": 0.335,
-        "ft_pct": 0.738,
-        "trb": 38.3,
-        "ast": 16.0,
-        "tov": 11.9,
-        "adj_off": 113.5,
-        "adj_def": 0.0,
-        "net_rank": 0,
-        "sos_rank": 316
-      },
-      "monte_carlo": {
-        "R64": 1.0,
-        "R32": 0.2841,
-        "S16": 0.0694,
-        "E8": 0.0107,
-        "F4": 0.0019,
-        "NCG": 0.0002,
-        "Champion": 0.0
-      },
-      "model_champion_prob": 0.0,
-      "odds_champion_prob": 0.002,
-      "model_edge": -0.002,
-      "r64_factors": {
-        "opponent": "Nebraska",
-        "model_prob": 0.26,
-        "hist_seed_rate": 0.2115,
-        "h2h_adj": -0.0,
-        "blended_prob": 0.2913
       }
     },
     "Penn": {
@@ -3075,10 +3075,10 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1853,
-        "S16": 0.0339,
-        "E8": 0.0064,
-        "F4": 0.0004,
+        "R32": 0.1858,
+        "S16": 0.0316,
+        "E8": 0.0046,
+        "F4": 0.0003,
         "NCG": 0.0001,
         "Champion": 0.0
       },
@@ -3115,11 +3115,11 @@
       },
       "monte_carlo": {
         "R64": 1.0,
-        "R32": 0.1217,
-        "S16": 0.0214,
-        "E8": 0.0031,
-        "F4": 0.0005,
-        "NCG": 0.0001,
+        "R32": 0.1211,
+        "S16": 0.0231,
+        "E8": 0.004,
+        "F4": 0.0006,
+        "NCG": 0.0003,
         "Champion": 0.0
       },
       "model_champion_prob": 0.0,
@@ -3143,9 +3143,9 @@
       "Michigan",
       "Iowa State",
       "Purdue",
+      "Connecticut",
       "Illinois",
       "Houston",
-      "Connecticut",
       "Gonzaga"
     ],
     "upset_alerts": [
@@ -3241,631 +3241,1398 @@
       }
     ]
   },
-  "predicted_bracket": {
-    "regions": {
-      "East": {
-        "rounds": {
-          "R64": [
-            {
-              "t1": "Duke",
-              "s1": 1,
-              "t2": "Siena",
-              "s2": 16,
-              "winner": "Duke",
-              "w_seed": 1,
-              "prob": 0.88
-            },
-            {
-              "t1": "Ohio State",
-              "s1": 8,
-              "t2": "TCU",
-              "s2": 9,
-              "winner": "Ohio State",
-              "w_seed": 8,
-              "prob": 0.513
-            },
-            {
-              "t1": "St. John's",
-              "s1": 5,
-              "t2": "Northern Iowa",
-              "s2": 12,
-              "winner": "St. John's",
-              "w_seed": 5,
-              "prob": 0.618
-            },
-            {
-              "t1": "Kansas",
-              "s1": 4,
-              "t2": "Cal Baptist",
-              "s2": 13,
-              "winner": "Cal Baptist",
-              "w_seed": 13,
-              "prob": 0.23
-            },
-            {
-              "t1": "Louisville",
-              "s1": 6,
-              "t2": "South Florida",
-              "s2": 11,
-              "winner": "Louisville",
-              "w_seed": 6,
-              "prob": 0.631
-            },
-            {
-              "t1": "Michigan State",
-              "s1": 3,
-              "t2": "North Dakota State",
-              "s2": 14,
-              "winner": "Michigan State",
-              "w_seed": 3,
-              "prob": 0.82
-            },
-            {
-              "t1": "UCLA",
-              "s1": 7,
-              "t2": "Central Florida",
-              "s2": 10,
-              "winner": "UCLA",
-              "w_seed": 7,
-              "prob": 0.608
-            },
-            {
-              "t1": "Connecticut",
-              "s1": 2,
-              "t2": "Furman",
-              "s2": 15,
-              "winner": "Connecticut",
-              "w_seed": 2,
-              "prob": 0.88
-            }
-          ],
-          "R32": [
-            {
-              "t1": "Duke",
-              "s1": 1,
-              "t2": "Ohio State",
-              "s2": 8,
-              "winner": "Ohio State",
-              "w_seed": 8,
-              "prob": 0.226
-            },
-            {
-              "t1": "St. John's",
-              "s1": 5,
-              "t2": "Cal Baptist",
-              "s2": 13,
-              "winner": "St. John's",
-              "w_seed": 5,
-              "prob": 0.781
-            },
-            {
-              "t1": "Louisville",
-              "s1": 6,
-              "t2": "Michigan State",
-              "s2": 3,
-              "winner": "Michigan State",
-              "w_seed": 3,
-              "prob": 0.597
-            },
-            {
-              "t1": "UCLA",
-              "s1": 7,
-              "t2": "Connecticut",
-              "s2": 2,
-              "winner": "Connecticut",
-              "w_seed": 2,
-              "prob": 0.639
-            }
-          ],
-          "S16": [
-            {
-              "t1": "Ohio State",
-              "s1": 8,
-              "t2": "St. John's",
-              "s2": 5,
-              "winner": "St. John's",
-              "w_seed": 5,
-              "prob": 0.463
-            },
-            {
-              "t1": "Michigan State",
-              "s1": 3,
-              "t2": "Connecticut",
-              "s2": 2,
-              "winner": "Connecticut",
-              "w_seed": 2,
-              "prob": 0.526
-            }
-          ],
-          "E8": [
-            {
-              "t1": "St. John's",
-              "s1": 5,
-              "t2": "Connecticut",
-              "s2": 2,
-              "winner": "St. John's",
-              "w_seed": 5,
-              "prob": 0.585
-            }
-          ]
-        },
-        "winner": "St. John's",
-        "w_seed": 5
+  "models": {
+    "claude": {
+      "label": "Claude",
+      "description": "Built using Claude Code with the original XGBoost, seed-history, and head-to-head blend.",
+      "metrics": {
+        "accuracy": 0.6928,
+        "log_loss": 0.5667,
+        "training_samples": 5036
       },
-      "West": {
-        "rounds": {
-          "R64": [
-            {
-              "t1": "Arizona",
-              "s1": 1,
-              "t2": "Long Island",
-              "s2": 16,
-              "winner": "Arizona",
-              "w_seed": 1,
-              "prob": 0.88
+      "predicted_bracket": {
+        "regions": {
+          "East": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Duke",
+                  "s1": 1,
+                  "t2": "Siena",
+                  "s2": 16,
+                  "winner": "Duke",
+                  "w_seed": 1,
+                  "prob": 0.88
+                },
+                {
+                  "t1": "Ohio State",
+                  "s1": 8,
+                  "t2": "TCU",
+                  "s2": 9,
+                  "winner": "Ohio State",
+                  "w_seed": 8,
+                  "prob": 0.513
+                },
+                {
+                  "t1": "St. John's",
+                  "s1": 5,
+                  "t2": "Northern Iowa",
+                  "s2": 12,
+                  "winner": "St. John's",
+                  "w_seed": 5,
+                  "prob": 0.618
+                },
+                {
+                  "t1": "Kansas",
+                  "s1": 4,
+                  "t2": "Cal Baptist",
+                  "s2": 13,
+                  "winner": "Cal Baptist",
+                  "w_seed": 13,
+                  "prob": 0.23
+                },
+                {
+                  "t1": "Louisville",
+                  "s1": 6,
+                  "t2": "South Florida",
+                  "s2": 11,
+                  "winner": "Louisville",
+                  "w_seed": 6,
+                  "prob": 0.631
+                },
+                {
+                  "t1": "Michigan State",
+                  "s1": 3,
+                  "t2": "North Dakota State",
+                  "s2": 14,
+                  "winner": "Michigan State",
+                  "w_seed": 3,
+                  "prob": 0.82
+                },
+                {
+                  "t1": "UCLA",
+                  "s1": 7,
+                  "t2": "Central Florida",
+                  "s2": 10,
+                  "winner": "UCLA",
+                  "w_seed": 7,
+                  "prob": 0.608
+                },
+                {
+                  "t1": "Connecticut",
+                  "s1": 2,
+                  "t2": "Furman",
+                  "s2": 15,
+                  "winner": "Connecticut",
+                  "w_seed": 2,
+                  "prob": 0.88
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "Duke",
+                  "s1": 1,
+                  "t2": "Ohio State",
+                  "s2": 8,
+                  "winner": "Ohio State",
+                  "w_seed": 8,
+                  "prob": 0.226
+                },
+                {
+                  "t1": "St. John's",
+                  "s1": 5,
+                  "t2": "Cal Baptist",
+                  "s2": 13,
+                  "winner": "St. John's",
+                  "w_seed": 5,
+                  "prob": 0.781
+                },
+                {
+                  "t1": "Louisville",
+                  "s1": 6,
+                  "t2": "Michigan State",
+                  "s2": 3,
+                  "winner": "Michigan State",
+                  "w_seed": 3,
+                  "prob": 0.597
+                },
+                {
+                  "t1": "UCLA",
+                  "s1": 7,
+                  "t2": "Connecticut",
+                  "s2": 2,
+                  "winner": "Connecticut",
+                  "w_seed": 2,
+                  "prob": 0.639
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Ohio State",
+                  "s1": 8,
+                  "t2": "St. John's",
+                  "s2": 5,
+                  "winner": "St. John's",
+                  "w_seed": 5,
+                  "prob": 0.463
+                },
+                {
+                  "t1": "Michigan State",
+                  "s1": 3,
+                  "t2": "Connecticut",
+                  "s2": 2,
+                  "winner": "Connecticut",
+                  "w_seed": 2,
+                  "prob": 0.526
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "St. John's",
+                  "s1": 5,
+                  "t2": "Connecticut",
+                  "s2": 2,
+                  "winner": "St. John's",
+                  "w_seed": 5,
+                  "prob": 0.585
+                }
+              ]
             },
-            {
-              "t1": "Villanova",
-              "s1": 8,
-              "t2": "Utah State",
-              "s2": 9,
-              "winner": "Villanova",
-              "w_seed": 8,
-              "prob": 0.516
+            "winner": "St. John's",
+            "w_seed": 5
+          },
+          "West": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Arizona",
+                  "s1": 1,
+                  "t2": "Long Island",
+                  "s2": 16,
+                  "winner": "Arizona",
+                  "w_seed": 1,
+                  "prob": 0.88
+                },
+                {
+                  "t1": "Villanova",
+                  "s1": 8,
+                  "t2": "Utah State",
+                  "s2": 9,
+                  "winner": "Villanova",
+                  "w_seed": 8,
+                  "prob": 0.516
+                },
+                {
+                  "t1": "Wisconsin",
+                  "s1": 5,
+                  "t2": "High Point",
+                  "s2": 12,
+                  "winner": "High Point",
+                  "w_seed": 12,
+                  "prob": 0.436
+                },
+                {
+                  "t1": "Arkansas",
+                  "s1": 4,
+                  "t2": "Hawaii",
+                  "s2": 13,
+                  "winner": "Arkansas",
+                  "w_seed": 4,
+                  "prob": 0.763
+                },
+                {
+                  "t1": "BYU",
+                  "s1": 6,
+                  "t2": "Texas/NC State",
+                  "s2": 11,
+                  "winner": "Texas/NC State",
+                  "w_seed": 11,
+                  "prob": 0.432
+                },
+                {
+                  "t1": "Gonzaga",
+                  "s1": 3,
+                  "t2": "Kennesaw State",
+                  "s2": 14,
+                  "winner": "Gonzaga",
+                  "w_seed": 3,
+                  "prob": 0.829
+                },
+                {
+                  "t1": "Miami (FL)",
+                  "s1": 7,
+                  "t2": "Missouri",
+                  "s2": 10,
+                  "winner": "Missouri",
+                  "w_seed": 10,
+                  "prob": 0.405
+                },
+                {
+                  "t1": "Purdue",
+                  "s1": 2,
+                  "t2": "Queens",
+                  "s2": 15,
+                  "winner": "Purdue",
+                  "w_seed": 2,
+                  "prob": 0.85
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "Arizona",
+                  "s1": 1,
+                  "t2": "Villanova",
+                  "s2": 8,
+                  "winner": "Arizona",
+                  "w_seed": 1,
+                  "prob": 0.824
+                },
+                {
+                  "t1": "High Point",
+                  "s1": 12,
+                  "t2": "Arkansas",
+                  "s2": 4,
+                  "winner": "Arkansas",
+                  "w_seed": 4,
+                  "prob": 0.59
+                },
+                {
+                  "t1": "Texas/NC State",
+                  "s1": 11,
+                  "t2": "Gonzaga",
+                  "s2": 3,
+                  "winner": "Gonzaga",
+                  "w_seed": 3,
+                  "prob": 0.711
+                },
+                {
+                  "t1": "Missouri",
+                  "s1": 10,
+                  "t2": "Purdue",
+                  "s2": 2,
+                  "winner": "Purdue",
+                  "w_seed": 2,
+                  "prob": 0.653
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Arizona",
+                  "s1": 1,
+                  "t2": "Arkansas",
+                  "s2": 4,
+                  "winner": "Arkansas",
+                  "w_seed": 4,
+                  "prob": 0.296
+                },
+                {
+                  "t1": "Gonzaga",
+                  "s1": 3,
+                  "t2": "Purdue",
+                  "s2": 2,
+                  "winner": "Purdue",
+                  "w_seed": 2,
+                  "prob": 0.598
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "Arkansas",
+                  "s1": 4,
+                  "t2": "Purdue",
+                  "s2": 2,
+                  "winner": "Arkansas",
+                  "w_seed": 4,
+                  "prob": 0.522
+                }
+              ]
             },
-            {
-              "t1": "Wisconsin",
-              "s1": 5,
-              "t2": "High Point",
-              "s2": 12,
-              "winner": "High Point",
-              "w_seed": 12,
-              "prob": 0.436
+            "winner": "Arkansas",
+            "w_seed": 4
+          },
+          "Midwest": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Michigan",
+                  "s1": 1,
+                  "t2": "UMBC/Howard",
+                  "s2": 16,
+                  "winner": "Michigan",
+                  "w_seed": 1,
+                  "prob": 0.88
+                },
+                {
+                  "t1": "Georgia",
+                  "s1": 8,
+                  "t2": "Saint Louis",
+                  "s2": 9,
+                  "winner": "Saint Louis",
+                  "w_seed": 9,
+                  "prob": 0.526
+                },
+                {
+                  "t1": "Texas Tech",
+                  "s1": 5,
+                  "t2": "Akron",
+                  "s2": 12,
+                  "winner": "Texas Tech",
+                  "w_seed": 5,
+                  "prob": 0.546
+                },
+                {
+                  "t1": "Alabama",
+                  "s1": 4,
+                  "t2": "Hofstra",
+                  "s2": 13,
+                  "winner": "Alabama",
+                  "w_seed": 4,
+                  "prob": 0.689
+                },
+                {
+                  "t1": "Tennessee",
+                  "s1": 6,
+                  "t2": "Miami (OH)/SMU",
+                  "s2": 11,
+                  "winner": "Miami (OH)/SMU",
+                  "w_seed": 11,
+                  "prob": 0.453
+                },
+                {
+                  "t1": "Virginia",
+                  "s1": 3,
+                  "t2": "Wright State",
+                  "s2": 14,
+                  "winner": "Virginia",
+                  "w_seed": 3,
+                  "prob": 0.785
+                },
+                {
+                  "t1": "Kentucky",
+                  "s1": 7,
+                  "t2": "Santa Clara",
+                  "s2": 10,
+                  "winner": "Kentucky",
+                  "w_seed": 7,
+                  "prob": 0.628
+                },
+                {
+                  "t1": "Iowa State",
+                  "s1": 2,
+                  "t2": "Tennessee State",
+                  "s2": 15,
+                  "winner": "Iowa State",
+                  "w_seed": 2,
+                  "prob": 0.859
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "Michigan",
+                  "s1": 1,
+                  "t2": "Saint Louis",
+                  "s2": 9,
+                  "winner": "Michigan",
+                  "w_seed": 1,
+                  "prob": 0.754
+                },
+                {
+                  "t1": "Texas Tech",
+                  "s1": 5,
+                  "t2": "Alabama",
+                  "s2": 4,
+                  "winner": "Texas Tech",
+                  "w_seed": 5,
+                  "prob": 0.391
+                },
+                {
+                  "t1": "Miami (OH)/SMU",
+                  "s1": 11,
+                  "t2": "Virginia",
+                  "s2": 3,
+                  "winner": "Virginia",
+                  "w_seed": 3,
+                  "prob": 0.603
+                },
+                {
+                  "t1": "Kentucky",
+                  "s1": 7,
+                  "t2": "Iowa State",
+                  "s2": 2,
+                  "winner": "Iowa State",
+                  "w_seed": 2,
+                  "prob": 0.693
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Michigan",
+                  "s1": 1,
+                  "t2": "Texas Tech",
+                  "s2": 5,
+                  "winner": "Michigan",
+                  "w_seed": 1,
+                  "prob": 0.807
+                },
+                {
+                  "t1": "Virginia",
+                  "s1": 3,
+                  "t2": "Iowa State",
+                  "s2": 2,
+                  "winner": "Iowa State",
+                  "w_seed": 2,
+                  "prob": 0.666
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "Michigan",
+                  "s1": 1,
+                  "t2": "Iowa State",
+                  "s2": 2,
+                  "winner": "Michigan",
+                  "w_seed": 1,
+                  "prob": 0.458
+                }
+              ]
             },
-            {
-              "t1": "Arkansas",
-              "s1": 4,
-              "t2": "Hawaii",
-              "s2": 13,
-              "winner": "Arkansas",
-              "w_seed": 4,
-              "prob": 0.763
+            "winner": "Michigan",
+            "w_seed": 1
+          },
+          "South": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Florida",
+                  "s1": 1,
+                  "t2": "Pra. View/Lehigh",
+                  "s2": 16,
+                  "winner": "Florida",
+                  "w_seed": 1,
+                  "prob": 0.88
+                },
+                {
+                  "t1": "Clemson",
+                  "s1": 8,
+                  "t2": "Iowa",
+                  "s2": 9,
+                  "winner": "Iowa",
+                  "w_seed": 9,
+                  "prob": 0.492
+                },
+                {
+                  "t1": "Vanderbilt",
+                  "s1": 5,
+                  "t2": "McNeese State",
+                  "s2": 12,
+                  "winner": "Vanderbilt",
+                  "w_seed": 5,
+                  "prob": 0.661
+                },
+                {
+                  "t1": "Nebraska",
+                  "s1": 4,
+                  "t2": "Troy",
+                  "s2": 13,
+                  "winner": "Nebraska",
+                  "w_seed": 4,
+                  "prob": 0.717
+                },
+                {
+                  "t1": "North Carolina",
+                  "s1": 6,
+                  "t2": "VCU",
+                  "s2": 11,
+                  "winner": "VCU",
+                  "w_seed": 11,
+                  "prob": 0.435
+                },
+                {
+                  "t1": "Illinois",
+                  "s1": 3,
+                  "t2": "Penn",
+                  "s2": 14,
+                  "winner": "Illinois",
+                  "w_seed": 3,
+                  "prob": 0.815
+                },
+                {
+                  "t1": "Saint Mary's",
+                  "s1": 7,
+                  "t2": "Texas A&M",
+                  "s2": 10,
+                  "winner": "Saint Mary's",
+                  "w_seed": 7,
+                  "prob": 0.6
+                },
+                {
+                  "t1": "Houston",
+                  "s1": 2,
+                  "t2": "Idaho",
+                  "s2": 15,
+                  "winner": "Idaho",
+                  "w_seed": 15,
+                  "prob": 0.142
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "Florida",
+                  "s1": 1,
+                  "t2": "Iowa",
+                  "s2": 9,
+                  "winner": "Florida",
+                  "w_seed": 1,
+                  "prob": 0.868
+                },
+                {
+                  "t1": "Vanderbilt",
+                  "s1": 5,
+                  "t2": "Nebraska",
+                  "s2": 4,
+                  "winner": "Vanderbilt",
+                  "w_seed": 5,
+                  "prob": 0.554
+                },
+                {
+                  "t1": "VCU",
+                  "s1": 11,
+                  "t2": "Illinois",
+                  "s2": 3,
+                  "winner": "VCU",
+                  "w_seed": 11,
+                  "prob": 0.358
+                },
+                {
+                  "t1": "Saint Mary's",
+                  "s1": 7,
+                  "t2": "Idaho",
+                  "s2": 15,
+                  "winner": "Saint Mary's",
+                  "w_seed": 7,
+                  "prob": 0.545
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Florida",
+                  "s1": 1,
+                  "t2": "Vanderbilt",
+                  "s2": 5,
+                  "winner": "Florida",
+                  "w_seed": 1,
+                  "prob": 0.768
+                },
+                {
+                  "t1": "VCU",
+                  "s1": 11,
+                  "t2": "Saint Mary's",
+                  "s2": 7,
+                  "winner": "VCU",
+                  "w_seed": 11,
+                  "prob": 0.671
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "Florida",
+                  "s1": 1,
+                  "t2": "VCU",
+                  "s2": 11,
+                  "winner": "Florida",
+                  "w_seed": 1,
+                  "prob": 0.754
+                }
+              ]
             },
-            {
-              "t1": "BYU",
-              "s1": 6,
-              "t2": "Texas/NC State",
-              "s2": 11,
-              "winner": "Texas/NC State",
-              "w_seed": 11,
-              "prob": 0.432
-            },
-            {
-              "t1": "Gonzaga",
-              "s1": 3,
-              "t2": "Kennesaw State",
-              "s2": 14,
-              "winner": "Gonzaga",
-              "w_seed": 3,
-              "prob": 0.829
-            },
-            {
-              "t1": "Miami (FL)",
-              "s1": 7,
-              "t2": "Missouri",
-              "s2": 10,
-              "winner": "Missouri",
-              "w_seed": 10,
-              "prob": 0.405
-            },
-            {
-              "t1": "Purdue",
-              "s1": 2,
-              "t2": "Queens",
-              "s2": 15,
-              "winner": "Purdue",
-              "w_seed": 2,
-              "prob": 0.85
-            }
-          ],
-          "R32": [
-            {
-              "t1": "Arizona",
-              "s1": 1,
-              "t2": "Villanova",
-              "s2": 8,
-              "winner": "Arizona",
-              "w_seed": 1,
-              "prob": 0.824
-            },
-            {
-              "t1": "High Point",
-              "s1": 12,
-              "t2": "Arkansas",
-              "s2": 4,
-              "winner": "Arkansas",
-              "w_seed": 4,
-              "prob": 0.59
-            },
-            {
-              "t1": "Texas/NC State",
-              "s1": 11,
-              "t2": "Gonzaga",
-              "s2": 3,
-              "winner": "Gonzaga",
-              "w_seed": 3,
-              "prob": 0.711
-            },
-            {
-              "t1": "Missouri",
-              "s1": 10,
-              "t2": "Purdue",
-              "s2": 2,
-              "winner": "Purdue",
-              "w_seed": 2,
-              "prob": 0.653
-            }
-          ],
-          "S16": [
-            {
-              "t1": "Arizona",
-              "s1": 1,
-              "t2": "Arkansas",
-              "s2": 4,
-              "winner": "Arkansas",
-              "w_seed": 4,
-              "prob": 0.296
-            },
-            {
-              "t1": "Gonzaga",
-              "s1": 3,
-              "t2": "Purdue",
-              "s2": 2,
-              "winner": "Purdue",
-              "w_seed": 2,
-              "prob": 0.598
-            }
-          ],
-          "E8": [
-            {
-              "t1": "Arkansas",
-              "s1": 4,
-              "t2": "Purdue",
-              "s2": 2,
-              "winner": "Arkansas",
-              "w_seed": 4,
-              "prob": 0.522
-            }
-          ]
+            "winner": "Florida",
+            "w_seed": 1
+          }
         },
-        "winner": "Arkansas",
-        "w_seed": 4
-      },
-      "Midwest": {
-        "rounds": {
-          "R64": [
-            {
-              "t1": "Michigan",
-              "s1": 1,
-              "t2": "UMBC/Howard",
-              "s2": 16,
-              "winner": "Michigan",
-              "w_seed": 1,
-              "prob": 0.88
-            },
-            {
-              "t1": "Georgia",
-              "s1": 8,
-              "t2": "Saint Louis",
-              "s2": 9,
-              "winner": "Saint Louis",
-              "w_seed": 9,
-              "prob": 0.526
-            },
-            {
-              "t1": "Texas Tech",
-              "s1": 5,
-              "t2": "Akron",
-              "s2": 12,
-              "winner": "Texas Tech",
-              "w_seed": 5,
-              "prob": 0.546
-            },
-            {
-              "t1": "Alabama",
-              "s1": 4,
-              "t2": "Hofstra",
-              "s2": 13,
-              "winner": "Alabama",
-              "w_seed": 4,
-              "prob": 0.689
-            },
-            {
-              "t1": "Tennessee",
-              "s1": 6,
-              "t2": "Miami (OH)/SMU",
-              "s2": 11,
-              "winner": "Miami (OH)/SMU",
-              "w_seed": 11,
-              "prob": 0.453
-            },
-            {
-              "t1": "Virginia",
-              "s1": 3,
-              "t2": "Wright State",
-              "s2": 14,
-              "winner": "Virginia",
-              "w_seed": 3,
-              "prob": 0.785
-            },
-            {
-              "t1": "Kentucky",
-              "s1": 7,
-              "t2": "Santa Clara",
-              "s2": 10,
-              "winner": "Kentucky",
-              "w_seed": 7,
-              "prob": 0.628
-            },
-            {
-              "t1": "Iowa State",
-              "s1": 2,
-              "t2": "Tennessee State",
-              "s2": 15,
-              "winner": "Iowa State",
-              "w_seed": 2,
-              "prob": 0.859
-            }
-          ],
-          "R32": [
-            {
-              "t1": "Michigan",
-              "s1": 1,
-              "t2": "Saint Louis",
-              "s2": 9,
-              "winner": "Michigan",
-              "w_seed": 1,
-              "prob": 0.754
-            },
-            {
-              "t1": "Texas Tech",
-              "s1": 5,
-              "t2": "Alabama",
-              "s2": 4,
-              "winner": "Texas Tech",
-              "w_seed": 5,
-              "prob": 0.391
-            },
-            {
-              "t1": "Miami (OH)/SMU",
-              "s1": 11,
-              "t2": "Virginia",
-              "s2": 3,
-              "winner": "Virginia",
-              "w_seed": 3,
-              "prob": 0.603
-            },
-            {
-              "t1": "Kentucky",
-              "s1": 7,
-              "t2": "Iowa State",
-              "s2": 2,
-              "winner": "Iowa State",
-              "w_seed": 2,
-              "prob": 0.693
-            }
-          ],
-          "S16": [
-            {
-              "t1": "Michigan",
-              "s1": 1,
-              "t2": "Texas Tech",
-              "s2": 5,
-              "winner": "Michigan",
-              "w_seed": 1,
-              "prob": 0.807
-            },
-            {
-              "t1": "Virginia",
-              "s1": 3,
-              "t2": "Iowa State",
-              "s2": 2,
-              "winner": "Iowa State",
-              "w_seed": 2,
-              "prob": 0.666
-            }
-          ],
-          "E8": [
-            {
-              "t1": "Michigan",
-              "s1": 1,
-              "t2": "Iowa State",
-              "s2": 2,
-              "winner": "Michigan",
-              "w_seed": 1,
-              "prob": 0.458
-            }
-          ]
+        "f4_left": {
+          "t1": "St. John's",
+          "s1": 5,
+          "t2": "Florida",
+          "s2": 1,
+          "winner": "Florida",
+          "w_seed": 1,
+          "prob": 0.843
         },
-        "winner": "Michigan",
-        "w_seed": 1
-      },
-      "South": {
-        "rounds": {
-          "R64": [
-            {
-              "t1": "Florida",
-              "s1": 1,
-              "t2": "Pra. View/Lehigh",
-              "s2": 16,
-              "winner": "Florida",
-              "w_seed": 1,
-              "prob": 0.88
-            },
-            {
-              "t1": "Clemson",
-              "s1": 8,
-              "t2": "Iowa",
-              "s2": 9,
-              "winner": "Iowa",
-              "w_seed": 9,
-              "prob": 0.492
-            },
-            {
-              "t1": "Vanderbilt",
-              "s1": 5,
-              "t2": "McNeese State",
-              "s2": 12,
-              "winner": "Vanderbilt",
-              "w_seed": 5,
-              "prob": 0.661
-            },
-            {
-              "t1": "Nebraska",
-              "s1": 4,
-              "t2": "Troy",
-              "s2": 13,
-              "winner": "Nebraska",
-              "w_seed": 4,
-              "prob": 0.717
-            },
-            {
-              "t1": "North Carolina",
-              "s1": 6,
-              "t2": "VCU",
-              "s2": 11,
-              "winner": "VCU",
-              "w_seed": 11,
-              "prob": 0.435
-            },
-            {
-              "t1": "Illinois",
-              "s1": 3,
-              "t2": "Penn",
-              "s2": 14,
-              "winner": "Illinois",
-              "w_seed": 3,
-              "prob": 0.815
-            },
-            {
-              "t1": "Saint Mary's",
-              "s1": 7,
-              "t2": "Texas A&M",
-              "s2": 10,
-              "winner": "Saint Mary's",
-              "w_seed": 7,
-              "prob": 0.6
-            },
-            {
-              "t1": "Houston",
-              "s1": 2,
-              "t2": "Idaho",
-              "s2": 15,
-              "winner": "Idaho",
-              "w_seed": 15,
-              "prob": 0.142
-            }
-          ],
-          "R32": [
-            {
-              "t1": "Florida",
-              "s1": 1,
-              "t2": "Iowa",
-              "s2": 9,
-              "winner": "Florida",
-              "w_seed": 1,
-              "prob": 0.868
-            },
-            {
-              "t1": "Vanderbilt",
-              "s1": 5,
-              "t2": "Nebraska",
-              "s2": 4,
-              "winner": "Vanderbilt",
-              "w_seed": 5,
-              "prob": 0.554
-            },
-            {
-              "t1": "VCU",
-              "s1": 11,
-              "t2": "Illinois",
-              "s2": 3,
-              "winner": "VCU",
-              "w_seed": 11,
-              "prob": 0.358
-            },
-            {
-              "t1": "Saint Mary's",
-              "s1": 7,
-              "t2": "Idaho",
-              "s2": 15,
-              "winner": "Saint Mary's",
-              "w_seed": 7,
-              "prob": 0.545
-            }
-          ],
-          "S16": [
-            {
-              "t1": "Florida",
-              "s1": 1,
-              "t2": "Vanderbilt",
-              "s2": 5,
-              "winner": "Florida",
-              "w_seed": 1,
-              "prob": 0.768
-            },
-            {
-              "t1": "VCU",
-              "s1": 11,
-              "t2": "Saint Mary's",
-              "s2": 7,
-              "winner": "VCU",
-              "w_seed": 11,
-              "prob": 0.671
-            }
-          ],
-          "E8": [
-            {
-              "t1": "Florida",
-              "s1": 1,
-              "t2": "VCU",
-              "s2": 11,
-              "winner": "Florida",
-              "w_seed": 1,
-              "prob": 0.754
-            }
-          ]
+        "f4_right": {
+          "t1": "Arkansas",
+          "s1": 4,
+          "t2": "Michigan",
+          "s2": 1,
+          "winner": "Arkansas",
+          "w_seed": 4,
+          "prob": 0.246
         },
-        "winner": "Florida",
-        "w_seed": 1
+        "ncg": {
+          "t1": "Florida",
+          "s1": 1,
+          "t2": "Arkansas",
+          "s2": 4,
+          "winner": "Florida",
+          "w_seed": 1,
+          "prob": 0.806
+        }
       }
     },
-    "f4_left": {
-      "t1": "St. John's",
-      "s1": 5,
-      "t2": "Florida",
-      "s2": 1,
-      "winner": "Florida",
-      "w_seed": 1,
-      "prob": 0.843
-    },
-    "f4_right": {
-      "t1": "Arkansas",
-      "s1": 4,
-      "t2": "Michigan",
-      "s2": 1,
-      "winner": "Arkansas",
-      "w_seed": 4,
-      "prob": 0.246
-    },
-    "ncg": {
-      "t1": "Florida",
-      "s1": 1,
-      "t2": "Arkansas",
-      "s2": 4,
-      "winner": "Florida",
-      "w_seed": 1,
-      "prob": 0.806
+    "chat_gpt": {
+      "label": "ChatGPT",
+      "description": "Built using Codex with a richer feature set from detailed box scores and rating signals.",
+      "name": "rf_rich",
+      "backtest_summary": [
+        {
+          "model": "rf_rich",
+          "mean_accuracy": 0.7026,
+          "std_accuracy": 0.0595,
+          "mean_log_loss": 0.556,
+          "std_log_loss": 0.0562,
+          "seasons": 20
+        },
+        {
+          "model": "seed_logit",
+          "mean_accuracy": 0.6992,
+          "std_accuracy": 0.046,
+          "mean_log_loss": 0.5708,
+          "std_log_loss": 0.0554,
+          "seasons": 20
+        },
+        {
+          "model": "logit_rich",
+          "mean_accuracy": 0.7049,
+          "std_accuracy": 0.0497,
+          "mean_log_loss": 0.5856,
+          "std_log_loss": 0.0844,
+          "seasons": 20
+        },
+        {
+          "model": "xgb_rich",
+          "mean_accuracy": 0.6905,
+          "std_accuracy": 0.0528,
+          "mean_log_loss": 0.608,
+          "std_log_loss": 0.0954,
+          "seasons": 20
+        },
+        {
+          "model": "hgb_rich",
+          "mean_accuracy": 0.6968,
+          "std_accuracy": 0.0635,
+          "mean_log_loss": 0.6862,
+          "std_log_loss": 0.1859,
+          "seasons": 20
+        }
+      ],
+      "top_features": [
+        {
+          "feature": "massey_mean_diff",
+          "importance": 0.077865
+        },
+        {
+          "feature": "massey_median_diff",
+          "importance": 0.061046
+        },
+        {
+          "feature": "seed_diff",
+          "importance": 0.043599
+        },
+        {
+          "feature": "massey_best_diff",
+          "importance": 0.040201
+        },
+        {
+          "feature": "massey_mean_a",
+          "importance": 0.034643
+        },
+        {
+          "feature": "massey_mean_b",
+          "importance": 0.033972
+        },
+        {
+          "feature": "massey_median_a",
+          "importance": 0.030045
+        },
+        {
+          "feature": "massey_median_b",
+          "importance": 0.029817
+        },
+        {
+          "feature": "net_rating_diff",
+          "importance": 0.027362
+        },
+        {
+          "feature": "avg_margin_diff",
+          "importance": 0.02328
+        },
+        {
+          "feature": "seed_b",
+          "importance": 0.021713
+        },
+        {
+          "feature": "sos_win_pct_diff",
+          "importance": 0.021324
+        },
+        {
+          "feature": "sos_net_rating_diff",
+          "importance": 0.020041
+        },
+        {
+          "feature": "seed_a",
+          "importance": 0.018961
+        },
+        {
+          "feature": "massey_best_a",
+          "importance": 0.018174
+        },
+        {
+          "feature": "massey_best_b",
+          "importance": 0.017771
+        },
+        {
+          "feature": "sos_win_pct_b",
+          "importance": 0.014674
+        },
+        {
+          "feature": "net_rating_a",
+          "importance": 0.012473
+        },
+        {
+          "feature": "sos_win_pct_a",
+          "importance": 0.012125
+        },
+        {
+          "feature": "off_rating_diff",
+          "importance": 0.012096
+        }
+      ],
+      "predicted_bracket": {
+        "regions": {
+          "East": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Duke",
+                  "s1": 1,
+                  "t2": "Siena",
+                  "s2": 16,
+                  "winner": "Duke",
+                  "w_seed": 1,
+                  "prob": 0.749
+                },
+                {
+                  "t1": "Ohio State",
+                  "s1": 8,
+                  "t2": "TCU",
+                  "s2": 9,
+                  "winner": "Ohio State",
+                  "w_seed": 8,
+                  "prob": 0.597
+                },
+                {
+                  "t1": "St. John's",
+                  "s1": 5,
+                  "t2": "Northern Iowa",
+                  "s2": 12,
+                  "winner": "St. John's",
+                  "w_seed": 5,
+                  "prob": 0.473
+                },
+                {
+                  "t1": "Kansas",
+                  "s1": 4,
+                  "t2": "Cal Baptist",
+                  "s2": 13,
+                  "winner": "Kansas",
+                  "w_seed": 4,
+                  "prob": 0.428
+                },
+                {
+                  "t1": "Louisville",
+                  "s1": 6,
+                  "t2": "South Florida",
+                  "s2": 11,
+                  "winner": "Louisville",
+                  "w_seed": 6,
+                  "prob": 0.649
+                },
+                {
+                  "t1": "Michigan State",
+                  "s1": 3,
+                  "t2": "North Dakota State",
+                  "s2": 14,
+                  "winner": "North Dakota State",
+                  "w_seed": 14,
+                  "prob": 0.378
+                },
+                {
+                  "t1": "UCLA",
+                  "s1": 7,
+                  "t2": "Central Florida",
+                  "s2": 10,
+                  "winner": "UCLA",
+                  "w_seed": 7,
+                  "prob": 0.503
+                },
+                {
+                  "t1": "Connecticut",
+                  "s1": 2,
+                  "t2": "Furman",
+                  "s2": 15,
+                  "winner": "Connecticut",
+                  "w_seed": 2,
+                  "prob": 0.714
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "Duke",
+                  "s1": 1,
+                  "t2": "Ohio State",
+                  "s2": 8,
+                  "winner": "Duke",
+                  "w_seed": 1,
+                  "prob": 0.71
+                },
+                {
+                  "t1": "St. John's",
+                  "s1": 5,
+                  "t2": "Kansas",
+                  "s2": 4,
+                  "winner": "St. John's",
+                  "w_seed": 5,
+                  "prob": 0.448
+                },
+                {
+                  "t1": "Louisville",
+                  "s1": 6,
+                  "t2": "North Dakota State",
+                  "s2": 14,
+                  "winner": "North Dakota State",
+                  "w_seed": 14,
+                  "prob": 0.359
+                },
+                {
+                  "t1": "UCLA",
+                  "s1": 7,
+                  "t2": "Connecticut",
+                  "s2": 2,
+                  "winner": "UCLA",
+                  "w_seed": 7,
+                  "prob": 0.336
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Duke",
+                  "s1": 1,
+                  "t2": "St. John's",
+                  "s2": 5,
+                  "winner": "Duke",
+                  "w_seed": 1,
+                  "prob": 0.688
+                },
+                {
+                  "t1": "North Dakota State",
+                  "s1": 14,
+                  "t2": "UCLA",
+                  "s2": 7,
+                  "winner": "North Dakota State",
+                  "w_seed": 14,
+                  "prob": 0.603
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "Duke",
+                  "s1": 1,
+                  "t2": "North Dakota State",
+                  "s2": 14,
+                  "winner": "Duke",
+                  "w_seed": 1,
+                  "prob": 0.733
+                }
+              ]
+            },
+            "winner": "Duke",
+            "w_seed": 1
+          },
+          "West": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Arizona",
+                  "s1": 1,
+                  "t2": "Long Island",
+                  "s2": 16,
+                  "winner": "Arizona",
+                  "w_seed": 1,
+                  "prob": 0.843
+                },
+                {
+                  "t1": "Villanova",
+                  "s1": 8,
+                  "t2": "Utah State",
+                  "s2": 9,
+                  "winner": "Utah State",
+                  "w_seed": 9,
+                  "prob": 0.562
+                },
+                {
+                  "t1": "Wisconsin",
+                  "s1": 5,
+                  "t2": "High Point",
+                  "s2": 12,
+                  "winner": "High Point",
+                  "w_seed": 12,
+                  "prob": 0.639
+                },
+                {
+                  "t1": "Arkansas",
+                  "s1": 4,
+                  "t2": "Hawaii",
+                  "s2": 13,
+                  "winner": "Arkansas",
+                  "w_seed": 4,
+                  "prob": 0.738
+                },
+                {
+                  "t1": "BYU",
+                  "s1": 6,
+                  "t2": "Texas/NC State",
+                  "s2": 11,
+                  "winner": "BYU",
+                  "w_seed": 6,
+                  "prob": 0.593
+                },
+                {
+                  "t1": "Gonzaga",
+                  "s1": 3,
+                  "t2": "Kennesaw State",
+                  "s2": 14,
+                  "winner": "Kennesaw State",
+                  "w_seed": 14,
+                  "prob": 0.274
+                },
+                {
+                  "t1": "Miami (FL)",
+                  "s1": 7,
+                  "t2": "Missouri",
+                  "s2": 10,
+                  "winner": "Miami (FL)",
+                  "w_seed": 7,
+                  "prob": 0.601
+                },
+                {
+                  "t1": "Purdue",
+                  "s1": 2,
+                  "t2": "Queens",
+                  "s2": 15,
+                  "winner": "Purdue",
+                  "w_seed": 2,
+                  "prob": 0.643
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "Arizona",
+                  "s1": 1,
+                  "t2": "Utah State",
+                  "s2": 9,
+                  "winner": "Arizona",
+                  "w_seed": 1,
+                  "prob": 0.734
+                },
+                {
+                  "t1": "High Point",
+                  "s1": 12,
+                  "t2": "Arkansas",
+                  "s2": 4,
+                  "winner": "Arkansas",
+                  "w_seed": 4,
+                  "prob": 0.66
+                },
+                {
+                  "t1": "BYU",
+                  "s1": 6,
+                  "t2": "Kennesaw State",
+                  "s2": 14,
+                  "winner": "BYU",
+                  "w_seed": 6,
+                  "prob": 0.62
+                },
+                {
+                  "t1": "Miami (FL)",
+                  "s1": 7,
+                  "t2": "Purdue",
+                  "s2": 2,
+                  "winner": "Purdue",
+                  "w_seed": 2,
+                  "prob": 0.403
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Arizona",
+                  "s1": 1,
+                  "t2": "Arkansas",
+                  "s2": 4,
+                  "winner": "Arizona",
+                  "w_seed": 1,
+                  "prob": 0.597
+                },
+                {
+                  "t1": "BYU",
+                  "s1": 6,
+                  "t2": "Purdue",
+                  "s2": 2,
+                  "winner": "Purdue",
+                  "w_seed": 2,
+                  "prob": 0.475
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "Arizona",
+                  "s1": 1,
+                  "t2": "Purdue",
+                  "s2": 2,
+                  "winner": "Arizona",
+                  "w_seed": 1,
+                  "prob": 0.69
+                }
+              ]
+            },
+            "winner": "Arizona",
+            "w_seed": 1
+          },
+          "Midwest": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Michigan",
+                  "s1": 1,
+                  "t2": "UMBC/Howard",
+                  "s2": 16,
+                  "winner": "UMBC/Howard",
+                  "w_seed": 16,
+                  "prob": 0.504
+                },
+                {
+                  "t1": "Georgia",
+                  "s1": 8,
+                  "t2": "Saint Louis",
+                  "s2": 9,
+                  "winner": "Saint Louis",
+                  "w_seed": 9,
+                  "prob": 0.429
+                },
+                {
+                  "t1": "Texas Tech",
+                  "s1": 5,
+                  "t2": "Akron",
+                  "s2": 12,
+                  "winner": "Akron",
+                  "w_seed": 12,
+                  "prob": 0.707
+                },
+                {
+                  "t1": "Alabama",
+                  "s1": 4,
+                  "t2": "Hofstra",
+                  "s2": 13,
+                  "winner": "Hofstra",
+                  "w_seed": 13,
+                  "prob": 0.277
+                },
+                {
+                  "t1": "Tennessee",
+                  "s1": 6,
+                  "t2": "Miami (OH)/SMU",
+                  "s2": 11,
+                  "winner": "Tennessee",
+                  "w_seed": 6,
+                  "prob": 0.46
+                },
+                {
+                  "t1": "Virginia",
+                  "s1": 3,
+                  "t2": "Wright State",
+                  "s2": 14,
+                  "winner": "Virginia",
+                  "w_seed": 3,
+                  "prob": 0.65
+                },
+                {
+                  "t1": "Kentucky",
+                  "s1": 7,
+                  "t2": "Santa Clara",
+                  "s2": 10,
+                  "winner": "Kentucky",
+                  "w_seed": 7,
+                  "prob": 0.599
+                },
+                {
+                  "t1": "Iowa State",
+                  "s1": 2,
+                  "t2": "Tennessee State",
+                  "s2": 15,
+                  "winner": "Iowa State",
+                  "w_seed": 2,
+                  "prob": 0.753
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "UMBC/Howard",
+                  "s1": 16,
+                  "t2": "Saint Louis",
+                  "s2": 9,
+                  "winner": "Saint Louis",
+                  "w_seed": 9,
+                  "prob": 0.487
+                },
+                {
+                  "t1": "Akron",
+                  "s1": 12,
+                  "t2": "Hofstra",
+                  "s2": 13,
+                  "winner": "Akron",
+                  "w_seed": 12,
+                  "prob": 0.743
+                },
+                {
+                  "t1": "Tennessee",
+                  "s1": 6,
+                  "t2": "Virginia",
+                  "s2": 3,
+                  "winner": "Tennessee",
+                  "w_seed": 6,
+                  "prob": 0.577
+                },
+                {
+                  "t1": "Kentucky",
+                  "s1": 7,
+                  "t2": "Iowa State",
+                  "s2": 2,
+                  "winner": "Iowa State",
+                  "w_seed": 2,
+                  "prob": 0.638
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Saint Louis",
+                  "s1": 9,
+                  "t2": "Akron",
+                  "s2": 12,
+                  "winner": "Saint Louis",
+                  "w_seed": 9,
+                  "prob": 0.347
+                },
+                {
+                  "t1": "Tennessee",
+                  "s1": 6,
+                  "t2": "Iowa State",
+                  "s2": 2,
+                  "winner": "Tennessee",
+                  "w_seed": 6,
+                  "prob": 0.34
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "Saint Louis",
+                  "s1": 9,
+                  "t2": "Tennessee",
+                  "s2": 6,
+                  "winner": "Tennessee",
+                  "w_seed": 6,
+                  "prob": 0.426
+                }
+              ]
+            },
+            "winner": "Tennessee",
+            "w_seed": 6
+          },
+          "South": {
+            "rounds": {
+              "R64": [
+                {
+                  "t1": "Florida",
+                  "s1": 1,
+                  "t2": "Pra. View/Lehigh",
+                  "s2": 16,
+                  "winner": "Pra. View/Lehigh",
+                  "w_seed": 16,
+                  "prob": 0.498
+                },
+                {
+                  "t1": "Clemson",
+                  "s1": 8,
+                  "t2": "Iowa",
+                  "s2": 9,
+                  "winner": "Iowa",
+                  "w_seed": 9,
+                  "prob": 0.403
+                },
+                {
+                  "t1": "Vanderbilt",
+                  "s1": 5,
+                  "t2": "McNeese State",
+                  "s2": 12,
+                  "winner": "McNeese State",
+                  "w_seed": 12,
+                  "prob": 0.619
+                },
+                {
+                  "t1": "Nebraska",
+                  "s1": 4,
+                  "t2": "Troy",
+                  "s2": 13,
+                  "winner": "Nebraska",
+                  "w_seed": 4,
+                  "prob": 0.703
+                },
+                {
+                  "t1": "North Carolina",
+                  "s1": 6,
+                  "t2": "VCU",
+                  "s2": 11,
+                  "winner": "North Carolina",
+                  "w_seed": 6,
+                  "prob": 0.592
+                },
+                {
+                  "t1": "Illinois",
+                  "s1": 3,
+                  "t2": "Penn",
+                  "s2": 14,
+                  "winner": "Illinois",
+                  "w_seed": 3,
+                  "prob": 0.491
+                },
+                {
+                  "t1": "Saint Mary's",
+                  "s1": 7,
+                  "t2": "Texas A&M",
+                  "s2": 10,
+                  "winner": "Saint Mary's",
+                  "w_seed": 7,
+                  "prob": 0.682
+                },
+                {
+                  "t1": "Houston",
+                  "s1": 2,
+                  "t2": "Idaho",
+                  "s2": 15,
+                  "winner": "Houston",
+                  "w_seed": 2,
+                  "prob": 0.641
+                }
+              ],
+              "R32": [
+                {
+                  "t1": "Pra. View/Lehigh",
+                  "s1": 16,
+                  "t2": "Iowa",
+                  "s2": 9,
+                  "winner": "Pra. View/Lehigh",
+                  "w_seed": 16,
+                  "prob": 0.524
+                },
+                {
+                  "t1": "McNeese State",
+                  "s1": 12,
+                  "t2": "Nebraska",
+                  "s2": 4,
+                  "winner": "McNeese State",
+                  "w_seed": 12,
+                  "prob": 0.55
+                },
+                {
+                  "t1": "North Carolina",
+                  "s1": 6,
+                  "t2": "Illinois",
+                  "s2": 3,
+                  "winner": "North Carolina",
+                  "w_seed": 6,
+                  "prob": 0.354
+                },
+                {
+                  "t1": "Saint Mary's",
+                  "s1": 7,
+                  "t2": "Houston",
+                  "s2": 2,
+                  "winner": "Houston",
+                  "w_seed": 2,
+                  "prob": 0.655
+                }
+              ],
+              "S16": [
+                {
+                  "t1": "Pra. View/Lehigh",
+                  "s1": 16,
+                  "t2": "McNeese State",
+                  "s2": 12,
+                  "winner": "McNeese State",
+                  "w_seed": 12,
+                  "prob": 0.489
+                },
+                {
+                  "t1": "North Carolina",
+                  "s1": 6,
+                  "t2": "Houston",
+                  "s2": 2,
+                  "winner": "Houston",
+                  "w_seed": 2,
+                  "prob": 0.681
+                }
+              ],
+              "E8": [
+                {
+                  "t1": "McNeese State",
+                  "s1": 12,
+                  "t2": "Houston",
+                  "s2": 2,
+                  "winner": "McNeese State",
+                  "w_seed": 12,
+                  "prob": 0.342
+                }
+              ]
+            },
+            "winner": "McNeese State",
+            "w_seed": 12
+          }
+        },
+        "f4_left": {
+          "t1": "Duke",
+          "s1": 1,
+          "t2": "McNeese State",
+          "s2": 12,
+          "winner": "Duke",
+          "w_seed": 1,
+          "prob": 0.677
+        },
+        "f4_right": {
+          "t1": "Arizona",
+          "s1": 1,
+          "t2": "Tennessee",
+          "s2": 6,
+          "winner": "Arizona",
+          "w_seed": 1,
+          "prob": 0.742
+        },
+        "ncg": {
+          "t1": "Duke",
+          "s1": 1,
+          "t2": "Arizona",
+          "s2": 1,
+          "winner": "Arizona",
+          "w_seed": 1,
+          "prob": 0.666
+        }
+      }
     }
   }
 }
