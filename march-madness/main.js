@@ -5,6 +5,7 @@
 
 // ── GLOBAL STATE ─────────────────────────────────────────────
 let DATA = null;
+let RESULTS = null;
 let TEAMS_ARR = [];  // [{name, ...team_data}, ...]
 let SORT_STATE = { odds: { key: "model_champion_prob", dir: -1 }, stats: { key: "win_pct", dir: -1 } };
 let ACTIVE_ROUND = "Champion";
@@ -20,6 +21,11 @@ async function init() {
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     DATA = await resp.json();
     TEAMS_ARR = Object.entries(DATA.teams || {}).map(([name, d]) => ({ name, ...d }));
+    // Load results (soft fail — file may not exist yet if no games played)
+    try {
+      const rResp = await fetch("results_data.json");
+      if (rResp.ok) RESULTS = await rResp.json();
+    } catch (_) { /* results not ready yet */ }
     renderAll();
   } catch (e) {
     document.body.innerHTML = `
@@ -39,7 +45,159 @@ function renderAll() {
   renderOddsTable();
   renderMonteCarlo();
   renderUpsets();
+  renderResults();
   bindEvents();
+}
+
+// ── PREDICTIONS vs REALITY ────────────────────────────────────
+function renderResults() {
+  const container = id("results-container");
+  if (!container) return;
+
+  // ── No results yet ──────────────────────────────────────────
+  if (!RESULTS || RESULTS.scoring.total_played === 0) {
+    container.innerHTML = `
+      <div class="res-empty">
+        <div class="res-empty-icon">⏳</div>
+        <div class="res-empty-title">TOURNAMENT HASN'T STARTED YET</div>
+        <div class="res-empty-sub">
+          Results will appear here once games are played.<br>
+          The model predicts <strong>${esc(RESULTS?.model_predicted_champion || "—")}</strong> wins the championship.
+        </div>
+      </div>`;
+    return;
+  }
+
+  const R = RESULTS;
+  const sc = R.scoring;
+  const pctPts  = sc.pct_points  != null ? Math.round(sc.pct_points  * 100) : 0;
+  const pctCorr = sc.pct_correct != null ? Math.round(sc.pct_correct * 100) : 0;
+  const roundOrder = ["R64","R32","S16","E8","F4","NCG"];
+  const roundLabel = { R64:"Round of 64", R32:"Round of 32", S16:"Sweet 16", E8:"Elite 8", F4:"Final Four", NCG:"Championship" };
+
+  // ── Score banner ────────────────────────────────────────────
+  let scoreBanner = `
+    <div class="res-scoreboard">
+      <div class="res-score-main">
+        <div class="res-score-pts">${sc.total_earned}<span class="res-score-max">/${sc.total_possible}</span></div>
+        <div class="res-score-label">BRACKET POINTS</div>
+      </div>
+      <div class="res-score-divider"></div>
+      <div class="res-score-stat">
+        <div class="res-score-num">${sc.total_correct}/${sc.total_played}</div>
+        <div class="res-score-label">CORRECT PICKS</div>
+      </div>
+      <div class="res-score-stat">
+        <div class="res-score-num">${pctCorr}%</div>
+        <div class="res-score-label">PICK ACCURACY</div>
+      </div>
+      <div class="res-score-stat">
+        <div class="res-score-num">${sc.total_pending}</div>
+        <div class="res-score-label">GAMES REMAINING</div>
+      </div>
+      <div class="res-score-champ">
+        <div class="res-champ-label">MODEL PICK</div>
+        <div class="res-champ-name">${esc(R.model_predicted_champion)}</div>
+        ${R.actual_champion
+          ? `<div class="res-champ-actual ${R.actual_champion === R.model_predicted_champion ? 'res-correct' : 'res-wrong'}">
+               ACTUAL: ${esc(R.actual_champion)}
+             </div>`
+          : `<div class="res-champ-tbd">ACTUAL: TBD</div>`}
+      </div>
+    </div>`;
+
+  // ── Progress bar ─────────────────────────────────────────────
+  scoreBanner += `
+    <div class="res-progress-bar-wrap">
+      <div class="res-progress-bar" style="width:${pctPts}%"></div>
+    </div>
+    <div class="res-progress-labels">
+      <span>0 pts</span><span>${pctPts}% of max points earned</span><span>${sc.total_possible} pts</span>
+    </div>`;
+
+  // ── Round-by-round accuracy ──────────────────────────────────
+  let roundCards = `<div class="res-rounds-grid">`;
+  for (const rnd of roundOrder) {
+    const rv = R.by_round[rnd];
+    if (!rv) continue;
+    const played = rv.correct + rv.incorrect;
+    const pct    = rv.pct_correct != null ? Math.round(rv.pct_correct * 100) : null;
+    const complete = R.rounds_complete.includes(rnd);
+    const status = played === 0 ? "res-rnd-pending"
+                 : complete     ? "res-rnd-done"
+                 :                "res-rnd-live";
+    roundCards += `
+      <div class="res-round-card ${status}">
+        <div class="res-rnd-name">${roundLabel[rnd]}</div>
+        <div class="res-rnd-score">${rv.correct}<span>/${played || "—"}</span></div>
+        <div class="res-rnd-pct">${pct != null ? pct+"%" : "—"}</div>
+        <div class="res-rnd-pts">${rv.points}/${rv.max_points} pts</div>
+        <div class="res-rnd-bar-track"><div class="res-rnd-bar-fill" style="width:${pct || 0}%"></div></div>
+        ${complete ? '<div class="res-rnd-badge">COMPLETE</div>' : played > 0 ? '<div class="res-rnd-badge res-rnd-badge-live">IN PROGRESS</div>' : '<div class="res-rnd-badge res-rnd-badge-pending">UPCOMING</div>'}
+      </div>`;
+  }
+  roundCards += `</div>`;
+
+  // ── Upset tracker ────────────────────────────────────────────
+  let upsetSection = "";
+  const upsets = (R.upsets || []).filter(u => u.played !== false);
+  if (upsets.length > 0) {
+    const upsetRows = upsets.map(u => {
+      const icon = u.correct ? "✓" : "✗";
+      const cls  = u.correct ? "res-correct" : "res-wrong";
+      return `
+        <div class="res-upset-row ${cls}">
+          <span class="res-upset-icon">${icon}</span>
+          <span class="res-upset-rnd">${u.round_label}</span>
+          <span class="res-upset-teams">#${u.s1} ${esc(u.t1)} vs #${u.s2} ${esc(u.t2)}</span>
+          <span class="res-upset-pred">Predicted: ${esc(u.predicted_winner)}</span>
+          <span class="res-upset-actual">Actual: ${esc(u.actual_winner)}</span>
+        </div>`;
+    }).join("");
+    upsetSection = `
+      <div class="res-block">
+        <div class="res-block-title">UPSET TRACKER</div>
+        <div class="res-upsets">${upsetRows}</div>
+      </div>`;
+  }
+
+  // ── Game grid (by round, collapsible) ───────────────────────
+  let gameGrid = `<div class="res-block"><div class="res-block-title">GAME-BY-GAME PICKS</div>`;
+  for (const rnd of roundOrder) {
+    const rndGames = R.games.filter(g => g.round === rnd);
+    if (!rndGames.length) continue;
+    const played  = rndGames.filter(g => g.played).length;
+    const correct = rndGames.filter(g => g.correct).length;
+    gameGrid += `
+      <details class="res-rnd-details" ${["R64","R32"].includes(rnd) ? "open" : ""}>
+        <summary class="res-rnd-summary">
+          <span class="res-rnd-sum-name">${roundLabel[rnd]}</span>
+          <span class="res-rnd-sum-stat">${correct}/${played} correct</span>
+        </summary>
+        <div class="res-game-grid">`;
+    for (const g of rndGames) {
+      let icon = "·", cls = "res-game-pending";
+      if (g.played) { icon = g.correct ? "✓" : "✗"; cls = g.correct ? "res-game-correct" : "res-game-wrong"; }
+      const upsetBadge = g.upset_happened ? `<span class="res-upset-badge">UPSET</span>` : "";
+      gameGrid += `
+          <div class="res-game-card ${cls}">
+            <div class="res-game-icon">${icon}</div>
+            <div class="res-game-body">
+              <div class="res-game-matchup">#${g.s1} ${esc(g.t1)} vs #${g.s2} ${esc(g.t2)}</div>
+              <div class="res-game-picks">
+                <span class="res-game-pred">Pick: ${esc(g.predicted_winner)}</span>
+                ${g.actual_winner ? `<span class="res-game-actual">Actual: ${esc(g.actual_winner)}</span>` : '<span class="res-game-tbd">TBD</span>'}
+              </div>
+              ${upsetBadge}
+            </div>
+            <div class="res-game-pts">${g.played ? (g.correct ? "+"+g.points_possible : "0") : "—"}</div>
+          </div>`;
+    }
+    gameGrid += `</div></details>`;
+  }
+  gameGrid += `</div>`;
+
+  container.innerHTML = scoreBanner + roundCards + upsetSection + gameGrid;
 }
 
 // ── BRACKET TREE ─────────────────────────────────────────────
